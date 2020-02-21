@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { MenuItem } from 'primeng/api/menuitem';
+import { CargasHisComponent } from '../componentes/cargas-his/cargas-his.component';
 
 @Component({
   selector: 'app-menu-principal',
@@ -82,7 +83,7 @@ export class MenuPrincipalComponent implements OnInit {
             [
                 {
                     label: 'HIS',
-                    items: [{label: 'Reportes Planos',routerLink:""},{label: 'Sports 1.2'}]
+                    items: [{label: 'Reportes Planos',routerLink:"cargasHis"},{label: 'Sports 1.2'}]
                 }
             ],
             [
