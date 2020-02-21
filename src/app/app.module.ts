@@ -7,6 +7,9 @@ import {MegaMenuModule} from 'primeng/megamenu';
 import { MenuPrincipalComponent } from './menu-principal/menu-principal.component';
 import { CargasHisComponent } from './componentes/cargas-his/cargas-his.component';
 import {PanelModule} from 'primeng/panel';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import {FileUploadModule} from 'primeng/fileupload';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -18,7 +21,11 @@ import {PanelModule} from 'primeng/panel';
     BrowserModule,
     AppRoutingModule,
     MegaMenuModule,
-    PanelModule
+    PanelModule,
+    BrowserAnimationsModule,
+    FileUploadModule,
+    HttpClientModule
+    
   ],
   providers: [],
   bootstrap: [AppComponent]
