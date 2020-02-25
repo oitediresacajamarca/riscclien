@@ -10,6 +10,10 @@ import {PanelModule} from 'primeng/panel';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {FileUploadModule} from 'primeng/fileupload';
 import { HttpClientModule } from '@angular/common/http';
+import {MessageModule} from 'primeng/message';
+import {MessagesModule} from 'primeng/messages';
+import {ToastModule} from 'primeng/toast';
+import {ButtonModule} from 'primeng/button';
 
 @NgModule({
   declarations: [
@@ -24,7 +28,11 @@ import { HttpClientModule } from '@angular/common/http';
     PanelModule,
     BrowserAnimationsModule,
     FileUploadModule,
-    HttpClientModule
+    HttpClientModule,
+    MessageModule,
+    ToastModule,
+    MessagesModule,
+    ButtonModule
     
   ],
   providers: [],

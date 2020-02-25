@@ -1,15 +1,46 @@
 <p-panel header="CARGAS HIS" [toggleable]="true" [style]="{'margin-bottom':'20px'}">
    
     <p-panel header="Maestro Paciente">
-        <p-fileUpload name="myfile[]" url="./upload.php" chooseLabel="Elegir Archivo" uploadLabel="Cargar Archivo" cancelLabel="Cancelar"></p-fileUpload>
+        <p-fileUpload name="archivopaciente" [(url)]="urlPac" chooseLabel="Elegir Archivo" 
+        uploadLabel="Cargar Archivo" cancelLabel="Cancelar" (onSelect)="seleccionarArchivo()" 
+        [(headers)]="headers" (onUpload)="cargoPaciente($event)"></p-fileUpload>
+        <div>
+            Registros Cargados <span >{{registrosPc}}</span>
+        </div>
     </p-panel>
     <p-panel header="Maestro Personal">
-         <p-fileUpload name="myfile[]" url="./upload.php" chooseLabel="Elegir Archivo" uploadLabel="Cargar Archivo" cancelLabel="Cancelar"></p-fileUpload>
+         <p-fileUpload name="archivopersonal" [(url)]="urlPer" chooseLabel="Elegir Archivo"
+          uploadLabel="Cargar Archivo" cancelLabel="Cancelar" (onSelect)="seleccionarArchivo()"
+          (onUpload)="cargoPersonal($event)"
+          ></p-fileUpload>
+          <div>
+            Registros Cargados <span >{{registrosPerc}}</span>
+        </div>
     </p-panel>
     <p-panel header="Maestro Registrador">
-        <p-fileUpload name="myfile[]" url="./upload.php" chooseLabel="Elegir Archivo" uploadLabel="Cargar Archivo" cancelLabel="Cancelar"></p-fileUpload>
+        <p-fileUpload name="archivoregistrador" [(url)]="urlReg" chooseLabel="Elegir Archivo"
+         uploadLabel="Cargar Archivo" cancelLabel="Cancelar" (onSelect)="seleccionarArchivo()"
+         (onUpload)="cargoRegistrador($event)"
+         ></p-fileUpload>
+         <div>
+            Registros Cargados <span >{{registrosRc}}</span>
+        </div>
    </p-panel>
-   <p-panel header="Reporte Plano">
-    <p-fileUpload name="myfile[]" url="./upload.php" chooseLabel="Elegir Archivo" uploadLabel="Cargar Archivo" cancelLabel="Cancelar"></p-fileUpload>
+   <p-panel header="Reporte Plano" >
+          
+        <p-fileUpload name="archivoreporteplano" [(url)]="urlRep" chooseLabel="Elegir Archivo" 
+           uploadLabel="Cargar Archivo" cancelLabel="Cancelar" (onSelect)="seleccionarArchivo()"
+        [(headers)]="headers" (onUpload)="cargoReporte($event)"
+        ></p-fileUpload>
+
+        <div>
+            Registros Cargados <span >{{registrosRep}}</span>
+        </div>
     </p-panel>
+    <div class="center-block" style="text-align: center;">
+        <p-button label="Generar Reportes"  ></p-button>
+        <p-button label="Ejecutar Control de Calidad" ></p-button>
+    </div>
+    
 </p-panel>
+<p-toast showTransitionOptions="700ms ease-out"></p-toast>
