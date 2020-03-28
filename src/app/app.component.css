@@ -1,7 +1,12 @@
 .tituloadmin{
     text-shadow: -15px 5px #558ABB;
    margin-top: 10px;
-   margin-bottom: 10px;
-    font-size: 100px;
+     font-size: 80px;
     text-align: center;
+}
+.titulosub{
+    align-content: center;
+    text-align: center;
+    color: #558ABB;
+    font-size: 22px;
 }

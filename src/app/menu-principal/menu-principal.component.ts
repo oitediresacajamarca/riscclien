@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { MenuItem } from 'primeng/api/menuitem';
 import { CargasHisComponent } from '../componentes/cargas-his/cargas-his.component';
 
@@ -10,6 +10,12 @@ import { CargasHisComponent } from '../componentes/cargas-his/cargas-his.compone
 export class MenuPrincipalComponent implements OnInit {
 
   items: MenuItem[];
+  @Input()
+  punto_digitacion:string;
+  @Input()
+  ano:string;
+  @Input()
+  mes:string;
 
   constructor() { }
 
@@ -33,11 +39,8 @@ export class MenuPrincipalComponent implements OnInit {
                   {
                       label: 'Puntos de digitacion',
                       items: [{label: 'Establecimientos por Puntos',routerLink:"adminpue"},{label: 'TV 3.2'}]
-                  },
-                  {
-                      label: 'TV 4',
-                      items: [{label: 'TV 4.1'},{label: 'TV 4.2'}]
-                  }    
+                  }
+                 
               ]
           ]
       },
@@ -47,31 +50,20 @@ export class MenuPrincipalComponent implements OnInit {
               [
                   {
                       label: 'Estrategias',
-                      items: [{label: 'Sports 1.1'},{label: 'Sports 1.2'}]
-                  },
-                  {
-                      label: 'Sports 2',
-                      items: [{label: 'Sports 2.1'},{label: 'Sports 2.2'}]
-                  },
+                      items: [{label: 'Niño'},{label: 'Adolecente'},{label: 'Adulto'},{label: 'Adulto Mayor'},{label: 'Joven'},{label: 'Materno'}]
+                  }
 
               ],
               [
-                  {
-                      label: 'Sports 3',
-                      items: [{label: 'Sports 3.1'},{label: 'Sports 3.2'}]
-                  },
-                  {
-                      label: 'Sports 4',
-                      items: [{label: 'Sports 4.1'},{label: 'Sports 4.2'}]
-                  }
+                
               ],
               [
                   {
-                      label: 'Sports 5',
+                      label: 'Digitador',
                       items: [{label: 'Sports 5.1'},{label: 'Sports 5.2'}]
                   },
                   {
-                      label: 'Sports 6',
+                      label: 'Atenciones',
                       items: [{label: 'Sports 6.1'},{label: 'Sports 6.2'}]
                   }
               ]
@@ -83,13 +75,13 @@ export class MenuPrincipalComponent implements OnInit {
             [
                 {
                     label: 'HIS',
-                    items: [{label: 'Reportes Planos',routerLink:"cargasHis"},{label: 'Sports 1.2'}]
+                    items: [{label: 'Periodo Actual',routerLink:"cargasHis/"+localStorage.getItem("pun")},{label: 'Actualizacion'},{label: 'Reporte de Cargas'}]
                 }
             ],
             [
                 {
                     label: 'SIS',
-                    items: [{label: 'Sports 3.1'},{label: 'Sports 3.2'}]
+                    items: [{label: 'Periodo Actual',routerLink:"cargasSis/"+localStorage.getItem("pun")},{label: 'Actualizacion'},{label: 'Reporte de Cargas'}]
                 }
             ]
         ]

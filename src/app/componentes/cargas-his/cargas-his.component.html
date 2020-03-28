@@ -3,27 +3,30 @@
     <p-panel header="Maestro Paciente">
         <p-fileUpload name="archivopaciente" [(url)]="urlPac" chooseLabel="Elegir Archivo" 
         uploadLabel="Cargar Archivo" cancelLabel="Cancelar" (onSelect)="seleccionarArchivo()" 
-        [(headers)]="headers" (onUpload)="cargoPaciente($event)"></p-fileUpload>
+        [(headers)]="headers" (onUpload)="cargoPaciente($event)" (onSend)="envioPaciente()" 
+        #mpa></p-fileUpload>
         <div>
-            Registros Cargados <span >{{registrosPc}}</span>
+            <p-messages  key='mensajeMaestroPaciente'></p-messages>
+        
         </div>
     </p-panel>
     <p-panel header="Maestro Personal">
          <p-fileUpload name="archivopersonal" [(url)]="urlPer" chooseLabel="Elegir Archivo"
           uploadLabel="Cargar Archivo" cancelLabel="Cancelar" (onSelect)="seleccionarArchivo()"
           (onUpload)="cargoPersonal($event)"
-          ></p-fileUpload>
+          #mpe></p-fileUpload>
           <div>
-            Registros Cargados <span >{{registrosPerc}}</span>
+            <p-messages  key='mensajeMaestroPersonal'></p-messages>
         </div>
     </p-panel>
     <p-panel header="Maestro Registrador">
         <p-fileUpload name="archivoregistrador" [(url)]="urlReg" chooseLabel="Elegir Archivo"
          uploadLabel="Cargar Archivo" cancelLabel="Cancelar" (onSelect)="seleccionarArchivo()"
          (onUpload)="cargoRegistrador($event)"
+         #mre
          ></p-fileUpload>
          <div>
-            Registros Cargados <span >{{registrosRc}}</span>
+            <p-messages  key='mensajeMaestroRegistrador'></p-messages>
         </div>
    </p-panel>
    <p-panel header="Reporte Plano" >
@@ -31,15 +34,16 @@
         <p-fileUpload name="archivoreporteplano" [(url)]="urlRep" chooseLabel="Elegir Archivo" 
            uploadLabel="Cargar Archivo" cancelLabel="Cancelar" (onSelect)="seleccionarArchivo()"
         [(headers)]="headers" (onUpload)="cargoReporte($event)"
-        ></p-fileUpload>
+        #mrp></p-fileUpload>
 
         <div>
-            Registros Cargados <span >{{registrosRep}}</span>
+            <p-messages  key='mensajeMaestroRpt'></p-messages>
         </div>
     </p-panel>
     <div class="center-block" style="text-align: center;">
-        <p-button label="Generar Reportes"  ></p-button>
-        <p-button label="Ejecutar Control de Calidad" ></p-button>
+        <p-button label="Ejecutar Control de Calidad" class="boton" (onClick)="llamar_control_his()" #bc disabled=true></p-button>
+        <p-button label="Generar Reportes"  class="boton" #br disabled=true></p-button>
+      
     </div>
     
 </p-panel>

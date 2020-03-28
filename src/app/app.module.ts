@@ -14,12 +14,20 @@ import {MessageModule} from 'primeng/message';
 import {MessagesModule} from 'primeng/messages';
 import {ToastModule} from 'primeng/toast';
 import {ButtonModule} from 'primeng/button';
+import { InicioComponent } from './componentes/inicio/inicio.component';
+import { CargasSisComponent } from './componentes/cargas-sis/cargas-sis.component';
+import {CalendarModule} from 'primeng/calendar';
+import { FormsModule } from '@angular/forms';
+
+
 
 @NgModule({
   declarations: [
     AppComponent,
     MenuPrincipalComponent,
-    CargasHisComponent
+    CargasHisComponent,
+    InicioComponent,
+    CargasSisComponent
   ],
   imports: [
     BrowserModule,
@@ -32,7 +40,8 @@ import {ButtonModule} from 'primeng/button';
     MessageModule,
     ToastModule,
     MessagesModule,
-    ButtonModule
+    ButtonModule,
+    CalendarModule,FormsModule
     
   ],
   providers: [],

@@ -1,17 +1,23 @@
 
+<div class="ui-g">
+  <div class="ui-g-4"></div>
+<div class="tituloadmin ui-g-4">RISC</div>    <div class="MenuBuscar ui-g-4">
+ 
+  </div>
+<div class="titulosub ui-g-12">
+PUNTO DE DIGITACION:  {{punto}}
 
-<div class="tituloadmin">RISC</div>
-
+</div>
+</div>
 <div class="container">
 
   <div class="alert alert-primary justify-content-center " role="alert" >
 
     <div  class="text-center">
-
     REPOSITORIO DE INFORMACION DE SALUD CAJAMARCA
-  </div>
+    </div>
  
-<app-menu-principal></app-menu-principal>
+<app-menu-principal [punto_digitacion]="punto_digita" [(ano)]="ano" [(mes)]="mes"></app-menu-principal>
 
 </div>
 
