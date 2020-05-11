@@ -19,6 +19,14 @@ import { CargasSisComponent } from './componentes/cargas-sis/cargas-sis.componen
 import {CalendarModule} from 'primeng/calendar';
 import { FormsModule } from '@angular/forms';
 
+import {DialogModule} from 'primeng/dialog';
+import {TableModule} from 'primeng/table';
+import {ProgressSpinnerModule} from 'primeng/progressspinner';
+import { DropdownModule } from 'primeng/dropdown';
+
+import {ScrollPanelModule} from 'primeng/scrollpanel';
+import { DescargasHisCCComponent } from './componentes/descargas/descargas-his-cc/descargas-his-cc.component';
+import { ReportePreliminarComponent } from './reportes/reporte-preliminar/reporte-preliminar.component';
 
 
 @NgModule({
@@ -27,9 +35,13 @@ import { FormsModule } from '@angular/forms';
     MenuPrincipalComponent,
     CargasHisComponent,
     InicioComponent,
-    CargasSisComponent
+    CargasSisComponent,
+    DescargasHisCCComponent,
+    ReportePreliminarComponent
+    
   ],
   imports: [
+    TableModule,
     BrowserModule,
     AppRoutingModule,
     MegaMenuModule,
@@ -40,11 +52,17 @@ import { FormsModule } from '@angular/forms';
     MessageModule,
     ToastModule,
     MessagesModule,
+    ProgressSpinnerModule,
     ButtonModule,
-    CalendarModule,FormsModule
+    CalendarModule,FormsModule,
+    DialogModule,
+    ScrollPanelModule,
+    DropdownModule
     
   ],
   providers: [],
   bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModule {
+  
+ }

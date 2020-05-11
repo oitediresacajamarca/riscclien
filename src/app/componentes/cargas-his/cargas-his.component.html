@@ -1,6 +1,9 @@
 <p-panel header="CARGAS HIS" [toggleable]="true" [style]="{'margin-bottom':'20px'}">
+     
    
     <p-panel header="Maestro Paciente">
+      
+      
         <p-fileUpload name="archivopaciente" [(url)]="urlPac" chooseLabel="Elegir Archivo" 
         uploadLabel="Cargar Archivo" cancelLabel="Cancelar" (onSelect)="seleccionarArchivo()" 
         [(headers)]="headers" (onUpload)="cargoPaciente($event)" (onSend)="envioPaciente()" 
@@ -40,11 +43,83 @@
             <p-messages  key='mensajeMaestroRpt'></p-messages>
         </div>
     </p-panel>
+
+
     <div class="center-block" style="text-align: center;">
-        <p-button label="Ejecutar Control de Calidad" class="boton" (onClick)="llamar_control_his()" #bc disabled=true></p-button>
+        <p-button label="Ejecutar Control de Calidad" class="boton" #bc disabled=true
+       (onClick)="llamar_control_his()"
+        ></p-button>
+        <p-button label="Descargar Control 2"  class="boton" #bcc2  (onClick)="llamar_control_his2()"></p-button>
         <p-button label="Generar Reportes"  class="boton" #br disabled=true></p-button>
       
     </div>
     
 </p-panel>
 <p-toast showTransitionOptions="700ms ease-out"></p-toast>
+
+<p-dialog header="Generacion de Control de Calidad" position="center" [(visible)]="muestraControl" [modal]="true" [style]="{width: '80vw'}" [maximizable]="true" [baseZIndex]="10000"
+    [draggable]="false" [resizable]="false">
+    <div class="ui-g">
+        <div class="ui-md-4 ">
+     
+        </div>
+        <div class="ui-md-4 ">
+            <h5>Seleccione Periodo a Generar</h5>
+            <p-calendar [(ngModel)]="periodoselec" view="month" dateFormat="mm/yy" [yearNavigator]="true"
+            yearRange="2000:2030" [readonlyInput]="true"
+            (onSelect)="mesCambia($event)"></p-calendar>
+        </div>
+        <div class="ui-md-4 "></div>
+
+        
+        <div class="ui-md-12 ">
+            <p-scrollPanel [style]="{width: '100%', height: '600px'}" styleClass="custombar2">
+               
+            <p-table [value]="registroscc"  [style]="{width: '1580%', height: '200px'}">
+                <ng-template pTemplate="header">
+                    <tr>
+                        <th *ngFor="let col of cols" >
+                            {{col.header}}
+                        </th>
+                    </tr>
+                </ng-template>
+                <ng-template pTemplate="body" let-car>
+                    <tr>
+                        <td *ngFor="let col of cols" class="ui-resizable-column">
+                                {{car[col.field]}}
+                        </td>
+                    </tr>
+                </ng-template>
+                
+            </p-table>
+            <div class="msg-carga" *ngIf="verespinner">  <p-progressSpinner [style]="{width: '100px', height: '100px'}"></p-progressSpinner></div>
+     
+           
+
+         
+        </p-scrollPanel>
+
+        <br>
+        <br>
+        
+
+        <button type="button" pButton icon="pi pi-file-excel" iconPos="left" label="EXPORTAR A EXCEL" (click)="exportExcel()" style="margin-right: 0.5em;" class="ui-button-success" #bee></button>
+            
+        </div>
+     
+      
+    
+        </div>    
+          
+        <p-footer>
+            <button type="button" pButton icon="pi pi-check"  label="Iniciar" (click)="iniciarcontrol()" #bicc [(disabled)]="biccdisabled" ></button>
+            <button type="button" pButton icon="pi pi-times" (click)="muestraControl=false" label="Cancelar" class="ui-button-secondary" ></button>
+        </p-footer>
+</p-dialog>
+
+<p-dialog header="Generacion de Control de Calidad" position="center" [(visible)]="muestraconfirmacion" [modal]="false" [style]="{width: '40vw'}" [maximizable]="false" [baseZIndex]="10000">
+CULMINO CON EXITO LA GENERACION DE CONTROL DE CALIDAD
+
+</p-dialog>
+  
+<span _ngcontent-kfg-c61="" class="version"> Version Actual: 0.1.0@03</span>

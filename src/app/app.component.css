@@ -1,7 +1,6 @@
 .tituloadmin{
     text-shadow: -15px 5px #558ABB;
-   margin-top: 10px;
-     font-size: 80px;
+      font-size: 60px;
     text-align: center;
 }
 .titulosub{
@@ -9,4 +8,31 @@
     text-align: center;
     color: #558ABB;
     font-size: 22px;
+}
+
+.logodiresa{
+    height: 110px;
+    width: 110px;
+    align-items: center;
+    justify-content: center;
+    margin-top: 20px;
+   
+}
+.logooite{
+    height: 110px;
+    width: 130px;
+    align-items: center;
+    justify-content: center;
+    margin-top: 20px;
+   
+}
+
+.cajaizquierda{
+    align-items: center;
+    text-align: center;
+    
+    justify-items: center;
+}
+.cuerpo{
+    background-color: aliceblue;
 }

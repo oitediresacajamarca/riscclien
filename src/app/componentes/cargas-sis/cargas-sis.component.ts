@@ -42,6 +42,7 @@ export class CargasSisComponent implements OnInit {
     
 
   }
+  cargoSis(e){}
 
 
 }
