@@ -1,6 +1,6 @@
-<p-panel header="SELECCIONE LOS CRITERIOS DE BUSQUEDAD" [toggleable]="true">
-    SUBREGION <p-dropdown [options]="subregion" [(ngModel)]="subregionselect"  placeholder="Selecciona Subregion"></p-dropdown>
-    RED <p-dropdown [options]="subregion" [(ngModel)]="subregionselect"  placeholder="Selecciona Red"></p-dropdown>
-    MICRORED <p-dropdown [options]="subregion" [(ngModel)]="subregionselect"  placeholder="Selecciona Microred"></p-dropdown>
+<p-panel header="SELECCIONE LOS CRITERIOS DE BUSQUEDA" [toggleable]="true">
+    SUBREGION <p-dropdown [options]="subregion" [(ngModel)]="subregionselect" (onChange)="seleccionarRed($event)"  placeholder="Selecciona Subregion"></p-dropdown>
+    RED <p-dropdown [options]="redesfiltradas" placeholder="Selecciona Red"></p-dropdown>
+    MICRORED <p-dropdown  [(ngModel)]="subregionselect"  placeholder="Selecciona Microred"></p-dropdown>
     IPRESS <p-dropdown [options]="subregion" [(ngModel)]="subregionselect"  placeholder="Selecciona Ipress"></p-dropdown>
 </p-panel>
