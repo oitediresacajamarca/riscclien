@@ -12,7 +12,7 @@
   "private": true,
   "dependencies": {
     "@angular/animations": "^8.2.14",
-    "@angular/cdk": "^9.0.1",
+    "@angular/cdk": "^8.0.1",
     "@angular/common": "~8.2.14",
     "@angular/compiler": "~8.2.14",
     "@angular/core": "~8.2.14",
@@ -21,13 +21,19 @@
     "@angular/platform-browser": "~8.2.14",
     "@angular/platform-browser-dynamic": "~8.2.14",
     "@angular/router": "~8.2.14",
+<<<<<<< HEAD
     "bootstrap": "^4.5.0",
     "jquery": "^3.5.1",
     "popper.js": "^1.16.1",
+=======
+    "bootstrap": "^4.4.1",
+    "file-saver": "^2.0.2",
+>>>>>>> f4ed00a5cbe24bf5dcc7f6a8bb2595f3cf24c584
     "primeicons": "^2.0.0",
     "primeng": "^9.0.0-rc.4",
     "rxjs": "~6.4.0",
     "tslib": "^1.10.0",
+    "xlsx": "^0.15.6",
     "zone.js": "~0.9.1"
   },
   "devDependencies": {

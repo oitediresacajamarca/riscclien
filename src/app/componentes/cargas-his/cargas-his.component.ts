@@ -9,6 +9,8 @@ import { RouterLinkActive, ActivatedRoute } from '@angular/router';
 import { ControlCalidadService } from 'src/app/servicios/control-calidad.service';
 import { FileUpload } from 'primeng/fileupload/fileupload';
 import { Button } from 'primeng/button/button';
+import { ColumnasccService } from 'src/app/servicios/columnascc.service';
+import { error } from 'util';
 
 @Component({
   selector: 'app-cargas-his',
@@ -17,21 +19,24 @@ import { Button } from 'primeng/button/button';
   providers:[MessageService]
 })
 export class CargasHisComponent implements OnInit {
+
   urlPac:string;
   urlReg:string;
   urlPer:string;
   urlRep:string;
   @Input()
-  punto:string='1820';
+  punto:string='192';
   @Input()
   ano:string='2020';
   @Input()
-  mes:string='01';
+  mes:string='02';
 
   carmpa:boolean=false;
   carmpe:boolean=false;
   carmre:boolean=false;
   carmrp:boolean=false;
+  muestraControl:boolean=false;
+  periodoselec:Date= new Date();
 
   @ViewChild('mpa',{static: false}) mpa: FileUpload;
   @ViewChild('mpe',{static: false}) mpe: FileUpload;
@@ -39,8 +44,16 @@ export class CargasHisComponent implements OnInit {
   @ViewChild('mrp',{static: false}) mrp: FileUpload;
   @ViewChild('bc',{static: false}) bc: Button;
   @ViewChild('br',{static: false}) br: Button;
+  @ViewChild('bicc',{static: false}) bicc: Button;
+  @ViewChild('bee',{static: false}) bee: Button;
 
- 
+
+ cols:any[];
+ registroscc:any[];
+ verespinner:boolean=false;
+ biccdisabled:boolean=false;
+ muestraconfirmacion:boolean=false;
+
   
 
   headers:Headers;
@@ -51,10 +64,10 @@ export class CargasHisComponent implements OnInit {
 
   config:Configuracion= new Configuracion();
 
-  constructor( private mensajes:MessageService,private rout:ActivatedRoute, private controlhis:ControlCalidadService) { }
+  constructor( private mensajes:MessageService,private rout:ActivatedRoute, private controlhis:ControlCalidadService,private colmnas:ColumnasccService) { }
 
   ngOnInit() {
-  
+    
   }
   /**
    * selecionarArchivo
@@ -98,6 +111,7 @@ export class CargasHisComponent implements OnInit {
     this.carmre=true;
     if(this.carmpa && this.carmre && this.carmrp && this.carmpe){
         this.bc.disabled=false;
+
     }
   }
   cargoReporte(	event){
@@ -130,20 +144,104 @@ export class CargasHisComponent implements OnInit {
 
   llamar_control_his(){
 
+    this.muestraControl=true;
+    //this.controlhis.ejecutarcontrol(this.ano,this.mes).subscribe((datos)=>{console.log(datos)});
+   this.colmnas.devolvercolumnas().subscribe((datos)=>{console.log(datos);
+  this.cols=datos.cols;
+  });
 
-    this.controlhis.ejecutarcontrol(this.ano,this.mes).subscribe((datos)=>{console.log(datos)});
-
-   
+  //  this.controlhis.ejecutarcontrol(this.ano,this.mes);
     
 
   }
+  llamar_control_his2(){
+    this.controlhis.ejecutarcontrol2().subscribe((datos)=>{console.log(datos.respuesta);
+      this.controlhis.descargarReporteCon2().subscribe((datos2)=>{
+        
+
+        import("file-saver").then(FileSaver => {
+          let EXCEL_TYPE = 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet;';
+          let EXCEL_EXTENSION = '.xlsx';
+          const data: Blob = new Blob([datos2], {
+              type: EXCEL_TYPE
+          });
+          FileSaver.saveAs(data, 'reporte2cc.xlsx');
+      });
+
+
+
+      });
+    
+    });
+  }
+
+ 
 
   envioPaciente(){
     
   }
 
+  iniciarcontrol(){
+    this.registroscc=[];
+    this.verespinner=true;
+  this.biccdisabled=true;
+
+      this.controlhis.ejecutarcontrol(this.ano,this.mes).subscribe((datos)=>{console.log(datos);
+       
+        this.controlhis.leercontrol(this.ano,this.mes).subscribe((datos)=>{console.log(datos.respuesta);
+        this.registroscc=datos.respuesta;
+        this.verespinner=false;
+        this.biccdisabled=true;
+        this.bee.disabled=false;
+        this.muestraconfirmacion=true;
+        
+        },(error)=>{
 
 
+          this.verespinner=false;
+          this.biccdisabled=false;
+          this.bee.disabled=false;
+
+         
+        }
+        
+        
+        );
+    
+    },(error)=>{ this.verespinner=false;
+      this.biccdisabled=false;
+      this.bee.disabled=false;
+     });
+    
+
+
+  }
+
+  exportExcel() {
+    this.bee.disabled=true;
+    import("xlsx").then(xlsx => {
+        const worksheet = xlsx.utils.json_to_sheet(this.registroscc);
+        const workbook = { Sheets: { 'data': worksheet }, SheetNames: ['data'] };
+        const excelBuffer: any = xlsx.write(workbook, { bookType: 'xlsx', type: 'array' });
+        this.saveAsExcelFile(excelBuffer, "REPORTE_CONTROL_CALIDAD");
+    });
+}
+
+saveAsExcelFile(buffer: any, fileName: string): void {
+    import("file-saver").then(FileSaver => {
+        let EXCEL_TYPE = 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet;charset=UTF-8';
+        let EXCEL_EXTENSION = '.xlsx';
+        const data: Blob = new Blob([buffer], {
+            type: EXCEL_TYPE
+        });
+        FileSaver.saveAs(data, fileName + '_export_' + new Date().getTime() + EXCEL_EXTENSION);
+    });
+
+}
+mesCambia(event){
+  this.mes=(this.periodoselec.getMonth()+1).toString();
+  this.ano=(this.periodoselec.getFullYear()).toString();
+}
 
 
 }

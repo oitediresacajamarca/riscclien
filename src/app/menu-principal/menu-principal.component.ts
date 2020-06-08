@@ -16,10 +16,13 @@ export class MenuPrincipalComponent implements OnInit {
   ano:string;
   @Input()
   mes:string;
+  nivel:string;
 
   constructor() { }
 
   ngOnInit() {
+
+    this.nivel=localStorage.getItem('tipo_ambito');
 
     this.items = [
       {
@@ -85,8 +88,28 @@ export class MenuPrincipalComponent implements OnInit {
                 }
             ]
         ]
+    },
+    {
+        label: 'Seguimiento', icon: 'fa fa-fw fa-soccer-ball-o',
+        items:
+             [
+                [
+                    {
+                        label: 'Control de Calidad',
+                        items: [{label:'Reporte de Control de calidad',routerLink:'descargaCC'}]
+                    }
+                ]
+            ],
+            visible:this.nivel=='1'
+           
+        
     }
   ];
+
+
+
+
+
   }
 
 }

@@ -22,6 +22,15 @@ import { RegisterComponent } from './componentes/usuarios/register/register.comp
 import { ProfileComponent } from './componentes/usuarios/profile/profile.component';
 import { LoginComponent} from './componentes/usuarios/login/login.component';
 
+import {DialogModule} from 'primeng/dialog';
+import {TableModule} from 'primeng/table';
+import {ProgressSpinnerModule} from 'primeng/progressspinner';
+import { DropdownModule } from 'primeng/dropdown';
+
+import {ScrollPanelModule} from 'primeng/scrollpanel';
+import { DescargasHisCCComponent } from './componentes/descargas/descargas-his-cc/descargas-his-cc.component';
+import { ReportePreliminarComponent } from './reportes/reporte-preliminar/reporte-preliminar.component';
+import { PruebaComponent } from './reportes/prueba/prueba.component';
 
 
 @NgModule({
@@ -31,11 +40,19 @@ import { LoginComponent} from './componentes/usuarios/login/login.component';
     CargasHisComponent,
     InicioComponent,
     CargasSisComponent,
+<<<<<<< HEAD
     LoginComponent,
     RegisterComponent,
     ProfileComponent
+=======
+    DescargasHisCCComponent,
+    ReportePreliminarComponent,
+    PruebaComponent
+    
+>>>>>>> f4ed00a5cbe24bf5dcc7f6a8bb2595f3cf24c584
   ],
   imports: [
+    TableModule,
     BrowserModule,
     AppRoutingModule,
     MegaMenuModule,
@@ -46,11 +63,17 @@ import { LoginComponent} from './componentes/usuarios/login/login.component';
     MessageModule,
     ToastModule,
     MessagesModule,
+    ProgressSpinnerModule,
     ButtonModule,
-    CalendarModule,FormsModule
+    CalendarModule,FormsModule,
+    DialogModule,
+    ScrollPanelModule,
+    DropdownModule
     
   ],
   providers: [],
   bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModule {
+  
+ }
