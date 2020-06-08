@@ -18,6 +18,9 @@ import { InicioComponent } from './componentes/inicio/inicio.component';
 import { CargasSisComponent } from './componentes/cargas-sis/cargas-sis.component';
 import {CalendarModule} from 'primeng/calendar';
 import { FormsModule } from '@angular/forms';
+import { RegisterComponent } from './componentes/usuarios/register/register.component';
+import { ProfileComponent } from './componentes/usuarios/profile/profile.component';
+import { LoginComponent} from './componentes/usuarios/login/login.component';
 
 
 
@@ -27,7 +30,10 @@ import { FormsModule } from '@angular/forms';
     MenuPrincipalComponent,
     CargasHisComponent,
     InicioComponent,
-    CargasSisComponent
+    CargasSisComponent,
+    LoginComponent,
+    RegisterComponent,
+    ProfileComponent
   ],
   imports: [
     BrowserModule,
