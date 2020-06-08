@@ -27,6 +27,7 @@ import { DropdownModule } from 'primeng/dropdown';
 import {ScrollPanelModule} from 'primeng/scrollpanel';
 import { DescargasHisCCComponent } from './componentes/descargas/descargas-his-cc/descargas-his-cc.component';
 import { ReportePreliminarComponent } from './reportes/reporte-preliminar/reporte-preliminar.component';
+import { PruebaComponent } from './reportes/prueba/prueba.component';
 
 
 @NgModule({
@@ -37,7 +38,8 @@ import { ReportePreliminarComponent } from './reportes/reporte-preliminar/report
     InicioComponent,
     CargasSisComponent,
     DescargasHisCCComponent,
-    ReportePreliminarComponent
+    ReportePreliminarComponent,
+    PruebaComponent
     
   ],
   imports: [
