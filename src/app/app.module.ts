@@ -31,7 +31,11 @@ import {ScrollPanelModule} from 'primeng/scrollpanel';
 import { DescargasHisCCComponent } from './componentes/descargas/descargas-his-cc/descargas-his-cc.component';
 import { ReportePreliminarComponent } from './reportes/reporte-preliminar/reporte-preliminar.component';
 import { PruebaComponent } from './reportes/prueba/prueba.component';
+import { PlantillaInicioComponent } from './componentes/plantilla-inicio/plantilla-inicio.component';
+import { Page404Component } from './componentes/Page404/page404.component';
 
+// Servicios
+import { AuthService } from './servicios/auth.service';
 
 @NgModule({
   declarations: [
@@ -40,16 +44,15 @@ import { PruebaComponent } from './reportes/prueba/prueba.component';
     CargasHisComponent,
     InicioComponent,
     CargasSisComponent,
-<<<<<<< HEAD
     LoginComponent,
     RegisterComponent,
-    ProfileComponent
-=======
+    ProfileComponent,
     DescargasHisCCComponent,
     ReportePreliminarComponent,
-    PruebaComponent
+    PruebaComponent,
+    PlantillaInicioComponent,
+    Page404Component
     
->>>>>>> f4ed00a5cbe24bf5dcc7f6a8bb2595f3cf24c584
   ],
   imports: [
     TableModule,
@@ -71,7 +74,7 @@ import { PruebaComponent } from './reportes/prueba/prueba.component';
     DropdownModule
     
   ],
-  providers: [],
+  providers: [AuthService],
   bootstrap: [AppComponent]
 })
 export class AppModule {

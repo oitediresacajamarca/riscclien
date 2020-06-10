@@ -1,0 +1,27 @@
+
+<div class="ui-g container banner">
+    <div class="ui-g-4 cajaizquierda" ><img src="assets/logo_diresa.png" class="logodiresa" alt=""></div>
+    <div class="tituloadmin ui-g-4">RISC</div>  
+    <div class="ui-g-4 cajaizquierda" ><img src="assets/LogoOite.png" class="logooite" alt=""></div>
+    <div class="titulosub ui-g-12">
+  {{nombretipoambito}}:  {{nombreambito}}
+
+    </div>
+</div>
+<div class="container cuerpo">
+
+<div class="alert alert-primary justify-content-center " role="alert" >
+
+  <div  class="text-center">
+  REPOSITORIO DE INFORMACION DE SALUD CAJAMARCA
+  </div>
+
+<app-menu-principal [punto_digitacion]="punto_digita" [(ano)]="ano" [(mes)]="mes"></app-menu-principal>
+
+</div>
+
+
+
+<router-outlet></router-outlet>
+
+</div>

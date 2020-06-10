@@ -21,14 +21,10 @@
     "@angular/platform-browser": "~8.2.14",
     "@angular/platform-browser-dynamic": "~8.2.14",
     "@angular/router": "~8.2.14",
-<<<<<<< HEAD
     "bootstrap": "^4.5.0",
+    "file-saver": "^2.0.2",
     "jquery": "^3.5.1",
     "popper.js": "^1.16.1",
-=======
-    "bootstrap": "^4.4.1",
-    "file-saver": "^2.0.2",
->>>>>>> f4ed00a5cbe24bf5dcc7f6a8bb2595f3cf24c584
     "primeicons": "^2.0.0",
     "primeng": "^9.0.0-rc.4",
     "rxjs": "~6.4.0",
