@@ -1,38 +1,10 @@
-.tituloadmin{
-    text-shadow: -15px 5px #558ABB;
-      font-size: 60px;
-    text-align: center;
-}
-.titulosub{
+.titulosub {
     align-content: center;
     text-align: center;
-    color: #558ABB;
+    color: #558abb;
     font-size: 22px;
 }
 
-.logodiresa{
-    height: 110px;
-    width: 110px;
-    align-items: center;
-    justify-content: center;
-    margin-top: 20px;
-   
-}
-.logooite{
-    height: 110px;
-    width: 130px;
-    align-items: center;
-    justify-content: center;
-    margin-top: 20px;
-   
-}
-
-.cajaizquierda{
-    align-items: center;
-    text-align: center;
-    
-    justify-items: center;
-}
-.cuerpo{
+.cuerpo {
     background-color: aliceblue;
 }
