@@ -11,8 +11,7 @@ import { LoginComponent } from "./componentes/usuarios/login/login.component";
 import { Page404Component } from "./componentes/Page404/page404.component";
 import { NavbarComponent } from "./componentes/navbar/navbar.component";
 import { PlantillaInicioComponent } from "./componentes/plantilla-inicio/plantilla-inicio.component";
-import { ProfileComponent } from './componentes/usuarios/profile/profile.component';
-import { AppComponent } from './app.component';
+import { ProfileComponent } from "./componentes/usuarios/profile/profile.component";
 
 const routes: Routes = [
   { path: "home", component: NavbarComponent },
@@ -20,7 +19,7 @@ const routes: Routes = [
   { path: "user/login", component: LoginComponent },
   { path: "user/profile", component: ProfileComponent },
   { path: "user/inicio", component: PlantillaInicioComponent },
-  { path: "cargasHis/:punto", component: CargasHisComponent },
+  { path: "cargasHis/:pun", component: CargasHisComponent },
   { path: "cargasSis/:punto", component: CargasSisComponent },
   { path: "carga_his_1.jsp", component: InicioComponent },
   { path: "principal_digitadores.jsp", component: InicioComponent },

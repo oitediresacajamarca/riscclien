@@ -6,37 +6,32 @@ import {
   AfterViewInit,
   ElementRef,
 } from "@angular/core";
-import { Ambito } from "../../interfaces/ambito";
 
 @Component({
   selector: "app-plantilla-inicio",
   templateUrl: "./plantilla-inicio.component.html",
   styleUrls: ["./plantilla-inicio.component.css"],
 })
-export class PlantillaInicioComponent implements OnInit, AfterViewInit, Ambito {
+export class PlantillaInicioComponent implements OnInit, AfterViewInit {
   title = "RISC";
-  public punto_digita: string;
 
   public ano: string;
-
   public mes: string;
 
-  public punto: string;
+  /* public punto_digita: string;
+  public punto: string; */
 
   constructor(private el: ElementRef) {}
-  nombreambito: string;
-  codambito: string;
-  tipoaambito: string;
-  nombretipoambito: string;
+  dni: string;
+  email: string;
+  tipo_ambito: string;
+  descripcion_ambito: string;
 
   ngOnInit() {
-    localStorage.setItem("nombre_tipo_ambito", "RED");
-    localStorage.setItem("nombre_ambito", "CAJAMARCA");
-    this.punto = localStorage.getItem("punt_nombre");
-    this.codambito = localStorage.getItem("cod_ambito");
-    this.nombreambito = localStorage.getItem("nombre_ambito");
-    this.nombretipoambito = localStorage.getItem("nombre_tipo_ambito");
-    this.tipoaambito = localStorage.getItem("tipo_ambito");
+    this.dni = localStorage.getItem("DNI");
+    this.email = localStorage.getItem("EMAIL");
+    this.tipo_ambito = localStorage.getItem("TIPO_AMBITO");
+    this.descripcion_ambito = localStorage.getItem("DESCRIPCION_AMBITO");
   }
 
   ngAfterViewInit() {}
