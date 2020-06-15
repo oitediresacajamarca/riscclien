@@ -34,10 +34,11 @@ import { Page404Component } from "./componentes/Page404/page404.component";
 import { LoginComponent } from "./componentes/usuarios/login/login.component";
 import { RegisterComponent } from "./componentes/usuarios/register/register.component";
 import { NavbarComponent } from "./componentes/navbar/navbar.component";
+import { HeroComponent } from "./componentes/hero/hero.component";
+import { ProfileComponent } from './componentes/usuarios/profile/profile.component';
 
 // Servicios
 import { AuthService } from "./servicios/auth.service";
-import { HeroComponent } from "./componentes/hero/hero.component";
 
 @NgModule({
   declarations: [
@@ -55,6 +56,7 @@ import { HeroComponent } from "./componentes/hero/hero.component";
     LoginComponent,
     RegisterComponent,
     HeroComponent,
+    ProfileComponent,
   ],
   imports: [
     TableModule,

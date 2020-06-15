@@ -11,13 +11,16 @@
         </ul>
         <ul class="navbar-nav ml-auto">
             <li class="nav-item">
+                <a class="nav-link" routerLink="/user/register">Registrar Usuario</a>
+            </li>
+            <li class="nav-item">
                 <a class="nav-link" routerLink="/user/profile">Perfil</a>
             </li>
             <li class="nav-item">
                 <a class="nav-link" routerLink="/user/login">Iniciar Sesión</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" routerLink="#">Cerrar Sesión</a>
+                <a class="nav-link" routerLink="/home" (click)="onLogout()">Cerrar Sesión</a>
             </li>
         </ul>
     </div>

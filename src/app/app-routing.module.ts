@@ -11,11 +11,14 @@ import { LoginComponent } from "./componentes/usuarios/login/login.component";
 import { Page404Component } from "./componentes/Page404/page404.component";
 import { NavbarComponent } from "./componentes/navbar/navbar.component";
 import { PlantillaInicioComponent } from "./componentes/plantilla-inicio/plantilla-inicio.component";
+import { ProfileComponent } from './componentes/usuarios/profile/profile.component';
+import { AppComponent } from './app.component';
 
 const routes: Routes = [
   { path: "home", component: NavbarComponent },
   { path: "user/register", component: RegisterComponent },
   { path: "user/login", component: LoginComponent },
+  { path: "user/profile", component: ProfileComponent },
   { path: "user/inicio", component: PlantillaInicioComponent },
   { path: "cargasHis/:punto", component: CargasHisComponent },
   { path: "cargasSis/:punto", component: CargasSisComponent },
