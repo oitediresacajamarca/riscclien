@@ -12,14 +12,20 @@ import { Page404Component } from "./componentes/Page404/page404.component";
 import { NavbarComponent } from "./componentes/navbar/navbar.component";
 import { PlantillaInicioComponent } from "./componentes/plantilla-inicio/plantilla-inicio.component";
 import { ProfileComponent } from "./componentes/usuarios/profile/profile.component";
+import { ListUsuariosComponent } from "./componentes/usuarios/list-usuarios/list-usuarios.component";
+import { AuthGuard } from './guards/auth.guard';
+import { AccessRegisterGuard } from './guards/access-register.guard';
+import { ChangePasswordComponent } from './componentes/usuarios/change-password/change-password.component';
 
 const routes: Routes = [
   { path: "home", component: NavbarComponent },
-  { path: "user/register", component: RegisterComponent },
+  { path: "user/register", component: RegisterComponent, canActivate: [AuthGuard, AccessRegisterGuard] },
   { path: "user/login", component: LoginComponent },
-  { path: "user/profile", component: ProfileComponent },
-  { path: "user/inicio", component: PlantillaInicioComponent },
-  { path: "cargasHis/:pun", component: CargasHisComponent },
+  { path: "user/profile", component: ProfileComponent, canActivate: [AuthGuard] },
+  { path: "user/inicio", component: PlantillaInicioComponent, canActivate: [AuthGuard] },
+  { path: "user/register/list-usuarios", component: ListUsuariosComponent, canActivate: [AuthGuard, AccessRegisterGuard] },
+  { path: "user/changePassword", component: ChangePasswordComponent },
+  { path: "cargasHis/:pun", component: CargasHisComponent, canActivate: [AuthGuard] },
   { path: "cargasSis/:punto", component: CargasSisComponent },
   { path: "carga_his_1.jsp", component: InicioComponent },
   { path: "principal_digitadores.jsp", component: InicioComponent },
@@ -33,4 +39,4 @@ const routes: Routes = [
   imports: [RouterModule.forRoot(routes)],
   exports: [RouterModule],
 })
-export class AppRoutingModule {}
+export class AppRoutingModule { }

@@ -1,25 +1,30 @@
-<section id="login" class="mb-5">
+<section id="login" class="mb-5 mt-5">
     <div class="container">
         <div class="row">
             <div class="col-xs-12 col-sm-6 col-md-4 mx-auto">
                 <div class="card_login">
                     <div class="card">
                         <div class="card-body text-center">
-                            <form #formLogin="ngForm" (ngSubmit)="onLogin()">
-                                <h1 class="h3 mb-3 font-weight-normal">INICIO DE SESIÓN</h1>
+                            <form #formLogin="ngForm" (ngSubmit)="onLogin(formLogin)">
+                                <h1 class="h3 mb-3 font-weight-normal" *ngIf="!isError">INICIO DE SESIÓN</h1>
+                                <div class="alert alert-danger" role="alert" *ngIf="isError">
+                                    {{msgError}}
+                                </div>
                                 <div class="form-group">
-                                    <input type="text" id="dni" name="dni" class="form-control" placeholder="DNI" [(ngModel)]="user.dni" required />
+                                    <input type="text" #dni="ngModel" name="dni" class="form-control" placeholder="DNI" [(ngModel)]="user.dni" onkeypress='return event.charCode >= 48 && event.charCode <= 57' minlength="8" maxlength="8" required />
+                                </div>
+                                <div class="alert alert-danger" role="alert" *ngIf="dni.touched && !dni.valid">
+                                    <div *ngIf="dni.errors.required">El DNI es un campo obligatorio</div>
+                                    <div *ngIf="dni.errors.minlength">El DNI debe tener 8 digitos</div>
                                 </div>
                                 <div class="form-group">
                                     <input type="password" id="password" name="password" class="form-control" placeholder="PASSWORD" [(ngModel)]="user.password" required />
                                 </div>
 
-                                <button type="submit" class="btn btn-lg btn-primary btn-block">
-                  INICIAR SESIÓN
-                </button>
-                                <div class="form-group">
+                                <button type="submit" class="btn btn-lg btn-primary btn-block" [disabled]="!formLogin.valid">INICIAR SESIÓN</button>
+                                <!-- <div class="form-group">
                                     <a routerLink="/user/register" class="form-control login-user">¿Desea registrar un nuevo usuario?</a>
-                                </div>
+                                </div> -->
                             </form>
                         </div>
                     </div>

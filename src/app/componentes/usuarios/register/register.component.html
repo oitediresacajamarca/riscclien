@@ -1,20 +1,24 @@
-<section id="register" class="mb-5">
+<section id="register" class="mb-5 mt-5">
     <div class="container">
         <div class="row">
             <div class="col-xs-12 col-sm-6 col-md-4 mx-auto">
                 <div class="card_register">
                     <div class="card">
                         <div class="card-body text-center">
-                            <form #formRegister="ngForm" (ngSubmit)="onRegister()">
+                            <form #formRegister="ngForm" (ngSubmit)="onRegister(formRegister)">
                                 <h1 class="h3 mb-3 font-weight-normal">REGISTRO DE USUARIO</h1>
-                                <div class="form-group">
-                                    <input type="text" id="dni" name="dni" class="form-control" placeholder="DNI" [(ngModel)]="user.dni" required />
+                                <div class="alert alert-success" role="alert" *ngIf="isSuccess">
+                                    {{msgSuccess}}
+                                </div>
+                                <div class="alert alert-danger" role="alert" *ngIf="isError">
+                                    {{msgError}}
                                 </div>
                                 <div class="form-group">
-                                    <input type="password" id="password" name="password" class="form-control" placeholder="PASSWORD" [(ngModel)]="user.password" required />
+                                    <input type="text" #dni="ngModel" name="dni" class="form-control" placeholder="DNI" [(ngModel)]="user.dni" onkeypress='return event.charCode >= 48 && event.charCode <= 57' minlength="8" maxlength="8" required />
                                 </div>
-                                <div class="form-group">
-                                    <input type="email" id="email" name="email" class="form-control" placeholder="EMAIL" [(ngModel)]="user.email" required />
+                                <div class="alert alert-danger" role="alert" *ngIf="dni.touched && !dni.valid">
+                                    <div *ngIf="dni.errors.required">El DNI es un campo obligatorio</div>
+                                    <div *ngIf="dni.errors.minlength">El DNI debe tener 8 digitos</div>
                                 </div>
                                 <div class="form-group">
                                     <input type="text" id="apellido_paterno" name="apellido_paterno" class="form-control" placeholder="APELLIDO PATERNO" [(ngModel)]="user.apellido_paterno" required />
@@ -26,17 +30,33 @@
                                     <input type="text" id="nombres" name="nombres" class="form-control" placeholder="NOMBRES" [(ngModel)]="user.nombres" required />
                                 </div>
                                 <div class="form-group">
-                                    <input type="text" id="tipo_ambito" name="tipo_ambito" class="form-control" placeholder="TIPO DE AMBITO" [(ngModel)]="user.tipo_ambito" required />
+                                    <input type="email" #email="ngModel" name="email" class="form-control" placeholder="EMAIL" [(ngModel)]="user.email" pattern="^[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?$"
+                                        required />
+                                </div>
+                                <div class="alert alert-danger" role="alert" *ngIf="email.touched && !email.valid">
+                                    <div *ngIf="email.errors.required">El EMAIL es un campo obligatorio</div>
+                                    <div *ngIf="email.errors.pattern">El EMAIL ingresado no es válido</div>
                                 </div>
                                 <div class="form-group">
-                                    <input type="text" id="descripcion_ambito" name="descripcion_ambito" class="form-control" placeholder="DECRIPCION DE AMBITO" [(ngModel)]="user.descripcion_ambito" required />
+                                    <select name="tipo_ambito" id="tipo_ambito" class="form-control" (change)="devuelveDescripcionAmbito()" [(ngModel)]="user.tipo_ambito" required>
+                                                <option value="" disabled hidden selected>TIPO DE AMBITO</option>
+                                                <ng-container *ngFor="let tipo_ambito of tipos_ambito">
+                                                    <option [value]="tipo_ambito.DESCRIPCION_TIPO_AMBITO">{{tipo_ambito.DESCRIPCION_TIPO_AMBITO}}</option>
+                                                </ng-container>
+                                    </select>
                                 </div>
-                                <button type="submit" class="btn btn-lg btn-primary btn-block">
-                  REGISTRAR
-                </button>
                                 <div class="form-group">
+                                    <select name="descripcion_ambito" id="descripcion_ambito" class="form-control" [(ngModel)]="user.descripcion_ambito" required>
+                                                <option value="" disabled hidden selected>DESCRIPCION DE AMBITO</option>
+                                                <ng-container *ngFor="let descripcion of descripcion_ambito">
+                                                    <option [value]="descripcion.DATO">{{descripcion.DATO}}</option>
+                                                </ng-container>
+                                    </select>
+                                </div>
+                                <button type="submit" class="btn btn-lg btn-primary btn-block" [disabled]="!formRegister.valid">REGISTRAR</button>
+                                <!-- <div class="form-group">
                                     <a routerLink="/user/login" class="form-control login-user">¿Desea iniciar sesión?</a>
-                                </div>
+                                </div> -->
                             </form>
                         </div>
                     </div>

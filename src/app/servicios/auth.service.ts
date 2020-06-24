@@ -5,16 +5,39 @@ import { JwtResponseI } from "../interfaces/jwt-response";
 import { Observable, BehaviorSubject } from "rxjs";
 import { tap } from "rxjs/operators";
 import { isNullOrUndefined } from "util";
+import { DescAmbitoI } from '../interfaces/DescAmbito';
 
 @Injectable()
 export class AuthService {
   AUTH_SERVER: string = "http://localhost:3000";
   authSubject = new BehaviorSubject(false);
   private token: string;
+  public selectedUsuario: UserI = {
+    dni: null,
+    apellido_paterno: '',
+    apellido_materno: '',
+    nombres: '',
+    email: '',
+    tipo_ambito: '',
+    descripcion_ambito: '',
+    estado: ''
+  }
   headers: HttpHeaders = new HttpHeaders({
     "Content-Type": "application/json",
   });
-  constructor(private httpClient: HttpClient) {}
+  constructor(private httpClient: HttpClient) { }
+
+  getDescripcionAmbito(datos: DescAmbitoI) {
+    return this.httpClient.put(`${this.AUTH_SERVER}/descripcion_ambito`, datos);
+  }
+
+  getTipoAmbito(tipo_ambito: string) {
+    return this.httpClient.get(`${this.AUTH_SERVER}/tipo_ambito/${tipo_ambito}`);
+  }
+
+  getAllUsers() {
+    return this.httpClient.get(`${this.AUTH_SERVER}/usuarios`);
+  }
 
   registerUser(user: UserI): Observable<JwtResponseI> {
     return this.httpClient.post<JwtResponseI>(
@@ -23,12 +46,35 @@ export class AuthService {
     );
   }
 
+  updateUser(user: UserI): Observable<JwtResponseI> {
+    return this.httpClient.put<JwtResponseI>(
+      `${this.AUTH_SERVER}/usuarios/${user.dni}`,
+      user
+    );
+  }
+
+  updatePassword(user: UserI): Observable<JwtResponseI> {
+    return this.httpClient.put<JwtResponseI>(
+      `${this.AUTH_SERVER}/changedPassword/${user.dni}`,
+      user
+    );
+  }
+
   login(user: UserI): Observable<JwtResponseI> {
     return this.httpClient
-      .post<JwtResponseI>(`${this.AUTH_SERVER}/login`, user)
+      .post<JwtResponseI>(`${this.AUTH_SERVER}/login`, user, { headers: this.headers })
       .pipe(
         tap((res: JwtResponseI) => {
           if (res) {
+            //GUARDAR CURRENT_USER
+            const currentuser = {
+              dni: res.dataUser.dni,
+              email: res.dataUser.email,
+              tipo_ambito: res.dataUser.tipo_ambito,
+              descripcion_ambito: res.dataUser.descripcion_ambito,
+              estado: res.dataUser.estado,
+            };
+            this.setCurrentUser(currentuser);
             //GUARDAR TOKEN
             this.saveToken({
               accessToken: res.dataUser.accessToken,
@@ -44,27 +90,13 @@ export class AuthService {
     const url_api = `http://localhost:3000/user/logout?access_token=${accessToken}`;
     localStorage.removeItem("ACCESS_TOKEN");
     localStorage.removeItem("EXPIRES_IN");
-    localStorage.removeItem("DNI");
-    localStorage.removeItem("EMAIL");
-    localStorage.removeItem("TIPO_AMBITO");
-    localStorage.removeItem("DESCRIPCION_AMBITO");
+    localStorage.removeItem("CURRENT_USER");
     return this.httpClient.post<UserI>(url_api, { headers: this.headers });
   }
 
-  setDni(user: UserI): void {
-    localStorage.setItem("DNI", user.dni);
-  }
-
-  setEmail(user: UserI): void {
-    localStorage.setItem("EMAIL", user.email);
-  }
-
-  setTipo_ambito(user: UserI): void {
-    localStorage.setItem("TIPO_AMBITO", user.tipo_ambito);
-  }
-
-  setDescripcion_Ambito(user: UserI): void {
-    localStorage.setItem("DESCRIPCION_AMBITO", user.descripcion_ambito);
+  setCurrentUser(user: UserI): void {
+    const user_string = JSON.stringify(user);
+    localStorage.setItem("CURRENT_USER", user_string);
   }
 
   getCurrentUser() {

@@ -35,10 +35,18 @@ import { LoginComponent } from "./componentes/usuarios/login/login.component";
 import { RegisterComponent } from "./componentes/usuarios/register/register.component";
 import { NavbarComponent } from "./componentes/navbar/navbar.component";
 import { HeroComponent } from "./componentes/hero/hero.component";
-import { ProfileComponent } from './componentes/usuarios/profile/profile.component';
+import { ProfileComponent } from "./componentes/usuarios/profile/profile.component";
+import { ListUsuariosComponent } from "./componentes/usuarios/list-usuarios/list-usuarios.component";
+import { ModalComponent } from "./componentes/usuarios/modal/modal.component";
 
 // Servicios
 import { AuthService } from "./servicios/auth.service";
+import { FooterComponent } from './componentes/footer/footer.component';
+
+// Externals
+import { NgxSpinnerModule } from 'ngx-spinner';
+import { NgxPaginationModule } from 'ngx-pagination';
+import { ChangePasswordComponent } from './componentes/usuarios/change-password/change-password.component';
 
 @NgModule({
   declarations: [
@@ -57,6 +65,10 @@ import { AuthService } from "./servicios/auth.service";
     RegisterComponent,
     HeroComponent,
     ProfileComponent,
+    ListUsuariosComponent,
+    ModalComponent,
+    FooterComponent,
+    ChangePasswordComponent,
   ],
   imports: [
     TableModule,
@@ -78,8 +90,10 @@ import { AuthService } from "./servicios/auth.service";
     DialogModule,
     ScrollPanelModule,
     DropdownModule,
+    NgxSpinnerModule,
+    NgxPaginationModule,
   ],
   providers: [AuthService],
   bootstrap: [AppComponent],
 })
-export class AppModule {}
+export class AppModule { }

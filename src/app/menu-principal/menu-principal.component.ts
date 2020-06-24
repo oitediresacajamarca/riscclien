@@ -1,6 +1,8 @@
 import { Component, OnInit, Input } from "@angular/core";
 import { MenuItem } from "primeng/api/menuitem";
 import { CargasHisComponent } from "../componentes/cargas-his/cargas-his.component";
+import { UserI } from "../interfaces/user";
+import { AuthService } from "../servicios/auth.service";
 
 @Component({
   selector: "app-menu-principal",
@@ -16,11 +18,13 @@ export class MenuPrincipalComponent implements OnInit {
   @Input()
   mes: string;
   nivel: string;
+  currentUser: UserI;
 
-  constructor() {}
+  constructor(private authService: AuthService) { }
 
   ngOnInit() {
-    this.nivel = localStorage.getItem("TIPO_AMBITO");
+    this.currentUser = this.authService.getCurrentUser();
+    this.nivel = this.currentUser.tipo_ambito;
 
     this.items = [
       {
@@ -50,6 +54,7 @@ export class MenuPrincipalComponent implements OnInit {
             },
           ],
         ],
+        visible: this.nivel == "DEPARTAMENTO",
       },
       {
         label: "Reportes",
@@ -91,8 +96,7 @@ export class MenuPrincipalComponent implements OnInit {
               items: [
                 {
                   label: "Periodo Actual",
-                  routerLink:
-                    "/cargasHis/" + localStorage.getItem("DESCRIPCION_AMBITO"),
+                  routerLink: "/cargasHis/" + this.nivel,
                 },
                 { label: "Actualizacion" },
                 { label: "Reporte de Cargas" },
@@ -113,6 +117,7 @@ export class MenuPrincipalComponent implements OnInit {
             },
           ],
         ],
+        visible: this.nivel == "PUNTO",
       },
       {
         label: "Seguimiento",
@@ -130,7 +135,7 @@ export class MenuPrincipalComponent implements OnInit {
             },
           ],
         ],
-        visible: this.nivel == "1",
+        visible: this.nivel == "DEPARTAMENTO" || this.nivel == "SUBREGION" || this.nivel == "RED" || this.nivel == "MICRORED",
       },
     ];
   }

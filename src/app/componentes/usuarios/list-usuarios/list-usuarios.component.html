@@ -1,0 +1,42 @@
+<div class="row mt-5 mb-5">
+    <div class="col">
+        <table class="table table-hover">
+            <thead>
+                <tr>
+                    <th>#</th>
+                    <th scope="col">DNI</th>
+                    <th scope="col">APELLIDO PATERNO</th>
+                    <th scope="col">APELLIDO MATERNO</th>
+                    <th scope="col">NOMBRES</th>
+                    <th scope="col">EMAIL</th>
+                    <th scope="col">TIPO DE AMBITO</th>
+                    <th scope="col">DESCRIPCION DE AMBITO</th>
+                    <th scope="col">ESTADO</th>
+                    <th scope="col">ACCIONES</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let usuarios of usuarios | paginate: {itemsPerPage: 10, currentPage: pageActual}; let i = index">
+                    <th scope="row">{{ i + 1 }}</th>
+                    <td>{{ usuarios.dni }}</td>
+                    <td>{{ usuarios.apellido_paterno }}</td>
+                    <td>{{ usuarios.apellido_materno }}</td>
+                    <td>{{ usuarios.nombres }}</td>
+                    <td>{{ usuarios.email }}</td>
+                    <td>{{ usuarios.tipo_ambito }}</td>
+                    <td>{{ usuarios.descripcion_ambito }}</td>
+                    <td>{{ usuarios.estado }}</td>
+                    <td>
+                        <div class="btn-group" role="group" aria-label="acciones">
+                            <button type="button" class="btn btn-primary" (click)="onPreUpdate(usuarios)" data-toggle="modal" data-target="#ModalNew">MODIFICAR</button>
+                            <button type="button" class="btn btn-warning">{{usuarios.estado == 'ACTIVO' ? 'DESACTIVAR' : 'ACTIVAR'}}</button>
+                            <button type="button" class="btn btn-danger">RESTABLECER</button>
+                        </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <pagination-controls (pageChange)="pageActual = $event"></pagination-controls>
+    </div>
+</div>
+<app-modal></app-modal>

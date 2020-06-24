@@ -1,1 +1,29 @@
-<p>profile works!</p>
+<section id="profile" class="container mb-5">
+    <div class="row mt-5">
+        <div class="offset-lg-4 col-lg-4 col-sm-6 col-12 main-section text-center card">
+            <div class="row">
+                <div class="col-lg-12 col-sm-12 col-12 profile-header"></div>
+            </div>
+            <div class="row user-details">
+                <div class="col-12">
+                    <img src="../../../../assets/user_profile.jpg" class="rounded-circle img-thumbnail" alt="profile" />
+                    <h5>DNI: {{ user.dni }}</h5>
+                    <p>EMAIL: {{ user.email }}</p>
+                    <hr />
+                    <div class="row">
+                        <div class="col-lg-6 col-sm-6 col-6">
+                            <h5>TIPO DE AMBITO</h5>
+                            <p>{{ user.tipo_ambito }}</p>
+                        </div>
+                        <div class="col-lg-6 col-sm-6 col-6">
+                            <h5>DESCRIPCION DE AMBITO</h5>
+                            <p>{{ user.descripcion_ambito }}</p>
+                        </div>
+                    </div>
+                    <hr />
+                    <span>AQUI PODEMOS AGREGAR MAS COSAS</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

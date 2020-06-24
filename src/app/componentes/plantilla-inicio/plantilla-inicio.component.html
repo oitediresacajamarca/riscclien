@@ -1,15 +1,15 @@
-<div class="ui-g container banner">
-    <div class="titulosub ui-g-12">TIPO DE AMBITO : {{ tipo_ambito }}</div>
-    <div class="titulosub ui-g-12">
-        DESCRIPCION DE AMBITO : {{ descripcion_ambito }}
+<div class="container cuerpo mt-5 mb-5">
+    <div class="ui-g container banner">
+        <div class="titulosub ui-g-12">
+            TIPO DE AMBITO : {{ tipo_ambito }} <br /> DESCRIPCION DE AMBITO : {{ descripcion_ambito }}
+        </div>
     </div>
-</div>
-<div class="container cuerpo">
     <div class="alert alert-primary justify-content-center" role="alert">
         <div class="text-center">
             REPOSITORIO DE INFORMACION DE SALUD CAJAMARCA
         </div>
-        <app-menu-principal [punto_digitacion]="descripcion_ambito" [(ano)]="ano" [(mes)]="mes"></app-menu-principal>
-        <router-outlet></router-outlet>
+        <app-menu-principal [punto_digitacion]="currentUser.descripcion_ambito" [(ano)]="ano" [(mes)]="mes"></app-menu-principal>
     </div>
+    <router-outlet></router-outlet>
+    <br />
 </div>
