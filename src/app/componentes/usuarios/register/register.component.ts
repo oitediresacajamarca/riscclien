@@ -28,6 +28,7 @@ export class RegisterComponent implements OnInit {
   t_ambito: string = this.aux.tipo_ambito;
   public tipos_ambito: any;
   public descripcion_ambito: any;
+  public datosPersonales: any;
   public isError = false;
   public isSuccess = false;
   public msgError = "";
@@ -46,8 +47,25 @@ export class RegisterComponent implements OnInit {
       tipo_ambito_crear: this.user.tipo_ambito
     }
     this.authService.getDescripcionAmbito(datos).subscribe((datos) => {
-      this.descripcion_ambito = datos
+      this.descripcion_ambito = datos;
     });
+  }
+
+  validaDni(): void {
+    const dato: UserI = {
+      dni: this.user.dni,
+    }
+    this.authService.validarDni(dato).subscribe((datos) => {
+      this.datosPersonales = datos;
+      this.user.apellido_paterno = this.datosPersonales[0].APELLIDO_PATERNO;
+      this.user.apellido_materno = this.datosPersonales[0].APELLIDO_MATERNO;
+      this.user.nombres = this.datosPersonales[0].NOMBRES;
+    },
+      res => {
+        this.msgError = res.error.message;
+        this.onIsError();
+      }
+    );
   }
 
   onRegister(form: NgForm): void {

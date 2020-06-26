@@ -18,6 +18,7 @@ export class LoginComponent implements OnInit {
   };
   public isError = false;
   public msgError = "";
+  public msg = "";
 
   ngOnInit() { }
 
@@ -30,16 +31,22 @@ export class LoginComponent implements OnInit {
             isLogged: "1",
           }
           this.authService.updateUser(dato).subscribe(usuario => { });
-          this.router.navigate(["user/inicio"]).then(datos => { location.reload(); });
+          this.authService.validarPassword(this.user).subscribe(validacion => {
+          },
+            res => {
+              this.msg = res.error.message;
+              if (this.msg == "CONTRASEÑA SIN ACTUALIZAR") {
+                this.router.navigate(["user/changePassword"]);
+              } else {
+                this.router.navigate(["user/inicio"]).then(datos => { location.reload(); });
+              }
+            }
+          );
           this.isError = false;
         },
         res => {
           this.msgError = res.error.message;
-          if (this.msgError == "ACTUALIZAR CONTRASEÑA") {
-            this.router.navigate(["user/changePassword"]);
-          } else {
-            this.onIsError();
-          }
+          this.onIsError();
         }
       );
     } else {

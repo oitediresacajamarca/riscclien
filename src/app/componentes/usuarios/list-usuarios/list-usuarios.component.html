@@ -29,8 +29,8 @@
                     <td>
                         <div class="btn-group" role="group" aria-label="acciones">
                             <button type="button" class="btn btn-primary" (click)="onPreUpdate(usuarios)" data-toggle="modal" data-target="#ModalNew">MODIFICAR</button>
-                            <button type="button" class="btn btn-warning">{{usuarios.estado == 'ACTIVO' ? 'DESACTIVAR' : 'ACTIVAR'}}</button>
-                            <button type="button" class="btn btn-danger">RESTABLECER</button>
+                            <button type="button" class="btn btn-warning" (click)="cambiarEstado(usuarios)">{{usuarios.estado == 'ACTIVO' ? 'DESACTIVAR' : 'ACTIVAR'}}</button>
+                            <button type="button" class="btn btn-danger" (click)="restablecerPassword(usuarios)">RESTABLECER</button>
                         </div>
                     </td>
                 </tr>

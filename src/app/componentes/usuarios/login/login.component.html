@@ -14,11 +14,14 @@
                                     <input type="text" #dni="ngModel" name="dni" class="form-control" placeholder="DNI" [(ngModel)]="user.dni" onkeypress='return event.charCode >= 48 && event.charCode <= 57' minlength="8" maxlength="8" required />
                                 </div>
                                 <div class="alert alert-danger" role="alert" *ngIf="dni.touched && !dni.valid">
-                                    <div *ngIf="dni.errors.required">El DNI es un campo obligatorio</div>
-                                    <div *ngIf="dni.errors.minlength">El DNI debe tener 8 digitos</div>
+                                    <div *ngIf="dni.errors.required">EL DNI ES UN CAMPO OBLIGATORIO</div>
+                                    <div *ngIf="dni.errors.minlength">EL DNI ES UN CAMPO OBLIGATORIO</div>
                                 </div>
                                 <div class="form-group">
-                                    <input type="password" id="password" name="password" class="form-control" placeholder="PASSWORD" [(ngModel)]="user.password" required />
+                                    <input type="password" #password="ngModel" name="password" class="form-control" placeholder="CONTRASEÑA" [(ngModel)]="user.password" required />
+                                </div>
+                                <div class="alert alert-danger" role="alert" *ngIf="password.touched && !password.valid">
+                                    <div *ngIf="password.errors.required">LA CONTRASEÑA ES UN CAMPO OBLIGATORIO</div>
                                 </div>
 
                                 <button type="submit" class="btn btn-lg btn-primary btn-block" [disabled]="!formLogin.valid">INICIAR SESIÓN</button>

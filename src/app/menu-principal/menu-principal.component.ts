@@ -26,6 +26,7 @@ export class MenuPrincipalComponent implements OnInit {
     this.currentUser = this.authService.getCurrentUser();
     this.nivel = this.currentUser.tipo_ambito;
 
+
     this.items = [
       {
         label: "Maestros",
@@ -96,7 +97,7 @@ export class MenuPrincipalComponent implements OnInit {
               items: [
                 {
                   label: "Periodo Actual",
-                  routerLink: "/cargasHis/" + this.nivel,
+                  routerLink: "/user/cargasHis/" + this.nivel,
                 },
                 { label: "Actualizacion" },
                 { label: "Reporte de Cargas" },

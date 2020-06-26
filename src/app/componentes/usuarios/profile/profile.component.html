@@ -9,6 +9,7 @@
                     <img src="../../../../assets/user_profile.jpg" class="rounded-circle img-thumbnail" alt="profile" />
                     <h5>DNI: {{ user.dni }}</h5>
                     <p>EMAIL: {{ user.email }}</p>
+                    <button type="button" class="btn btn-primary" routerLink="/user/changePassword">CAMBIAR CONTRASEÑA</button>
                     <hr />
                     <div class="row">
                         <div class="col-lg-6 col-sm-6 col-6">
@@ -20,8 +21,6 @@
                             <p>{{ user.descripcion_ambito }}</p>
                         </div>
                     </div>
-                    <hr />
-                    <span>AQUI PODEMOS AGREGAR MAS COSAS</span>
                 </div>
             </div>
         </div>

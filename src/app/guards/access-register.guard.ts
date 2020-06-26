@@ -16,6 +16,7 @@ export class AccessRegisterGuard implements CanActivate {
       //AMBITO CORRECTO
       return true;
     } else {
+      this.router.navigate(['user/login']);
       return false;
     }
   }

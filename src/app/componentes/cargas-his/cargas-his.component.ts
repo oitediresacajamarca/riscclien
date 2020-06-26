@@ -71,7 +71,7 @@ export class CargasHisComponent implements OnInit {
    * selecionarArchivo
    */
   public seleccionarArchivo() {
-    this.punto = this.rout.snapshot.paramMap.get('punto');
+    this.punto = localStorage.getItem("ID_PUNTO");
     this.urlPac = this.config.url + 'paciente/punto/' + this.punto + '/ano/' + this.ano + '/mes/' + this.mes;
     this.urlPer = this.config.url + 'personal/punto/' + this.punto + '/ano/' + this.ano + '/mes/' + this.mes;
     this.urlReg = this.config.url + 'registrador/punto/' + this.punto + '/ano/' + this.ano + '/mes/' + this.mes;

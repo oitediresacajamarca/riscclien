@@ -15,7 +15,7 @@ export class AppComponent implements OnInit, AfterViewInit {
   constructor(private router: Router, private spinnerService: NgxSpinnerService) {
     this.router.events.subscribe(event => {
       if (event instanceof NavigationEnd) {
-        if (event.url.match('/user/') || event.url.match('/cargasHis/')) {
+        if (event.url.match('/user/')) {
           this.hideElement = true;
         } else {
           this.hideElement = false;

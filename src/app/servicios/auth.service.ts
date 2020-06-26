@@ -27,12 +27,20 @@ export class AuthService {
   });
   constructor(private httpClient: HttpClient) { }
 
+  getlistaUsuarios(usuario: UserI) {
+    return this.httpClient.put(`${this.AUTH_SERVER}/lista_usuarios`, usuario);
+  }
+
   getDescripcionAmbito(datos: DescAmbitoI) {
     return this.httpClient.put(`${this.AUTH_SERVER}/descripcion_ambito`, datos);
   }
 
   getTipoAmbito(tipo_ambito: string) {
     return this.httpClient.get(`${this.AUTH_SERVER}/tipo_ambito/${tipo_ambito}`);
+  }
+
+  getIdPunto(description_ambito: string) {
+    return this.httpClient.get(`${this.AUTH_SERVER}/id_punto/${description_ambito}`);
   }
 
   getAllUsers() {
@@ -49,6 +57,20 @@ export class AuthService {
   updateUser(user: UserI): Observable<JwtResponseI> {
     return this.httpClient.put<JwtResponseI>(
       `${this.AUTH_SERVER}/usuarios/${user.dni}`,
+      user
+    );
+  }
+
+  validarDni(user: UserI): Observable<Response> {
+    return this.httpClient.post<Response>(
+      `${this.AUTH_SERVER}/validarDni`,
+      user
+    );
+  }
+
+  validarPassword(user: UserI): Observable<JwtResponseI> {
+    return this.httpClient.post<JwtResponseI>(
+      `${this.AUTH_SERVER}/validarPassword`,
       user
     );
   }
@@ -80,6 +102,11 @@ export class AuthService {
               accessToken: res.dataUser.accessToken,
               expiresIn: res.dataUser.expiresIn,
             });
+            this.getIdPunto(res.dataUser.descripcion_ambito).subscribe(datos => {
+              const idPunto = JSON.parse(datos[0].ID_PUNTO_DIG_HIS);
+              console.log(idPunto);
+              this.saveIdPunto(idPunto);
+            });
           }
         })
       );
@@ -91,6 +118,7 @@ export class AuthService {
     localStorage.removeItem("ACCESS_TOKEN");
     localStorage.removeItem("EXPIRES_IN");
     localStorage.removeItem("CURRENT_USER");
+    localStorage.removeItem("ID_PUNTO");
     return this.httpClient.post<UserI>(url_api, { headers: this.headers });
   }
 
@@ -109,16 +137,14 @@ export class AuthService {
     }
   }
 
-  saveToken({
-    accessToken,
-    expiresIn,
-  }: {
-    accessToken: string;
-    expiresIn: string;
-  }): void {
+  saveToken({ accessToken, expiresIn, }: { accessToken: string; expiresIn: string; }): void {
     localStorage.setItem("ACCESS_TOKEN", accessToken);
     localStorage.setItem("EXPIRES_IN", expiresIn);
     this.token = accessToken;
+  }
+
+  saveIdPunto(idPunto: string): void {
+    localStorage.setItem("ID_PUNTO", idPunto);
   }
 
   getToken(): string {
