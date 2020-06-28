@@ -40,7 +40,7 @@
                             <select name="tipo_ambito" id="tipo_ambito" class="form-control" (change)="devuelveDescripcionAmbito()" [(ngModel)]="this.authService.selectedUsuario.tipo_ambito" required>
                                 <option value="" disabled hidden selected>TIPO DE AMBITO</option>
                                 <ng-container *ngFor="let tipo_ambito of tipos_ambito">
-                                    <option [value]="tipo_ambito.DESCRIPCION_TIPO_AMBITO">{{tipo_ambito.DESCRIPCION_TIPO_AMBITO}}</option>
+                                    <option [value]="tipo_ambito.descripcion_tipo_ambito">{{tipo_ambito.descripcion_tipo_ambito}}</option>
                                 </ng-container>
                             </select>
                         </div>

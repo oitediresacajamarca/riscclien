@@ -102,11 +102,12 @@ export class AuthService {
               accessToken: res.dataUser.accessToken,
               expiresIn: res.dataUser.expiresIn,
             });
-            this.getIdPunto(res.dataUser.descripcion_ambito).subscribe(datos => {
-              const idPunto = JSON.parse(datos[0].ID_PUNTO_DIG_HIS);
-              console.log(idPunto);
-              this.saveIdPunto(idPunto);
-            });
+            if (res.dataUser.tipo_ambito == 'PUNTO') {
+              this.getIdPunto(res.dataUser.descripcion_ambito).subscribe(datos => {
+                const idPunto = JSON.parse(datos[0].ID_PUNTO_DIG_HIS);
+                this.saveIdPunto(idPunto);
+              });
+            }
           }
         })
       );

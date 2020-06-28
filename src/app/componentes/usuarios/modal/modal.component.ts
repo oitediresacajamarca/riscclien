@@ -12,10 +12,7 @@ import { DescAmbitoI } from 'src/app/interfaces/DescAmbito';
 })
 export class ModalComponent implements OnInit {
 
-  constructor(
-    public authService: AuthService,
-    private location: Location
-  ) { }
+  constructor(public authService: AuthService, private location: Location) { }
   aux = this.authService.getCurrentUser();
   t_ambito: string = this.aux.tipo_ambito;
   public tipos_ambito: any;
@@ -39,7 +36,13 @@ export class ModalComponent implements OnInit {
   }
 
   onSaveUsuario(usuarioForm: NgForm): void {
-    this.authService.updateUser(usuarioForm.value).subscribe(usuario => location.reload());
+    const datoActualizado = {
+      dni: this.authService.selectedUsuario.dni,
+      email: usuarioForm.value.email,
+      tipo_ambito: usuarioForm.value.tipo_ambito,
+      descripcion_ambito: usuarioForm.value.descripcion_ambito,
+    }
+    this.authService.updateUser(datoActualizado).subscribe(usuario => location.reload());
   }
 
 }

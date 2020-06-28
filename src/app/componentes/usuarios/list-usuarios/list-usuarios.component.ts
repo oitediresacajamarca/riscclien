@@ -24,18 +24,10 @@ export class ListUsuariosComponent implements OnInit {
       tipo_ambito: this.aux.tipo_ambito,
       descripcion_ambito: this.aux.descripcion_ambito,
     }
-    this.authService.getlistaUsuarios(enviar).subscribe((usuarios: UserI) => {
+    this.authService.getlistaUsuarios(enviar).subscribe(usuarios => {
       this.usuarios = usuarios;
-      console.log(this.usuarios);
     });
   }
-
-  /* getListUsuarios() {
-    this.authService.getAllUsers().subscribe((usuarios: UserI) => {
-      this.usuarios = usuarios;
-      console.log(this.usuarios);
-    });
-  } */
 
   onPreUpdate(usuario: UserI): void {
     this.authService.selectedUsuario = Object.assign({}, usuario);
