@@ -6,24 +6,18 @@
                     <div class="card">
                         <div class="card-body text-center">
                             <form #formLogin="ngForm" (ngSubmit)="onLogin(formLogin)">
-                                <h1 class="h3 mb-3 font-weight-normal" *ngIf="!isError">INICIO DE SESIÓN</h1>
+                                <h4 class="h4 mb-4 font-weight-normal" *ngIf="!isError">INICIO DE SESIÓN</h4>
                                 <div class="alert alert-danger" role="alert" *ngIf="isError">
                                     {{msgError}}
                                 </div>
                                 <div class="form-group">
-                                    <input type="text" #dni="ngModel" name="dni" class="form-control" placeholder="DNI" [(ngModel)]="user.dni" onkeypress='return event.charCode >= 48 && event.charCode <= 57' minlength="8" maxlength="8" required />
-                                </div>
-                                <div class="alert alert-danger" role="alert" *ngIf="dni.touched && !dni.valid">
-                                    <div *ngIf="dni.errors.required">EL DNI ES UN CAMPO OBLIGATORIO</div>
-                                    <div *ngIf="dni.errors.minlength">EL DNI ES UN CAMPO OBLIGATORIO</div>
+                                    <h6 style="text-align: left;">Usuario:</h6>
+                                    <input type="text" #dni="ngModel" name="dni" class="form-control" placeholder="Ingrese su usuario" [(ngModel)]="user.dni" onkeypress='return event.charCode >= 48 && event.charCode <= 57' minlength="8" maxlength="8" required />
                                 </div>
                                 <div class="form-group">
-                                    <input type="password" #password="ngModel" name="password" class="form-control" placeholder="CONTRASEÑA" [(ngModel)]="user.password" required />
+                                    <h6 style="text-align: left;">Contraseña:</h6>
+                                    <input type="password" #password="ngModel" name="password" class="form-control" placeholder="Ingrese su contraseña" [(ngModel)]="user.password" maxlength="15" required />
                                 </div>
-                                <div class="alert alert-danger" role="alert" *ngIf="password.touched && !password.valid">
-                                    <div *ngIf="password.errors.required">LA CONTRASEÑA ES UN CAMPO OBLIGATORIO</div>
-                                </div>
-
                                 <button type="submit" class="btn btn-lg btn-primary btn-block" [disabled]="!formLogin.valid">INICIAR SESIÓN</button>
                                 <!-- <div class="form-group">
                                     <a routerLink="/user/register" class="form-control login-user">¿Desea registrar un nuevo usuario?</a>

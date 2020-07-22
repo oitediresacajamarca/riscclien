@@ -6,68 +6,108 @@
                     <div class="card">
                         <div class="card-body text-center">
                             <form #formRegister="ngForm" (ngSubmit)="onRegister(formRegister)">
-                                <h1 class="h3 mb-3 font-weight-normal">REGISTRO DE USUARIO</h1>
+                                <h4 class="h4 mb-4 font-weight-normal">REGISTRO DE USUARIO</h4>
                                 <div class="alert alert-success" role="alert" *ngIf="isSuccess">
                                     {{msgSuccess}}
                                 </div>
                                 <div class="alert alert-danger" role="alert" *ngIf="isError">
                                     {{msgError}}
                                 </div>
-                                <div class="form-row">
-                                    <div class="form-group col-lg-6 col-sm-6 col-6">
-                                        <input type="text" #dni="ngModel" name="dni" class="form-control" placeholder="DNI" [(ngModel)]="user.dni" onkeypress='return event.charCode >= 48 && event.charCode <= 57' minlength="8" maxlength="8" required />
-                                    </div>
-                                    <div class="form-group col-lg-6 col-sm-6 col-6 text-left">
-                                        <button type="button" class="btn btn-primary" (click)="validaDni()" [disabled]="!dni.valid">VALIDAR</button>
-                                    </div>
-                                </div>
-                                <div class="form-row">
-                                    <div class="alert alert-danger col-lg-12 col-sm-12 col-12" role="alert" *ngIf="dni.touched && !dni.valid">
-                                        <div *ngIf="dni.errors.required">EL DNI ES UN CAMPO OBLIGATORIO</div>
-                                        <div *ngIf="dni.errors.minlength">El DNI DEBE TENER 8 DÍGITOS</div>
-                                    </div>
-                                </div>
-                                <div class="form-row">
-                                    <div class="form-group col-lg-6 col-sm-6 col-6">
-                                        <input type="text" id="apellido_paterno" name="apellido_paterno" class="form-control" placeholder="APELLIDO PATERNO" [(ngModel)]="user.apellido_paterno" [disabled]="true" required />
-                                    </div>
-                                    <div class="form-group col-lg-6 col-sm-6 col-6">
-                                        <input type="text" id="apellido_materno" name="apellido_materno" class="form-control" placeholder="APELLIDO MATERNO" [(ngModel)]="user.apellido_materno" [disabled]="true" required />
-                                    </div>
-                                </div>
-                                <div class="form-row">
-                                    <div class="form-group col-lg-6 col-sm-6 col-6">
-                                        <input type="text" id="nombres" name="nombres" class="form-control" placeholder="NOMBRES" [(ngModel)]="user.nombres" [disabled]="true" required />
-                                    </div>
-                                    <div class="form-group col-lg-6 col-sm-6 col-6">
-                                        <input type="email" #email="ngModel" name="email" class="form-control" placeholder="EMAIL" [(ngModel)]="user.email" pattern="^[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?$"
-                                            required />
-                                    </div>
-                                </div>
-                                <div class="form-row">
-                                    <div class="alert alert-danger col-lg-12 col-sm-12 col-12" role="alert" *ngIf="email.touched && !email.valid">
-                                        <div *ngIf="email.errors.required">EL EMAIL ES UN CAMPO OBLIGATORIO</div>
-                                        <div *ngIf="email.errors.pattern">EL EMAIL INGRESADO NO ES VÁLIDO</div>
-                                    </div>
-                                </div>
-                                <div class="form-row">
-                                    <div class="form-group col-lg-6 col-sm-6 col-6">
-                                        <select name="tipo_ambito" id="tipo_ambito" class="form-control" (change)="devuelveDescripcionAmbito()" [(ngModel)]="user.tipo_ambito" required>
-                                                    <option value="" disabled hidden selected>TIPO DE AMBITO</option>
+                                <div class="form-row was-validated">
+                                    <div class="form-group is-invalid col-lg-6 col-sm-6 col-6">
+                                        <h6 style="text-align: left;">Tipo de Ambito:</h6>
+                                        <select #tipo_ambito="ngModel" name="tipo_ambito" class="custom-select" (change)="devuelveDescripcionAmbito()" [(ngModel)]="user.tipo_ambito" required>
+                                                    <option value="" disabled hidden selected>Seleccionar una opción</option>
                                                     <ng-container *ngFor="let tipo_ambito of tipos_ambito">
-                                                        <option [value]="tipo_ambito.DESCRIPCION_TIPO_AMBITO">{{tipo_ambito.DESCRIPCION_TIPO_AMBITO}}</option>
+                                                        <option [value]="tipo_ambito.descripcion_tipo_ambito">{{tipo_ambito.descripcion_tipo_ambito}}</option>
                                                     </ng-container>
                                         </select>
+                                        <div class="valid-feedback text-left" *ngIf="tipo_ambito.valid">
+                                            CAMPO VÁLIDO
+                                        </div>
+                                        <div class="invalid-feedback text-left" *ngIf="!tipo_ambito.valid">
+                                            SELECCIONAR UNA OPCIÓN
+                                        </div>
                                     </div>
-                                    <div class="form-group col-lg-6 col-sm-6 col-6">
-                                        <select name="descripcion_ambito" id="descripcion_ambito" class="form-control" [(ngModel)]="user.descripcion_ambito" required>
-                                                    <option value="" disabled hidden selected>DESCRIPCION DE AMBITO</option>
-                                                    <ng-container *ngFor="let descripcion of descripcion_ambito">
+                                    <div class="form-group is-invalid col-lg-6 col-sm-6 col-6">
+                                        <h6 style="text-align: left;">Descripción de Ambito:</h6>
+                                        <select #descripcion_ambito="ngModel" name="descripcion_ambito" class="custom-select" [(ngModel)]="user.descripcion_ambito" required>
+                                                    <option value="" disabled hidden selected>Seleccionar una opción</option>
+                                                    <ng-container *ngFor="let descripcion of descripcionAmbito">
                                                         <option [value]="descripcion.DATO">{{descripcion.DATO}}</option>
                                                     </ng-container>
                                         </select>
+                                        <div class="valid-feedback text-left" *ngIf="descripcion_ambito.valid">
+                                            CAMPO VÁLIDO
+                                        </div>
+                                        <div class="invalid-feedback text-left" *ngIf="!descripcion_ambito.valid">
+                                            SELECCIONAR UNA OPCIÓN
+                                        </div>
                                     </div>
                                 </div>
+                                <nav>
+                                    <div class="nav nav-tabs" id="nav-tab" role="tablist">
+                                        <a class="nav-item nav-link active" id="nav-home-tab" data-toggle="tab" href="#nav-home" role="tab" aria-controls="nav-home" aria-selected="true">Datos Personales</a>
+                                        <a class="nav-item nav-link" id="nav-profile-tab" data-toggle="tab" href="#nav-profile" role="tab" aria-controls="nav-profile" aria-selected="false">Roles</a>
+                                        <!-- <a class="nav-item nav-link" id="nav-contact-tab" data-toggle="tab" href="#nav-contact" role="tab" aria-controls="nav-contact" aria-selected="false">Contact</a> -->
+                                    </div>
+                                </nav>
+                                <div class="tab-content" id="nav-tabContent">
+                                    <div class="tab-pane fade show active" id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab">
+                                        <br/>
+                                        <div class="form-row was-validated">
+                                            <div class="form-group is-invalid col-lg-6 col-sm-6 col-6 was-validated">
+                                                <h6 style="text-align: left;">DNI:</h6>
+                                                <input type="text" #dni="ngModel" name="dni" class="form-control is-invalid" placeholder="Ingresar DNI" [(ngModel)]="user.dni" onkeypress='return event.charCode >= 48 && event.charCode <= 57' minlength="8" maxlength="8" [disabled]="isError" required />
+                                                <div class="valid-feedback text-left" *ngIf="dni.valid">
+                                                    DNI VÁLIDO
+                                                </div>
+                                                <div class="invalid-feedback text-left" *ngIf="!dni.valid">
+                                                    INGRESAR DNI
+                                                </div>
+                                            </div>
+                                            <div class="form-group col-lg-6 col-sm-6 col-6 text-left">
+                                                <h6 style="text-align: left; color: white;">.</h6>
+                                                <button type="button" class="btn btn-primary" (click)="validaDni()" [disabled]="!dni.valid">VALIDAR</button>
+                                            </div>
+                                        </div>
+                                        <div class="form-row">
+                                            <div class="form-group col-lg-6 col-sm-6 col-6">
+                                                <h6 style="text-align: left;">Apellido Paterno</h6>
+                                                <input type="text" id="apellido_paterno" name="apellido_paterno" class="form-control" placeholder="Apellido Paterno" [(ngModel)]="user.apellido_paterno" disabled required />
+                                            </div>
+                                            <div class="form-group col-lg-6 col-sm-6 col-6">
+                                                <h6 style="text-align: left;">Apellido Materno</h6>
+                                                <input type="text" id="apellido_materno" name="apellido_materno" class="form-control" placeholder="Apellido Materno" [(ngModel)]="user.apellido_materno" disabled required />
+                                            </div>
+                                        </div>
+                                        <div class="form-row">
+                                            <div class="form-group col-lg-6 col-sm-6 col-6">
+                                                <h6 style="text-align: left;">Nombres</h6>
+                                                <input type="text" id="nombres" name="nombres" class="form-control" placeholder="Nombres" [(ngModel)]="user.nombres" disabled required />
+                                            </div>
+                                            <div class="form-group is-invalid col-lg-6 col-sm-6 col-6 was-validated">
+                                                <h6 style="text-align: left;">Email:</h6>
+                                                <input type="email" #email="ngModel" name="email" class="form-control is-invalid" placeholder="Ingresar email" [(ngModel)]="user.email" pattern="^[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?$"
+                                                    required />
+                                                <div class="valid-feedback text-left" *ngIf="email.valid">
+                                                    EMAIL VÁLIDO
+                                                </div>
+                                                <div class="invalid-feedback text-left" *ngIf="!email.valid">
+                                                    INGRESAR EMAIL
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="tab-pane fade" id="nav-profile" role="tabpanel" aria-labelledby="nav-profile-tab">
+                                        <br/>
+                                        <div>
+                                            APARTADO PARA LOS ROLES
+                                        </div>
+                                    </div>
+                                    <!-- <div class="tab-pane fade" id="nav-contact" role="tabpanel" aria-labelledby="nav-contact-tab">...</div> -->
+                                </div>
+                                <br />
                                 <button type="submit" class="btn btn-lg btn-primary btn-block" [disabled]="!formRegister.valid">REGISTRAR</button>
                                 <!-- <div class="form-group">
                                     <a routerLink="/user/login" class="form-control login-user">¿Desea iniciar sesión?</a>

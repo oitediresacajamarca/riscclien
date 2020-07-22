@@ -1,6 +1,7 @@
 import { Component, OnInit } from "@angular/core";
 import { UserI } from "src/app/interfaces/user";
 import { AuthService } from "src/app/servicios/auth.service";
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: "app-list-usuarios",
@@ -8,7 +9,7 @@ import { AuthService } from "src/app/servicios/auth.service";
   styleUrls: ["./list-usuarios.component.css"],
 })
 export class ListUsuariosComponent implements OnInit {
-  constructor(private authService: AuthService) { }
+  constructor(private authService: AuthService, private toastr: ToastrService) { }
   public usuarios: UserI;
   aux: UserI;
   tipo_ambito: string;
@@ -30,6 +31,7 @@ export class ListUsuariosComponent implements OnInit {
   }
 
   onPreUpdate(usuario: UserI): void {
+    this.toastr.success("TITULO", "CONTENIDO")
     this.authService.selectedUsuario = Object.assign({}, usuario);
   }
 
@@ -51,12 +53,11 @@ export class ListUsuariosComponent implements OnInit {
   }
 
   restablecerPassword(usuario: UserI): void {
-    const passwordDni = usuario.dni;
     const enviar = {
       dni: usuario.dni,
-      password: passwordDni,
+      passwordNuevo: usuario.dni,
     };
-    this.authService.updatePassword(enviar).subscribe(usuario => location.reload());
+    this.authService.restorePassword(enviar).subscribe(usuario => location.reload());
   }
 
 }

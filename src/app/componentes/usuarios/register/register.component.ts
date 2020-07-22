@@ -27,7 +27,7 @@ export class RegisterComponent implements OnInit {
   aux = this.authService.getCurrentUser();
   t_ambito: string = this.aux.tipo_ambito;
   public tipos_ambito: any;
-  public descripcion_ambito: any;
+  public descripcionAmbito: any;
   public datosPersonales: any;
   public isError = false;
   public isSuccess = false;
@@ -41,13 +41,15 @@ export class RegisterComponent implements OnInit {
   }
 
   devuelveDescripcionAmbito(): void {
-    const datos: DescAmbitoI = {
+    const dato: DescAmbitoI = {
       tipo_ambito_usuario: this.aux.tipo_ambito,
       descripcion_ambito_usuario: this.aux.descripcion_ambito,
       tipo_ambito_crear: this.user.tipo_ambito
     }
-    this.authService.getDescripcionAmbito(datos).subscribe((datos) => {
-      this.descripcion_ambito = datos;
+    console.log(dato);
+    this.authService.getDescripcionAmbito(dato).subscribe((datos) => {
+      console.log(datos);
+      this.descripcionAmbito = datos;
     });
   }
 
@@ -62,6 +64,10 @@ export class RegisterComponent implements OnInit {
       this.user.nombres = this.datosPersonales[0].NOMBRES;
     },
       res => {
+        this.user.dni = '';
+        this.user.apellido_paterno = '';
+        this.user.apellido_materno = '';
+        this.user.nombres = '';
         this.msgError = res.error.message;
         this.onIsError();
       }
@@ -76,7 +82,16 @@ export class RegisterComponent implements OnInit {
       this.authService.registerUser(this.user).subscribe((user) => {
         this.msgSuccess = "EL USUARIO HA SIDO CREADO";
         this.onMsgSuccess();
-        location.reload();
+        this.user.dni = '';
+        this.user.password = '';
+        this.user.email = '';
+        this.user.apellido_paterno = '';
+        this.user.apellido_materno = '';
+        this.user.nombres = '';
+        this.user.tipo_ambito = '';
+        this.user.descripcion_ambito = '';
+        this.user.estado = '';
+        this.user.isLogged = '';
       },
         res => {
           this.msgError = res.error.message;
@@ -92,13 +107,13 @@ export class RegisterComponent implements OnInit {
     this.isError = true;
     setTimeout(() => {
       this.isError = false;
-    }, 4000);
+    }, 3000);
   }
 
   onMsgSuccess(): void {
     this.isSuccess = true;
     setTimeout(() => {
       this.isSuccess = false;
-    }, 4000);
+    }, 3000);
   }
 }

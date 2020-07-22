@@ -9,6 +9,7 @@ import { UserI } from 'src/app/interfaces/user';
   styleUrls: ["./navbar.component.css"],
 })
 export class NavbarComponent implements OnInit {
+
   constructor(private authService: AuthService, private router: Router) { }
   public app_name = "RISC";
   public islogged: boolean = false;
@@ -48,4 +49,5 @@ export class NavbarComponent implements OnInit {
       }
     }
   }
+
 }

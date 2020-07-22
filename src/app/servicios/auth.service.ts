@@ -75,9 +75,16 @@ export class AuthService {
     );
   }
 
-  updatePassword(user: UserI): Observable<JwtResponseI> {
+  updatePassword(user: any): Observable<JwtResponseI> {
     return this.httpClient.put<JwtResponseI>(
       `${this.AUTH_SERVER}/changedPassword/${user.dni}`,
+      user
+    );
+  }
+
+  restorePassword(user: any): Observable<JwtResponseI> {
+    return this.httpClient.put<JwtResponseI>(
+      `${this.AUTH_SERVER}/restorePassword/${user.dni}`,
       user
     );
   }
@@ -91,6 +98,9 @@ export class AuthService {
             //GUARDAR CURRENT_USER
             const currentuser = {
               dni: res.dataUser.dni,
+              apellido_paterno: res.dataUser.apellido_paterno,
+              apellido_materno: res.dataUser.apellido_materno,
+              nombres: res.dataUser.nombres,
               email: res.dataUser.email,
               tipo_ambito: res.dataUser.tipo_ambito,
               descripcion_ambito: res.dataUser.descripcion_ambito,

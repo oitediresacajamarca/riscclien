@@ -11,6 +11,7 @@ import { NgForm } from '@angular/forms';
   styleUrls: ["./login.component.css"],
 })
 export class LoginComponent implements OnInit {
+
   constructor(private authService: AuthService, private router: Router, private location: Location) { }
   user: UserI = {
     dni: "",
@@ -19,6 +20,7 @@ export class LoginComponent implements OnInit {
   public isError = false;
   public msgError = "";
   public msg = "";
+
 
   ngOnInit() { }
 

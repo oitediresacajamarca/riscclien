@@ -7,9 +7,12 @@
             <div class="row user-details">
                 <div class="col-12">
                     <img src="../../../../assets/user_profile.jpg" class="rounded-circle img-thumbnail" alt="profile" />
-                    <h5>DNI: {{ user.dni }}</h5>
-                    <p>EMAIL: {{ user.email }}</p>
-                    <button type="button" class="btn btn-primary" routerLink="/user/changePassword">CAMBIAR CONTRASEÑA</button>
+                    <h5 class="text-center">DNI: {{ user.dni }}</h5>
+                    <hr />
+                    <p class="text-center">NOMBRES: {{ user.nombres }}</p>
+                    <p class="text-center">APELLIDOS: {{ user.apellido_paterno }} {{ user.apellido_materno }}</p>
+                    <p class="text-center">EMAIL: {{ user.email }}</p>
+                    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#ModalCP">CAMBIAR CONTRASEÑA</button>
                     <hr />
                     <div class="row">
                         <div class="col-lg-6 col-sm-6 col-6">
@@ -26,3 +29,4 @@
         </div>
     </div>
 </section>
+<app-modal-change-password></app-modal-change-password>

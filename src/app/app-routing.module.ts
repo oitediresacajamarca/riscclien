@@ -32,7 +32,7 @@ const routes: Routes = [
   { path: "descargaCC", component: DescargasHisCCComponent },
   { path: "reporte-preliminar", component: ReportePreliminarComponent },
   { path: "reporte", component: PruebaComponent },
-  { path: "**", component: Page404Component },
+  { path: "**", redirectTo: "home" },
 ];
 
 @NgModule({
