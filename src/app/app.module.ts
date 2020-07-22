@@ -95,7 +95,7 @@ import { ModalChangePasswordComponent } from './componentes/usuarios/modal-chang
     NgxPaginationModule,
     InputTextModule,
     MegaMenuModule,
-    ToastrModule.forRoot(),
+    ToastrModule,
   ],
   providers: [AuthService],
   bootstrap: [AppComponent],

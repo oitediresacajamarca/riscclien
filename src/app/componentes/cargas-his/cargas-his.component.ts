@@ -38,14 +38,14 @@ export class CargasHisComponent implements OnInit {
   muestraControl: boolean = false;
   periodoselec: Date = new Date();
 
-  @ViewChild('mpa', { static: false }) mpa: FileUpload;
-  @ViewChild('mpe', { static: false }) mpe: FileUpload;
-  @ViewChild('mre', { static: false }) mre: FileUpload;
-  @ViewChild('mrp', { static: false }) mrp: FileUpload;
-  @ViewChild('bc', { static: false }) bc: Button;
-  @ViewChild('br', { static: false }) br: Button;
-  @ViewChild('bicc', { static: false }) bicc: Button;
-  @ViewChild('bee', { static: false }) bee: Button;
+  @ViewChild('mpa') mpa: FileUpload;
+  @ViewChild('mpe') mpe: FileUpload;
+  @ViewChild('mre') mre: FileUpload;
+  @ViewChild('mrp') mrp: FileUpload;
+  @ViewChild('bc') bc: Button;
+  @ViewChild('br') br: Button;
+  @ViewChild('bicc') bicc: Button;
+  @ViewChild('bee') bee: Button;
 
 
   cols: any[];
