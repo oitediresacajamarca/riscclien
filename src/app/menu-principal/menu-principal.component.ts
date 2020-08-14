@@ -1,5 +1,5 @@
 import { Component, OnInit, Input } from "@angular/core";
-import { MegaMenuItem, MenuItem } from 'primeng/api';
+import { MegaMenuItem } from 'primeng/api/megamenuitem';
 import { CargasHisComponent } from "../componentes/cargas-his/cargas-his.component";
 import { UserI } from "../interfaces/user";
 import { AuthService } from "../servicios/auth.service";

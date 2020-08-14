@@ -1,3 +1,5 @@
+import { RolesI } from './roles';
+
 export interface JwtResponseI {
   dataUser: {
     dni: string;
@@ -12,4 +14,6 @@ export interface JwtResponseI {
     accessToken: string;
     expiresIn: string;
   };
+
+  roles: RolesI;
 }

@@ -19,10 +19,24 @@ export class LoginComponent implements OnInit {
   };
   public isError = false;
   public msgError = "";
-  public msg = "";
 
 
   ngOnInit() { }
+
+  hideOrShowPassword() {
+    var password, check;
+
+    password = document.getElementById("password");
+    check = document.getElementById("checkPassword");
+
+    if (check.checked == true) // Si la checkbox de mostrar contraseña está activada
+    {
+      password.type = "text";
+    } else // Si no está activada 
+    {
+      password.type = "password";
+    }
+  }
 
   onLogin(form: NgForm) {
     if (form.valid) {
@@ -36,15 +50,17 @@ export class LoginComponent implements OnInit {
           this.authService.validarPassword(this.user).subscribe(validacion => {
           },
             res => {
-              this.msg = res.error.message;
-              if (this.msg == "CONTRASEÑA SIN ACTUALIZAR") {
-                this.router.navigate(["user/changePassword"]);
+              this.msgError = res.error.message;
+              if (this.msgError == "CONTRASEÑA SIN ACTUALIZAR") {
+                this.onIsError();
+                setTimeout(() => {
+                  this.router.navigate(["user/changePassword"]);
+                }, 2000);
               } else {
-                this.router.navigate(["user/inicio"]).then(datos => { location.reload(); });
+                this.router.navigate(["user/inicio"]).then(datos => location.reload());
               }
             }
           );
-          this.isError = false;
         },
         res => {
           this.msgError = res.error.message;
@@ -53,6 +69,7 @@ export class LoginComponent implements OnInit {
       );
     } else {
       this.onIsError();
+      this.limpiarFormulario();
     }
   }
 
@@ -60,7 +77,12 @@ export class LoginComponent implements OnInit {
     this.isError = true;
     setTimeout(() => {
       this.isError = false;
-    }, 4000);
+    }, 2000);
+  }
+
+  limpiarFormulario(): void {
+    this.user.dni = '';
+    this.user.password = '';
   }
 
 }

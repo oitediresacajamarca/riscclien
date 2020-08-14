@@ -9,4 +9,7 @@ export interface UserI {
   descripcion_ambito?: string;
   estado?: string;
   isLogged?: string;
+  fecha_creacion?: Date;
+  roles_asignados?: string;
+  roles_removidos?: string;
 }

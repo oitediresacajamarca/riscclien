@@ -25,10 +25,10 @@ export class NavbarComponent implements OnInit {
     const dato: UserI = {
       dni: this.user.dni,
       isLogged: "0",
-    }
+    };
     this.authService.updateUser(dato).subscribe(usuario => { });
     this.authService.logoutUser();
-    this.router.navigate(["home"]).then(datos => { location.reload(); });
+    this.router.navigate(["home"]).then(datos => location.reload());
   }
 
   onCheckUser(): void {

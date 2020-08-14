@@ -10,7 +10,7 @@ import { Router } from '@angular/router';
 })
 export class ModalChangePasswordComponent implements OnInit {
 
-  @ViewChild('btnCerrar') btnCerrar: ElementRef;
+  @ViewChild('btnCerrar', { static: false }) btnCerrar: ElementRef;
 
   constructor(private authService: AuthService, private router: Router, private location: Location) { }
   public isError = false;

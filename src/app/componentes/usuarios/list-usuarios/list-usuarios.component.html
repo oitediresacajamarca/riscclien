@@ -1,18 +1,18 @@
 <div class="row mt-5 mb-5">
-    <div class="col">
+    <div class="col table-responsive-xl">
         <table class="table table-hover">
             <thead>
                 <tr>
                     <th>#</th>
-                    <th scope="col">DNI</th>
-                    <th scope="col">APELLIDO PATERNO</th>
-                    <th scope="col">APELLIDO MATERNO</th>
-                    <th scope="col">NOMBRES</th>
-                    <th scope="col">EMAIL</th>
-                    <th scope="col">TIPO DE AMBITO</th>
-                    <th scope="col">DESCRIPCION DE AMBITO</th>
-                    <th scope="col">ESTADO</th>
-                    <th scope="col">ACCIONES</th>
+                    <th style="text-align: center;" scope="col">DNI</th>
+                    <th style="text-align: center;" scope="col">Apellido Paterno</th>
+                    <th style="text-align: center;" scope="col">Apellido Materno</th>
+                    <th style="text-align: center;" scope="col">Nombres</th>
+                    <th style="text-align: center;" scope="col">Email</th>
+                    <th style="text-align: center;" scope="col">Tipo de ambito</th>
+                    <th style="text-align: center;" scope="col">Descripción de ambito</th>
+                    <th style="text-align: center;" scope="col">Estado</th>
+                    <th style="text-align: center;" scope="col">Acciones</th>
                 </tr>
             </thead>
             <tbody>
@@ -28,9 +28,10 @@
                     <td>{{ usuario.estado }}</td>
                     <td>
                         <div class="btn-group" role="group" aria-label="acciones">
-                            <button type="button" class="btn btn-primary" (click)="onPreUpdate(usuario)" data-toggle="modal" data-target="#ModalNew">MODIFICAR</button>
-                            <button type="button" class="btn btn-warning" (click)="cambiarEstado(usuario)">{{usuario.estado == 'ACTIVO' ? 'DESACTIVAR' : 'ACTIVAR'}}</button>
-                            <button type="button" class="btn btn-danger" (click)="restablecerPassword(usuario)">RESTABLECER</button>
+                            <p-toast [style]="{marginTop: '40px'}"></p-toast>
+                            <button type="button" class="btn btn-primary" (click)="onPreUpdate(usuario)" data-toggle="modal" data-target="#ModalNew">Modificar</button>
+                            <button type="button" class="btn btn-warning" (click)="cambiarEstado(usuario)">{{usuario.estado == 'ACTIVO' ? 'Inactivar' : 'Activar'}}</button>
+                            <button type="button" class="btn btn-danger" (click)="restablecerPassword(usuario)">Restablecer</button>
                         </div>
                     </td>
                 </tr>

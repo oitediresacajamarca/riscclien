@@ -1,6 +1,7 @@
 import { Injectable } from "@angular/core";
 import { HttpClient, HttpHeaders } from "@angular/common/http";
 import { UserI } from "../interfaces/user";
+import { RolesI } from '../interfaces/roles';
 import { JwtResponseI } from "../interfaces/jwt-response";
 import { Observable, BehaviorSubject } from "rxjs";
 import { tap } from "rxjs/operators";
@@ -9,9 +10,17 @@ import { DescAmbitoI } from '../interfaces/DescAmbito';
 
 @Injectable()
 export class AuthService {
+
   AUTH_SERVER: string = "http://localhost:3000";
+
+  headers: HttpHeaders = new HttpHeaders({
+    "Content-Type": "application/json",
+  });
+
   authSubject = new BehaviorSubject(false);
+
   private token: string;
+
   public selectedUsuario: UserI = {
     dni: null,
     apellido_paterno: '',
@@ -22,10 +31,12 @@ export class AuthService {
     descripcion_ambito: '',
     estado: ''
   }
-  headers: HttpHeaders = new HttpHeaders({
-    "Content-Type": "application/json",
-  });
+
   constructor(private httpClient: HttpClient) { }
+
+  getRoles(datos: any) {
+    return this.httpClient.put(`${this.AUTH_SERVER}/roles`, datos);
+  }
 
   getlistaUsuarios(usuario: UserI) {
     return this.httpClient.put(`${this.AUTH_SERVER}/lista_usuarios`, usuario);
@@ -47,46 +58,28 @@ export class AuthService {
     return this.httpClient.get(`${this.AUTH_SERVER}/usuarios`);
   }
 
-  registerUser(user: UserI): Observable<JwtResponseI> {
-    return this.httpClient.post<JwtResponseI>(
-      `${this.AUTH_SERVER}/register`,
-      user
-    );
-  }
-
-  updateUser(user: UserI): Observable<JwtResponseI> {
-    return this.httpClient.put<JwtResponseI>(
-      `${this.AUTH_SERVER}/usuarios/${user.dni}`,
-      user
-    );
-  }
-
   validarDni(user: UserI): Observable<Response> {
-    return this.httpClient.post<Response>(
-      `${this.AUTH_SERVER}/validarDni`,
-      user
-    );
+    return this.httpClient.post<Response>(`${this.AUTH_SERVER}/validarDni`, user);
   }
 
   validarPassword(user: UserI): Observable<JwtResponseI> {
-    return this.httpClient.post<JwtResponseI>(
-      `${this.AUTH_SERVER}/validarPassword`,
-      user
-    );
+    return this.httpClient.post<JwtResponseI>(`${this.AUTH_SERVER}/validarPassword`, user);
   }
 
   updatePassword(user: any): Observable<JwtResponseI> {
-    return this.httpClient.put<JwtResponseI>(
-      `${this.AUTH_SERVER}/changedPassword/${user.dni}`,
-      user
-    );
+    return this.httpClient.put<JwtResponseI>(`${this.AUTH_SERVER}/changedPassword/${user.dni}`, user);
   }
 
   restorePassword(user: any): Observable<JwtResponseI> {
-    return this.httpClient.put<JwtResponseI>(
-      `${this.AUTH_SERVER}/restorePassword/${user.dni}`,
-      user
-    );
+    return this.httpClient.put<JwtResponseI>(`${this.AUTH_SERVER}/restorePassword/${user.dni}`, user);
+  }
+
+  registerUser(user: UserI): Observable<JwtResponseI> {
+    return this.httpClient.post<JwtResponseI>(`${this.AUTH_SERVER}/register`, user);
+  }
+
+  updateUser(user: UserI): Observable<JwtResponseI> {
+    return this.httpClient.put<JwtResponseI>(`${this.AUTH_SERVER}/usuarios/${user.dni}`, user);
   }
 
   login(user: UserI): Observable<JwtResponseI> {
@@ -107,6 +100,7 @@ export class AuthService {
               estado: res.dataUser.estado,
             };
             this.setCurrentUser(currentuser);
+            this.saveRoles(res.roles);
             //GUARDAR TOKEN
             this.saveToken({
               accessToken: res.dataUser.accessToken,
@@ -125,11 +119,12 @@ export class AuthService {
 
   logoutUser() {
     let accessToken = localStorage.getItem("ACCESS_TOKEN");
-    const url_api = `http://localhost:3000/user/logout?access_token=${accessToken}`;
+    const url_api = `http://localhost:3000/logout/${accessToken}`;
     localStorage.removeItem("ACCESS_TOKEN");
     localStorage.removeItem("EXPIRES_IN");
     localStorage.removeItem("CURRENT_USER");
     localStorage.removeItem("ID_PUNTO");
+    localStorage.removeItem("ROLES");
     return this.httpClient.post<UserI>(url_api, { headers: this.headers });
   }
 
@@ -146,6 +141,11 @@ export class AuthService {
     } else {
       return null;
     }
+  }
+
+  saveRoles(roles: RolesI): void {
+    const roles_string = JSON.stringify(roles);
+    localStorage.setItem("ROLES", roles_string);
   }
 
   saveToken({ accessToken, expiresIn, }: { accessToken: string; expiresIn: string; }): void {

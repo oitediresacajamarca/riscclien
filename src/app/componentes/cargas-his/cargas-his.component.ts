@@ -10,7 +10,7 @@ import { ControlCalidadService } from 'src/app/servicios/control-calidad.service
 import { FileUpload } from 'primeng/fileupload/fileupload';
 import { Button } from 'primeng/button/button';
 import { ColumnasccService } from 'src/app/servicios/columnascc.service';
-import { error } from 'util';
+import { style } from '@angular/animations';
 
 @Component({
   selector: 'app-cargas-his',
@@ -38,14 +38,14 @@ export class CargasHisComponent implements OnInit {
   muestraControl: boolean = false;
   periodoselec: Date = new Date();
 
-  @ViewChild('mpa') mpa: FileUpload;
-  @ViewChild('mpe') mpe: FileUpload;
-  @ViewChild('mre') mre: FileUpload;
-  @ViewChild('mrp') mrp: FileUpload;
-  @ViewChild('bc') bc: Button;
-  @ViewChild('br') br: Button;
-  @ViewChild('bicc') bicc: Button;
-  @ViewChild('bee') bee: Button;
+  @ViewChild('mpa', { static: false }) mpa: FileUpload;
+  @ViewChild('mpe', { static: false }) mpe: FileUpload;
+  @ViewChild('mre', { static: false }) mre: FileUpload;
+  @ViewChild('mrp', { static: false }) mrp: FileUpload;
+  @ViewChild('bc', { static: false }) bc: Button;
+  @ViewChild('br', { static: false }) br: Button;
+  @ViewChild('bicc', { static: false }) bicc: Button;
+  @ViewChild('bee', { static: false }) bee: Button;
 
 
   cols: any[];

@@ -1,9 +1,9 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
 import { AuthService } from 'src/app/servicios/auth.service';
-import { UserI } from 'src/app/interfaces/user';
 import { NgForm } from '@angular/forms'
-import { Location } from '@angular/common'
 import { DescAmbitoI } from 'src/app/interfaces/DescAmbito';
+import { MessageService } from 'primeng/api';
+import { ListUsuariosComponent } from '../list-usuarios/list-usuarios.component';
 
 @Component({
   selector: 'app-modal',
@@ -12,14 +12,15 @@ import { DescAmbitoI } from 'src/app/interfaces/DescAmbito';
 })
 export class ModalComponent implements OnInit {
 
-  constructor(public authService: AuthService, private location: Location) { }
+  @ViewChild('btnCerrar', { static: false }) btnCerrar: ElementRef;
+
+  constructor(public authService: AuthService, private messageService: MessageService, private ListaUsuarios: ListUsuariosComponent) { }
   aux = this.authService.getCurrentUser();
-  t_ambito: string = this.aux.tipo_ambito;
   public tipos_ambito: any;
   public descripcion_ambito: any;
 
   ngOnInit() {
-    this.authService.getTipoAmbito(this.t_ambito).subscribe((tipo_ambito) => {
+    this.authService.getTipoAmbito(this.aux.tipo_ambito).subscribe((tipo_ambito) => {
       this.tipos_ambito = tipo_ambito
     });
   }
@@ -42,7 +43,15 @@ export class ModalComponent implements OnInit {
       tipo_ambito: usuarioForm.value.tipo_ambito,
       descripcion_ambito: usuarioForm.value.descripcion_ambito,
     }
-    this.authService.updateUser(datoActualizado).subscribe(usuario => location.reload());
+    this.authService.updateUser(datoActualizado).subscribe(usuario => this.ListaUsuarios.getListUsuarios());
+    this.btnCerrar.nativeElement.click();
+    setTimeout(() => {
+      this.mensaje();
+    }, 1000);
+  }
+
+  mensaje(): void {
+    this.messageService.add({ severity: 'success', summary: 'Correcto', detail: 'Acción completada' });
   }
 
 }

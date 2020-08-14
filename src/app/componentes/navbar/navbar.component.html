@@ -1,40 +1,37 @@
-<nav class="navbar navbar-expand-md navbar-dark fixed-top bg-primary">
+<nav class="navbar navbar-expand-xl navbar-dark fixed-top bg-primary" data-toggle="collapse" data-target="#mainNavbar.show">
     <a class="navbar-brand" routerLink="/user/inicio">{{ app_name }}</a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#mainNavbar" aria-controls="mainNavbar" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
     </button>
     <div class="collapse navbar-collapse" id="mainNavbar">
         <ul class="navbar-nav mr-auto">
-            <li class="nav-item" *ngIf="islogged">
-                <a class="nav-link" routerLink="/home">Tutoriales </a>
+            <li class="nav-item text-left" *ngIf="islogged && accessRegister">
+                <i class="navbar-brand "> Bienvenido(a): {{ user.nombres }} {{ user.apellido_paterno }} {{ user.apellido_materno }}</i>
             </li>
         </ul>
         <ul class="navbar-nav mc-auto">
-            <li class=" nav-item text-right" *ngIf="islogged && accessRegister ">
-                <i class="navbar-brand "> Bienvenido(a): {{ user.nombres }} {{ user.apellido_paterno }} {{ user.apellido_materno }}</i>
-            </li>
-            <li class=" nav-item text-center col-3" *ngIf="islogged && accessRegister ">
-                <a class="navbar-brand "></a>
-            </li>
-            <li class=" nav-item text-left" *ngIf="islogged && accessRegister ">
-                <i class="navbar-brand ">{{ user.tipo_ambito }} : {{ user.descripcion_ambito }}</i>
+            <li class="nav-item text-left" *ngIf="islogged && accessRegister">
+                <i class="navbar-brand "> {{ user.tipo_ambito }} : {{ user.descripcion_ambito }}</i>
             </li>
         </ul>
         <ul class="navbar-nav ml-auto ">
+            <li class="nav-item" *ngIf="islogged">
+                <a class="nav-link" routerLink="/home">Tutoriales </a>
+            </li>
             <li class="nav-item" *ngIf="islogged ">
-                <a class="nav-link " routerLink="/user/profile">Perfil</a>
+                <a class="nav-link" routerLink="/user/profile">Perfil</a>
             </li>
             <li class="nav-item" *ngIf="islogged && accessRegister ">
-                <a class="nav-link " routerLink="/user/register">Registrar Usuario</a>
+                <a class="nav-link" routerLink="/user/register">Registrar Usuario</a>
             </li>
             <li class="nav-item" *ngIf="islogged && accessRegister ">
-                <a class="nav-link " routerLink="/user/register/list-usuarios">Listar Usuarios</a>
+                <a class="nav-link" routerLink="/user/register/list-usuarios">Listar Usuarios</a>
             </li>
             <li class="nav-item" *ngIf="!islogged">
-                <a class="nav-link " routerLink="/user/login">Iniciar Sesión</a>
+                <a class="nav-link" routerLink="/user/login">Iniciar Sesión</a>
             </li>
             <li class="nav-item" *ngIf="islogged ">
-                <a class="nav-link " routerLink="/home" (click)="onLogout()">Cerrar Sesión</a>
+                <a class="nav-link" routerLink="/home" (click)="onLogout()">Cerrar Sesión</a>
             </li>
         </ul>
     </div>

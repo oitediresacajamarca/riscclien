@@ -2,7 +2,7 @@ import { BrowserModule } from "@angular/platform-browser";
 import { NgModule } from "@angular/core";
 import { AppRoutingModule } from "./app-routing.module";
 import { AppComponent } from "./app.component";
-import { MegaMenuModule } from "primeng/megamenu";
+import { MegaMenuModule, MegaMenu } from "primeng/megamenu";
 import { MenuPrincipalComponent } from "./menu-principal/menu-principal.component";
 import { CargasHisComponent } from "./componentes/cargas-his/cargas-his.component";
 import { PanelModule } from "primeng/panel";
@@ -36,17 +36,18 @@ import { ProfileComponent } from "./componentes/usuarios/profile/profile.compone
 import { ListUsuariosComponent } from "./componentes/usuarios/list-usuarios/list-usuarios.component";
 import { ModalComponent } from "./componentes/usuarios/modal/modal.component";
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { ToastrModule } from 'ngx-toastr';
+import { FooterComponent } from './componentes/footer/footer.component';
+import { ChangePasswordComponent } from './componentes/usuarios/change-password/change-password.component';
+import { ModalChangePasswordComponent } from './componentes/usuarios/modal-change-password/modal-change-password.component';
 
 // Servicios
 import { AuthService } from "./servicios/auth.service";
-import { FooterComponent } from './componentes/footer/footer.component';
 
 // Externals
 import { NgxSpinnerModule } from 'ngx-spinner';
 import { NgxPaginationModule } from 'ngx-pagination';
-import { ChangePasswordComponent } from './componentes/usuarios/change-password/change-password.component';
-import { ModalChangePasswordComponent } from './componentes/usuarios/modal-change-password/modal-change-password.component';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { ClickColorDirective } from './directivas/click-color.directive';
 
 @NgModule({
   declarations: [
@@ -70,12 +71,14 @@ import { ModalChangePasswordComponent } from './componentes/usuarios/modal-chang
     FooterComponent,
     ChangePasswordComponent,
     ModalChangePasswordComponent,
+    ClickColorDirective,
   ],
   imports: [
     TableModule,
     BrowserModule,
     AppRoutingModule,
     MegaMenuModule,
+    ScrollPanelModule,
     PanelModule,
     BrowserAnimationsModule,
     FileUploadModule,
@@ -89,13 +92,12 @@ import { ModalChangePasswordComponent } from './componentes/usuarios/modal-chang
     FormsModule,
     CommonModule,
     DialogModule,
-    ScrollPanelModule,
     DropdownModule,
     NgxSpinnerModule,
     NgxPaginationModule,
     InputTextModule,
     MegaMenuModule,
-    ToastrModule,
+    NgbModule,
   ],
   providers: [AuthService],
   bootstrap: [AppComponent],
