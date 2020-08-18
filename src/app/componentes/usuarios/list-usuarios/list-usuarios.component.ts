@@ -18,7 +18,7 @@ export class ListUsuariosComponent implements OnInit {
 
   constructor(public authService: AuthService, private messageService: MessageService, private modalService: NgbModal) { }
 
-  public usuarios: UserI;
+  public usuarios: any;
   pageActual: number = 1;
 
   //VARIABLE AUXILIAR QUE TIENE LOS DATOS DEL USUARIO LOGEADO

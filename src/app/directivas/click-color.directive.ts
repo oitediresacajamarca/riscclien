@@ -4,9 +4,9 @@ import { Directive, HostListener, ElementRef, Input, Output, EventEmitter } from
   selector: '[appClickColor]'
 })
 export class ClickColorDirective {
-  @Input('fila') fila: any
+  @Input('appClickColor') fila: any = {}
   constructor(private elementref: ElementRef) { }
-  @HostListener('click') cambiarColor($event) {
+  @HostListener('click') cambiarColor() {
     /* reseteo el estilo letra negra y fondo blanco */
     for (let index = 0; index < this.elementref.nativeElement.parentElement.children.length; index++) {
       this.elementref.nativeElement.parentElement.children[index].style.backgroundColor = '#FFFFFF'

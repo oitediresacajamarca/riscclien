@@ -27,7 +27,7 @@ import { DescargasHisCCComponent } from "./componentes/descargas/descargas-his-c
 import { ReportePreliminarComponent } from "./reportes/reporte-preliminar/reporte-preliminar.component";
 import { PruebaComponent } from "./reportes/prueba/prueba.component";
 import { PlantillaInicioComponent } from "./componentes/plantilla-inicio/plantilla-inicio.component";
-import { Page404Component } from "./componentes/Page404/page404.component";
+import { Page404Component } from "./componentes/page404/page404.component";
 import { LoginComponent } from "./componentes/usuarios/login/login.component";
 import { RegisterComponent } from "./componentes/usuarios/register/register.component";
 import { NavbarComponent } from "./componentes/navbar/navbar.component";
@@ -45,6 +45,8 @@ import { AuthService } from "./servicios/auth.service";
 import { NgxSpinnerModule } from 'ngx-spinner';
 import { NgxPaginationModule } from 'ngx-pagination';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+
+// Directivas
 import { ClickColorDirective } from './directivas/click-color.directive';
 
 @NgModule({

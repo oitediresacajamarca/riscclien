@@ -82,7 +82,7 @@
                     </div>
                     <div class="form-group is-invalid was-validated">
                         <h6>Contraseña nueva (confirmación):</h6>
-                        <input type="password" #replyPassword="ngModel" name="replyPpassword" class="form-control is-invalid" placeholder="Confirmar contraseña nueva" [(ngModel)]="datos.replyPassword" [(disabled)]="!passwordNuevo.valid" pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*\d.*)(?=.*\W.*)[a-zA-Z0-9\S]{8,15}$"
+                        <input type="password" #replyPassword="ngModel" name="replyPpassword" class="form-control is-invalid" placeholder="Confirmar contraseña nueva" [(ngModel)]="datos.replyPassword" (disabled)="!passwordNuevo.valid" pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*\d.*)(?=.*\W.*)[a-zA-Z0-9\S]{8,15}$"
                             maxlength="15" [disabled]="isError" required />
                         <div class="valid-feedback text-left" *ngIf="replyPassword.value == passwordNuevo.value">
                             CONTRASEÑAS COINCIDEN

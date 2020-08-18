@@ -118,7 +118,7 @@
                                                 </tr>
                                             </thead>
                                             <tbody>
-                                                <tr *ngFor="let rol of roles_seleccionados; let i = index" appClickColor fila="{{rol}}" (click)="seleccionarFila(rol)">
+                                                <tr *ngFor="let rol of roles_seleccionados; let i = index" [appClickColor]="rol" (click)="seleccionarFila(rol)">
                                                     <td style="display: none;"> {{ rol.id_rol_risc }} </td>
                                                     <td> {{ rol.nombre_rol_risc }} </td>
                                                     <td> {{ rol.descripcion_rol_risc }} </td>
@@ -162,7 +162,7 @@
                             </tr>
                         </thead>
                         <tbody>
-                            <tr *ngFor="let rol of roles; let i = index" appClickColor fila="{{rol}}" (click)="seleccionarFilaModal(rol)">
+                            <tr *ngFor="let rol of roles; let i = index" [appClickColor]="rol" (click)="seleccionarFilaModal(rol)">
                                 <td style="display: none;"> {{ rol.id_rol_risc }}</td>
                                 <td> {{ rol.nombre_rol_risc }} </td>
                                 <td> {{ rol.descripcion_rol_risc }} </td>
