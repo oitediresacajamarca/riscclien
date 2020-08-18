@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewChild, TemplateRef } from "@angular/core";
+import { Component, OnInit } from "@angular/core";
 import { AuthService } from "src/app/servicios/auth.service";
 import { UserI } from "src/app/interfaces/user";
 import { DescAmbitoI } from 'src/app/interfaces/DescAmbito';
@@ -15,8 +15,6 @@ import { MessageService } from 'primeng/api';
   providers: [MessageService],
 })
 export class RegisterComponent implements OnInit {
-
-  @ViewChild("myModalInfo", { static: false }) myModalInfo: TemplateRef<any>;
 
   constructor(private authService: AuthService, private messageService: MessageService, private modalService: NgbModal) { }
 
@@ -74,10 +72,20 @@ export class RegisterComponent implements OnInit {
 
   ngOnInit() {
     this.authService.getTipoAmbito(this.aux.tipo_ambito).subscribe((tipo_ambito) => {
-      this.tipos_ambito = tipo_ambito
+      this.tipos_ambito = tipo_ambito;
+      const datos: DescAmbitoI = {
+        tipo_ambito_usuario: this.aux.tipo_ambito,
+        descripcion_ambito_usuario: this.aux.descripcion_ambito,
+        tipo_ambito_crear: this.aux.tipo_ambito
+      }
+      this.authService.getDescripcionAmbito(datos).subscribe((datos) => {
+        this.descripcionAmbito = datos;
+        this.authService.getRoles(this.datos).subscribe(roles => {
+          this.roles = roles;
+        });
+      });
     });
     this.limpiarFormulario();
-    this.obtenerRoles();
   }
 
   obtenerRoles(): void {
@@ -115,11 +123,6 @@ export class RegisterComponent implements OnInit {
       var i = roles_seleccionados.indexOf(fila_seleccionada);
       i !== -1 && roles_seleccionados.splice(i, 1);
       this.rolesAsignados = '';
-      if (this.rolesRemovidos == '') {
-        this.rolesRemovidos = this.rolesRemovidos + fila_seleccionada.id_rol_risc;
-      } else {
-        this.rolesRemovidos = this.rolesRemovidos + ',' + fila_seleccionada.id_rol_risc;
-      };
       if (this.roles_seleccionados.length == 0) {
         this.datos.roles_asignados = '';
         this.obtenerRoles();
@@ -133,9 +136,9 @@ export class RegisterComponent implements OnInit {
             this.datos.roles_asignados = this.rolesAsignados;
           }
         };
-        this.fila_seleccionada = null;
         this.obtenerRoles();
       };
+      this.fila_seleccionada = null;
     }
   }
 
@@ -147,16 +150,15 @@ export class RegisterComponent implements OnInit {
     this.fila_seleccionada = fila;
   }
 
-  actualizarModal(): void {
+  validarModal(): boolean {
     var numero = 0;
     for (var variable in this.roles) {
       numero++
     };
     if (numero == 0) {
-      this.msgError = "NO HAY MÁS ROLES PARA EL USUARIO";
-      this.onIsError();
+      return true;
     } else {
-      this.modalReference = this.modalService.open(this.myModalInfo);
+      return false;
     }
   }
 

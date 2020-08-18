@@ -1,22 +1,18 @@
 import { Injectable } from '@angular/core';
 import { CanActivate,/*  CanActivateChild, CanLoad,  */Router/* , UrlSegment, ActivatedRouteSnapshot, RouterStateSnapshot, UrlTree */ } from '@angular/router';
-import { Observable } from 'rxjs';
 import { AuthService } from '../servicios/auth.service';
-import { UserI } from '../interfaces/user';
 
 @Injectable({
   providedIn: 'root'
 })
-export class AccessRegisterGuard implements CanActivate {
+export class CreacionUsuariosGuard implements CanActivate {
   constructor(private authService: AuthService, private router: Router) { }
   canActivate() {
-    const usuario: UserI = this.authService.getCurrentUser();
-    const tipo_ambito = usuario.tipo_ambito;
-    if (tipo_ambito == "DEPARTAMENTO" || tipo_ambito == "SUBREGION" || tipo_ambito == "RED") {
-      //AMBITO CORRECTO
+    const roles_usuario = this.authService.getRoles_CurrentUser();
+    let index = roles_usuario.findIndex(roles => roles.nombre_rol_risc == "Creacion de usuarios.");
+    if (index >= 0) {
       return true;
     } else {
-      this.router.navigate(['user/login']);
       return false;
     }
   }

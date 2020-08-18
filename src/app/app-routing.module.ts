@@ -8,25 +8,32 @@ import { ReportePreliminarComponent } from "./reportes/reporte-preliminar/report
 import { PruebaComponent } from "./reportes/prueba/prueba.component";
 import { RegisterComponent } from "./componentes/usuarios/register/register.component";
 import { LoginComponent } from "./componentes/usuarios/login/login.component";
-import { Page404Component } from "./componentes/Page404/page404.component";
 import { NavbarComponent } from "./componentes/navbar/navbar.component";
 import { PlantillaInicioComponent } from "./componentes/plantilla-inicio/plantilla-inicio.component";
 import { ProfileComponent } from "./componentes/usuarios/profile/profile.component";
 import { ListUsuariosComponent } from "./componentes/usuarios/list-usuarios/list-usuarios.component";
 import { AuthGuard } from './guards/auth.guard';
-import { AccessRegisterGuard } from './guards/access-register.guard';
 import { ChangePasswordComponent } from './componentes/usuarios/change-password/change-password.component';
+import { CreacionUsuariosGuard } from './guards/creacion-usuarios.guard';
+import { CargasHisGuard } from './guards/cargas-his.guard';
+import { CargasSisGuard } from './guards/cargas-sis.guard';
+import { ReportesAmbitoGuard } from './guards/reportes-ambito.guard';
+import { ReportesDiresaGuard } from './guards/reportes-diresa.guard';
+import { SeguimientoCargasGuard } from './guards/seguimiento-cargas.guard';
 
 const routes: Routes = [
   { path: "home", component: NavbarComponent },
-  { path: "user/register", component: RegisterComponent, canActivate: [AuthGuard, AccessRegisterGuard] },
+  { path: "user/register", component: RegisterComponent, canActivate: [AuthGuard, CreacionUsuariosGuard] },
   { path: "user/login", component: LoginComponent },
   { path: "user/profile", component: ProfileComponent, canActivate: [AuthGuard] },
   { path: "user/inicio", component: PlantillaInicioComponent, canActivate: [AuthGuard] },
-  { path: "user/register/list-usuarios", component: ListUsuariosComponent, canActivate: [AuthGuard, AccessRegisterGuard] },
+  { path: "user/register/list-usuarios", component: ListUsuariosComponent, canActivate: [AuthGuard, CreacionUsuariosGuard] },
   { path: "user/changePassword", component: ChangePasswordComponent, canActivate: [AuthGuard] },
-  { path: "user/cargasHis/:pun", component: CargasHisComponent, canActivate: [AuthGuard] },
-  { path: "cargasSis/:punto", component: CargasSisComponent },
+  { path: "user/cargasHis/:punto", component: CargasHisComponent, canActivate: [AuthGuard, CargasHisGuard] },
+  { path: "user/cargasSis/:punto", component: CargasSisComponent, canActivate: [AuthGuard, CargasSisGuard] },
+  { path: "user/reportes_ambito", component: CargasSisComponent, canActivate: [AuthGuard, ReportesAmbitoGuard] },
+  { path: "user/reportes_diresa", component: CargasSisComponent, canActivate: [AuthGuard, ReportesDiresaGuard] },
+  { path: "user/seguimiento_cargas", component: CargasSisComponent, canActivate: [AuthGuard, SeguimientoCargasGuard] },
   { path: "carga_his_1.jsp", component: InicioComponent },
   { path: "principal_digitadores.jsp", component: InicioComponent },
   { path: "descargaCC", component: DescargasHisCCComponent },

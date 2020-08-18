@@ -34,6 +34,10 @@ export class AuthService {
 
   constructor(private httpClient: HttpClient) { }
 
+  getRoles_SelectedUsuario(dni: string) {
+    return this.httpClient.get(`${this.AUTH_SERVER}/roles_selectedUsuario/${dni}`);
+  }
+
   getRoles(datos: any) {
     return this.httpClient.put(`${this.AUTH_SERVER}/roles`, datos);
   }
@@ -82,9 +86,12 @@ export class AuthService {
     return this.httpClient.put<JwtResponseI>(`${this.AUTH_SERVER}/usuarios/${user.dni}`, user);
   }
 
+  updateUserLogged(user: UserI): Observable<JwtResponseI> {
+    return this.httpClient.put<JwtResponseI>(`${this.AUTH_SERVER}/usuario_logged/${user.dni}`, user);
+  }
+
   login(user: UserI): Observable<JwtResponseI> {
-    return this.httpClient
-      .post<JwtResponseI>(`${this.AUTH_SERVER}/login`, user, { headers: this.headers })
+    return this.httpClient.post<JwtResponseI>(`${this.AUTH_SERVER}/login`, user, { headers: this.headers })
       .pipe(
         tap((res: JwtResponseI) => {
           if (res) {
@@ -138,6 +145,16 @@ export class AuthService {
     if (!isNullOrUndefined(user_string)) {
       let user: UserI = JSON.parse(user_string);
       return user;
+    } else {
+      return null;
+    }
+  }
+
+  getRoles_CurrentUser() {
+    let roles_string = localStorage.getItem("ROLES");
+    if (!isNullOrUndefined(roles_string)) {
+      let roles: Array<any> = JSON.parse(roles_string);
+      return roles;
     } else {
       return null;
     }

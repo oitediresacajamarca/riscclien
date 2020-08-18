@@ -46,7 +46,7 @@ export class LoginComponent implements OnInit {
             dni: this.user.dni,
             isLogged: "1",
           }
-          this.authService.updateUser(dato).subscribe(usuario => { });
+          this.authService.updateUserLogged(dato).subscribe(usuario => { });
           this.authService.validarPassword(this.user).subscribe(validacion => {
           },
             res => {

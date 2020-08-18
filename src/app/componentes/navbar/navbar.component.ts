@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { AuthService } from 'src/app/servicios/auth.service';
 import { Router } from "@angular/router";
 import { UserI } from 'src/app/interfaces/user';
+import { CreacionUsuariosGuard } from 'src/app/guards/creacion-usuarios.guard';
 
 @Component({
   selector: "app-navbar",
@@ -10,7 +11,7 @@ import { UserI } from 'src/app/interfaces/user';
 })
 export class NavbarComponent implements OnInit {
 
-  constructor(private authService: AuthService, private router: Router) { }
+  constructor(private authService: AuthService, private router: Router, private creacion_usuarios: CreacionUsuariosGuard) { }
   public app_name = "RISC";
   public islogged: boolean = false;
   public accessRegister: boolean = false;
@@ -26,7 +27,7 @@ export class NavbarComponent implements OnInit {
       dni: this.user.dni,
       isLogged: "0",
     };
-    this.authService.updateUser(dato).subscribe(usuario => { });
+    this.authService.updateUserLogged(dato).subscribe(usuario => { });
     this.authService.logoutUser();
     this.router.navigate(["home"]).then(datos => location.reload());
   }
@@ -37,17 +38,10 @@ export class NavbarComponent implements OnInit {
     } else {
       this.islogged = true;
     }
-    this.user = this.authService.getCurrentUser();
-    if (this.user === null) {
-      this.accessRegister = false;
-    } else {
-      const tipo_ambito = this.user.tipo_ambito;
-      if (tipo_ambito == "DEPARTAMENTO" || tipo_ambito == "SUBREGION" || tipo_ambito == "RED") {
-        this.accessRegister = true;
-      } else {
-        this.accessRegister = false;
-      }
-    }
+  }
+
+  validarPermiso(): boolean {
+    return this.creacion_usuarios.canActivate();
   }
 
 }

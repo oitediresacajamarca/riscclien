@@ -2,7 +2,7 @@ import { BrowserModule } from "@angular/platform-browser";
 import { NgModule } from "@angular/core";
 import { AppRoutingModule } from "./app-routing.module";
 import { AppComponent } from "./app.component";
-import { MegaMenuModule, MegaMenu } from "primeng/megamenu";
+import { MegaMenuModule } from "primeng/megamenu";
 import { MenuPrincipalComponent } from "./menu-principal/menu-principal.component";
 import { CargasHisComponent } from "./componentes/cargas-his/cargas-his.component";
 import { PanelModule } from "primeng/panel";
@@ -34,11 +34,9 @@ import { NavbarComponent } from "./componentes/navbar/navbar.component";
 import { HeroComponent } from "./componentes/hero/hero.component";
 import { ProfileComponent } from "./componentes/usuarios/profile/profile.component";
 import { ListUsuariosComponent } from "./componentes/usuarios/list-usuarios/list-usuarios.component";
-import { ModalComponent } from "./componentes/usuarios/modal/modal.component";
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { FooterComponent } from './componentes/footer/footer.component';
 import { ChangePasswordComponent } from './componentes/usuarios/change-password/change-password.component';
-import { ModalChangePasswordComponent } from './componentes/usuarios/modal-change-password/modal-change-password.component';
 
 // Servicios
 import { AuthService } from "./servicios/auth.service";
@@ -67,10 +65,8 @@ import { ClickColorDirective } from './directivas/click-color.directive';
     HeroComponent,
     ProfileComponent,
     ListUsuariosComponent,
-    ModalComponent,
     FooterComponent,
     ChangePasswordComponent,
-    ModalChangePasswordComponent,
     ClickColorDirective,
   ],
   imports: [

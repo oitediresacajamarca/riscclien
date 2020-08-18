@@ -1,4 +1,5 @@
 import { RolesI } from './roles';
+import { UserI } from './user';
 
 export interface JwtResponseI {
   dataUser: {
@@ -14,6 +15,7 @@ export interface JwtResponseI {
     accessToken: string;
     expiresIn: string;
   };
-
   roles: RolesI;
+  tipo_ambito: UserI;
+  descripcion_ambito: UserI;
 }

@@ -1,9 +1,12 @@
 import { Component, OnInit, Input } from "@angular/core";
 import { MegaMenuItem } from 'primeng/api/megamenuitem';
-import { CargasHisComponent } from "../componentes/cargas-his/cargas-his.component";
 import { UserI } from "../interfaces/user";
 import { AuthService } from "../servicios/auth.service";
-import { style } from '@angular/animations';
+import { CargasHisGuard } from '../guards/cargas-his.guard';
+import { CargasSisGuard } from '../guards/cargas-sis.guard';
+import { ReportesAmbitoGuard } from '../guards/reportes-ambito.guard';
+import { ReportesDiresaGuard } from '../guards/reportes-diresa.guard';
+import { SeguimientoCargasGuard } from '../guards/seguimiento-cargas.guard';
 
 @Component({
   selector: "app-menu-principal",
@@ -21,7 +24,14 @@ export class MenuPrincipalComponent implements OnInit {
   nivel: string;
   currentUser: UserI;
 
-  constructor(private authService: AuthService) { }
+  constructor(private authService: AuthService,
+    // GUARDS
+    private cargasHis_Guard: CargasHisGuard,
+    private cargasSis_Guard: CargasSisGuard,
+    private reportesAmbito_Guard: ReportesAmbitoGuard,
+    private reportesDiresa_Guard: ReportesDiresaGuard,
+    private seguimientoCargas_Guard: SeguimientoCargasGuard
+  ) { }
 
   ngOnInit() {
     this.currentUser = this.authService.getCurrentUser();
@@ -72,7 +82,8 @@ export class MenuPrincipalComponent implements OnInit {
               items: [{ label: "Sports 6.1" }, { label: "Sports 6.2" }]
             }
           ]
-        ]
+        ],
+        visible: this.reportesAmbito_Guard.canActivate() || this.reportesDiresa_Guard.canActivate()
       },
       {
         label: "Cargas",
@@ -81,13 +92,15 @@ export class MenuPrincipalComponent implements OnInit {
           [
             {
               label: "HIS",
-              items: [{ label: "Periodo Actual", routerLink: "/user/cargasHis/" + this.nivel }, { label: "Actualizacion" }, { label: "Reporte de Cargas" }]
-            }
+              items: [{ label: "Periodo Actual", routerLink: "/user/cargasHis/" + this.nivel }, { label: "Actualizacion" }, { label: "Reporte de Cargas" }],
+              visible: this.cargasHis_Guard.canActivate()
+            },
           ],
           [
             {
               label: "SIS",
-              items: [{ label: "Periodo Actual", routerLink: "cargasSis/" + localStorage.getItem("pun") }, { label: "Actualizacion" }, { label: "Reporte de Cargas" }]
+              items: [{ label: "Periodo Actual", routerLink: "user/cargasSis/" + this.nivel }, { label: "Actualizacion" }, { label: "Reporte de Cargas" }],
+              visible: this.cargasSis_Guard.canActivate()
             }
           ]
         ],
@@ -104,7 +117,7 @@ export class MenuPrincipalComponent implements OnInit {
             }
           ]
         ],
-        visible: this.nivel == "DEPARTAMENTO" || this.nivel == "SUBREGION" || this.nivel == "RED" || this.nivel == "MICRORED",
+        visible: this.seguimientoCargas_Guard.canActivate()
       }
     ];
   }

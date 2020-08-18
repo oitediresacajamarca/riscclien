@@ -21,10 +21,10 @@
             <li class="nav-item" *ngIf="islogged ">
                 <a class="nav-link" routerLink="/user/profile">Perfil</a>
             </li>
-            <li class="nav-item" *ngIf="islogged && accessRegister ">
+            <li class="nav-item" *ngIf="islogged && validarPermiso() ">
                 <a class="nav-link" routerLink="/user/register">Registrar Usuario</a>
             </li>
-            <li class="nav-item" *ngIf="islogged && accessRegister ">
+            <li class="nav-item" *ngIf="islogged && validarPermiso() ">
                 <a class="nav-link" routerLink="/user/register/list-usuarios">Listar Usuarios</a>
             </li>
             <li class="nav-item" *ngIf="!islogged">
