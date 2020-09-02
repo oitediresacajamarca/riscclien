@@ -7,11 +7,12 @@ import { Observable, BehaviorSubject } from "rxjs";
 import { tap } from "rxjs/operators";
 import { isNullOrUndefined } from "util";
 import { DescAmbitoI } from '../interfaces/DescAmbito';
+import { environment } from 'src/environments/environment';
 
 @Injectable()
 export class AuthService {
 
-  AUTH_SERVER: string = "http://localhost:3000";
+  AUTH_SERVER: string = environment.ip_backend;
 
   headers: HttpHeaders = new HttpHeaders({
     "Content-Type": "application/json",
@@ -126,7 +127,7 @@ export class AuthService {
 
   logoutUser() {
     let accessToken = localStorage.getItem("ACCESS_TOKEN");
-    const url_api = `http://localhost:3000/logout/${accessToken}`;
+    const url_api = `${this.AUTH_SERVER}/logout/${accessToken}`;
     localStorage.removeItem("ACCESS_TOKEN");
     localStorage.removeItem("EXPIRES_IN");
     localStorage.removeItem("CURRENT_USER");
