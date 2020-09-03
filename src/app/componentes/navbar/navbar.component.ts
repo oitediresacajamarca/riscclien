@@ -29,7 +29,7 @@ export class NavbarComponent implements OnInit {
     };
     this.authService.updateUserLogged(dato).subscribe(usuario => { });
     this.authService.logoutUser();
-    this.router.navigate(["home"]).then(datos => location.reload());
+    this.router.navigate(["/"]).then(datos => location.reload());
   }
 
   onCheckUser(): void {
