@@ -294,7 +294,7 @@ export class ListUsuariosComponent implements OnInit {
           dni: usuario.dni,
           estado: "INACTIVO"
         };
-        this.authService.updateUser(estado).subscribe(usuario => this.ngOnInit());
+        this.authService.updateEstado(estado).subscribe(usuario => this.ngOnInit());
         setTimeout(() => {
           this.mensaje();
         }, 1000);
@@ -305,7 +305,7 @@ export class ListUsuariosComponent implements OnInit {
           dni: usuario.dni,
           estado: "ACTIVO"
         };
-        this.authService.updateUser(estado).subscribe(usuario => this.ngOnInit());
+        this.authService.updateEstado(estado).subscribe(usuario => this.ngOnInit());
         setTimeout(() => {
           this.mensaje();
         }, 1000);
