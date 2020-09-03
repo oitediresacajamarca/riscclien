@@ -5,7 +5,8 @@
 export const environment = {
   production: false,
   ip: "localhost",
-  ip_backend: "http://hospitalvirtual.diresacajamarca.gob.pe:8084",
+  ip_backend: "172.18.20.17:8084",
+  /* ip_backend: "http://hospitalvirtual.diresacajamarca.gob.pe:8084", */
 };
 
 /*
