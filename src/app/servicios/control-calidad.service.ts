@@ -16,19 +16,19 @@ export class ControlCalidadService {
 
   ejecutarcontrol(ano: string, mes: string) {
 
-    return this.http.get(this.conf.urlsimple + 'controlcalidadhis/punto/' + localStorage.getItem('ID_PUNTO') + '/ano/' + ano + '/mes/' + mes + '/nivel/4');
+    return this.http.get(this.conf.urlsimple + 'controlcalidadhis/punto/' + localStorage.getItem("ID_PUNTO") + '/ano/' + ano + '/mes/' + mes + '/nivel/4');
     //this.http.get(this.conf.urlgenerarexcelcc+'punto/'+localStorage.getItem('pun')+'/ano/'+ano+'/mes/'+mes);
 
   };
   leercontrol(ano: string, mes: string) {
 
-    return this.http.get<any>(this.conf.urlsimple + 'leercontrol/' + 'punto/' + localStorage.getItem('ID_PUNTO') + '/ano/' + ano + '/mes/' + mes)
+    return this.http.get<any>(this.conf.urlsimple + 'leercontrol/' + 'punto/' + localStorage.getItem("ID_PUNTO") + '/ano/' + ano + '/mes/' + mes)
   }
   ejecutarcontrol2() {
-    return this.http.get<any>(this.conf.urlsimple + 'controlcalidadhis/leercontrol2/' + localStorage.getItem('ID_PUNTO'));
+    return this.http.get<any>(this.conf.urlsimple + 'controlcalidadhis/leercontrol2/' + localStorage.getItem("ID_PUNTO"));
   }
   descargarReporteCon2() {
-    return this.http.get(this.conf.urlsimple + 'download/file/' + localStorage.getItem('ID_PUNTO') + '/reporte2cc.xlsx', { responseType: 'arraybuffer' })
+    return this.http.get(this.conf.urlsimple + 'download/file/' + localStorage.getItem("ID_PUNTO") + '/reporte2cc.xlsx', { responseType: 'arraybuffer' })
       ;
   }
   descargarReporteCC(cod_ambito: string) {
