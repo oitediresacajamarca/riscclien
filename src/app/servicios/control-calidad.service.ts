@@ -15,13 +15,13 @@ export class ControlCalidadService {
   }
 
   ejecutarcontrol(ano: string, mes: string) {
-
+    console.log(localStorage.getItem("ID_PUNTO"));
     return this.http.get(this.conf.urlsimple + 'controlcalidadhis/punto/' + localStorage.getItem("ID_PUNTO") + '/ano/' + ano + '/mes/' + mes + '/nivel/4');
     //this.http.get(this.conf.urlgenerarexcelcc+'punto/'+localStorage.getItem('pun')+'/ano/'+ano+'/mes/'+mes);
 
   };
   leercontrol(ano: string, mes: string) {
-
+    console.log(localStorage.getItem("ID_PUNTO"));
     return this.http.get<any>(this.conf.urlsimple + 'leercontrol/' + 'punto/' + localStorage.getItem("ID_PUNTO") + '/ano/' + ano + '/mes/' + mes)
   }
   ejecutarcontrol2() {
