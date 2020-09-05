@@ -118,12 +118,12 @@ export class AuthService {
               accessToken: res.dataUser.accessToken,
               expiresIn: res.dataUser.expiresIn,
             });
-            /* if (res.dataUser.tipo_ambito == 'PUNTO') {
+            if (res.dataUser.tipo_ambito == 'PUNTO') {
               this.getIdPunto(res.dataUser.descripcion_ambito).subscribe(datos => {
                 const idPunto = JSON.parse(datos[0].ID_PUNTO_DIG_HIS);
                 this.saveIdPunto(idPunto);
               });
-            } */
+            }
           }
         })
       );
@@ -135,7 +135,7 @@ export class AuthService {
     localStorage.removeItem("ACCESS_TOKEN");
     localStorage.removeItem("EXPIRES_IN");
     localStorage.removeItem("CURRENT_USER");
-    /* localStorage.removeItem("ID_PUNTO"); */
+    localStorage.removeItem("ID_PUNTO");
     localStorage.removeItem("ROLES");
     return this.httpClient.post<UserI>(url_api, { headers: this.headers });
   }
@@ -143,6 +143,8 @@ export class AuthService {
   setCurrentUser(user: UserI): void {
     const user_string = JSON.stringify(user);
     localStorage.setItem("CURRENT_USER", user_string);
+    localStorage.removeItem("pun");
+    localStorage.removeItem("punto");
   }
 
   getCurrentUser() {
@@ -176,9 +178,9 @@ export class AuthService {
     this.token = accessToken;
   }
 
-  /* saveIdPunto(idPunto: string): void {
+  saveIdPunto(idPunto: string): void {
     localStorage.setItem("ID_PUNTO", idPunto);
-  } */
+  }
 
   getToken(): string {
     if (!this.token) {
