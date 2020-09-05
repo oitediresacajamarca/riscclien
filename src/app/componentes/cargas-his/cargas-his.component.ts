@@ -1,8 +1,6 @@
 import { Component, OnInit, Input, ViewChild } from '@angular/core';
 import { Configuracion } from 'src/app/configuracion/configuracion';
 
-
-
 import { MessageService } from 'primeng/api';
 import { __importDefault } from 'tslib';
 import { RouterLinkActive, ActivatedRoute } from '@angular/router';
@@ -11,6 +9,7 @@ import { FileUpload } from 'primeng/fileupload/fileupload';
 import { Button } from 'primeng/button/button';
 import { ColumnasccService } from 'src/app/servicios/columnascc.service';
 import { style } from '@angular/animations';
+import { AuthService } from 'src/app/servicios/auth.service';
 
 @Component({
   selector: 'app-cargas-his',
@@ -55,7 +54,6 @@ export class CargasHisComponent implements OnInit {
   muestraconfirmacion: boolean = false;
 
 
-
   headers: Headers;
   registrosPc: string = '0';
   registrosRc: string = '0';
@@ -63,15 +61,20 @@ export class CargasHisComponent implements OnInit {
   registrosPerc: string = '0';
 
   config: Configuracion = new Configuracion();
+  aux = this.authService.getCurrentUser();
 
-  constructor(private mensajes: MessageService, private rout: ActivatedRoute, private controlhis: ControlCalidadService, private colmnas: ColumnasccService) { }
+  constructor(private mensajes: MessageService, private rout: ActivatedRoute, private controlhis: ControlCalidadService, public authService: AuthService, private colmnas: ColumnasccService) { }
 
-  ngOnInit() { }
+  ngOnInit() {
+    this.authService.getIdPunto(this.aux.descripcion_ambito).subscribe(datos => {
+      this.punto = JSON.parse(datos[0].ID_PUNTO_DIG_HIS);
+    });
+  }
   /**
    * selecionarArchivo
    */
   public seleccionarArchivo() {
-    this.punto = localStorage.getItem("ID_PUNTO");
+    /* this.punto = localStorage.getItem("ID_PUNTO"); */
     this.urlPac = this.config.url + 'paciente/punto/' + this.punto + '/ano/' + this.ano + '/mes/' + this.mes;
     this.urlPer = this.config.url + 'personal/punto/' + this.punto + '/ano/' + this.ano + '/mes/' + this.mes;
     this.urlReg = this.config.url + 'registrador/punto/' + this.punto + '/ano/' + this.ano + '/mes/' + this.mes;
