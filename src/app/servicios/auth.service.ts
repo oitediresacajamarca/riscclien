@@ -144,7 +144,7 @@ export class AuthService {
     const user_string = JSON.stringify(user);
     localStorage.setItem("CURRENT_USER", user_string);
     localStorage.removeItem("pun");
-    localStorage.removeItem("punto");
+    localStorage.removeItem("punt_nombre");
   }
 
   getCurrentUser() {
