@@ -32,6 +32,7 @@
                             <button type="button" class="btn btn-primary" (click)="onPreUpdate(usuario)" data-toggle="modal" data-target="#ModalNew">Modificar</button>
                             <button type="button" class="btn btn-warning" (click)="cambiarEstado(usuario)">{{usuario.estado == 'ACTIVO' ? 'Inactivar' : 'Activar'}}</button>
                             <button type="button" class="btn btn-danger" (click)="restablecerPassword(usuario)">Restablecer</button>
+                            <button type="button" class="btn btn-secondary" [disabled]="usuario.islogged==0" (click)="cerrarSesion(usuario)">Cerrar sesión</button>
                         </div>
                     </td>
                 </tr>

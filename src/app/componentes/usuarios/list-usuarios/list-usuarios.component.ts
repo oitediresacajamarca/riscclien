@@ -330,6 +330,19 @@ export class ListUsuariosComponent implements OnInit {
     }
   }
 
+  cerrarSesion(usuario: UserI): void {
+    if (confirm("¿ DESEA CERRAR LA SESIÓN DEL USUARIO ?")) {
+      const dato: UserI = {
+        dni: usuario.dni,
+        isLogged: "0",
+      };
+      this.authService.updateUserLogged(dato).subscribe(usuario => this.getListUsuarios());
+      setTimeout(() => {
+        this.mensaje();
+      }, 1000);
+    }
+  }
+
   mensaje(): void {
     this.messageService.add({ severity: 'success', summary: 'Correcto', detail: 'Acción completada' });
   }
