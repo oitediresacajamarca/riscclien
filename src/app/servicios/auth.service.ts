@@ -21,6 +21,7 @@ export class AuthService {
   authSubject = new BehaviorSubject(false);
 
   private token: string;
+  private id_punto: string;
 
   public selectedUsuario: UserI = {
     dni: null,
@@ -110,6 +111,7 @@ export class AuthService {
               tipo_ambito: res.dataUser.tipo_ambito,
               descripcion_ambito: res.dataUser.descripcion_ambito,
               estado: res.dataUser.estado,
+              id_punto: this.id_punto,
             };
             this.setCurrentUser(currentuser);
             this.saveRoles(res.roles);
