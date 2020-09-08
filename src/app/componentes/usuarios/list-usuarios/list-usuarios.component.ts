@@ -305,9 +305,7 @@ export class ListUsuariosComponent implements OnInit {
           dni: usuario.dni,
           estado: "ACTIVO"
         };
-        console.log("HASTA AQUI LLEGO 1.0");
         this.authService.updateEstado(enviar).subscribe(usuario => {
-          console.log("HASTA AQUI LLEGO 3.0");
           this.getListUsuarios();
         });
         setTimeout(() => {
@@ -324,6 +322,19 @@ export class ListUsuariosComponent implements OnInit {
         passwordNuevo: usuario.dni,
       };
       this.authService.restorePassword(enviar).subscribe(usuario => this.getListUsuarios());
+      setTimeout(() => {
+        this.mensaje();
+      }, 1000);
+    }
+  }
+
+  cerrarSesion(usuario: UserI): void {
+    if (confirm("¿ DESEA CERRAR LA SESIÓN DEL USUARIO ?")) {
+      const dato: UserI = {
+        dni: usuario.dni,
+        isLogged: "0",
+      };
+      this.authService.updateUserLogged(dato).subscribe(usuario => this.getListUsuarios());
       setTimeout(() => {
         this.mensaje();
       }, 1000);
