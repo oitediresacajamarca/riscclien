@@ -96,6 +96,10 @@ export class AuthService {
     return this.httpClient.put<JwtResponseI>(`${this.AUTH_SERVER}/usuario_logged/${user.dni}`, user);
   }
 
+  limpiarRoles(user: UserI): Observable<JwtResponseI> {
+    return this.httpClient.put<JwtResponseI>(`${this.AUTH_SERVER}/limpiar_roles/${user.dni}`, user);
+  }
+
   login(user: UserI): Observable<JwtResponseI> {
     return this.httpClient.post<JwtResponseI>(`${this.AUTH_SERVER}/login`, user, { headers: this.headers })
       .pipe(

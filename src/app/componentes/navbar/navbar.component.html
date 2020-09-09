@@ -5,12 +5,12 @@
     </button>
     <div class="collapse navbar-collapse" id="mainNavbar">
         <ul class="navbar-nav mr-auto">
-            <li class="nav-item text-left" *ngIf="islogged && accessRegister">
+            <li class="nav-item text-left" *ngIf="islogged">
                 <i class="navbar-brand "> Bienvenido(a): {{ user.nombres }} {{ user.apellido_paterno }} {{ user.apellido_materno }}</i>
             </li>
         </ul>
         <ul class="navbar-nav mc-auto">
-            <li class="nav-item text-left" *ngIf="islogged && accessRegister">
+            <li class="nav-item text-left" *ngIf="islogged">
                 <i class="navbar-brand "> {{ user.tipo_ambito }} : {{ user.descripcion_ambito }}</i>
             </li>
         </ul>

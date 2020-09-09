@@ -14,7 +14,6 @@ export class NavbarComponent implements OnInit {
   constructor(private authService: AuthService, private router: Router, private creacion_usuarios: CreacionUsuariosGuard) { }
   public app_name = "RISC";
   public islogged: boolean = false;
-  public accessRegister: boolean = false;
   user: UserI;
 
   ngOnInit() {
@@ -33,6 +32,7 @@ export class NavbarComponent implements OnInit {
   }
 
   onCheckUser(): void {
+    this.user = this.authService.getCurrentUser();
     if (this.authService.getCurrentUser() === null) {
       this.islogged = false;
     } else {

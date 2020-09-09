@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { AuthService } from "src/app/servicios/auth.service";
 import { MessageService } from 'primeng/api';
 import { NgForm } from '@angular/forms'
@@ -7,6 +7,7 @@ import { NgbModal, NgbModalRef } from '@ng-bootstrap/ng-bootstrap';
 import { isNullOrUndefined } from 'util';
 import { UserI } from "src/app/interfaces/user";
 import { RolesI } from 'src/app/interfaces/roles';
+import { Table } from 'primeng/table';
 
 @Component({
   selector: "app-list-usuarios",
@@ -14,12 +15,18 @@ import { RolesI } from 'src/app/interfaces/roles';
   styleUrls: ["./list-usuarios.component.css"],
   providers: [MessageService],
 })
+
 export class ListUsuariosComponent implements OnInit {
 
   constructor(public authService: AuthService, private messageService: MessageService, private modalService: NgbModal) { }
 
   public usuarios: any;
-  pageActual: number = 1;
+  first = 0;
+  rows = 10;
+  
+  loading: boolean = true;
+
+  @ViewChild('dt', {static: false}) table: Table;
 
   //VARIABLE AUXILIAR QUE TIENE LOS DATOS DEL USUARIO LOGEADO
   aux = this.authService.getCurrentUser();
@@ -62,6 +69,7 @@ export class ListUsuariosComponent implements OnInit {
     }
     this.authService.getlistaUsuarios(enviar).subscribe(usuarios => {
       this.usuarios = usuarios;
+      this.loading = false;
       this.authService.getTipoAmbito(this.aux.tipo_ambito).subscribe((tipo_ambito) => {
         this.tipos_ambito = tipo_ambito;
         const datos: DescAmbitoI = {
@@ -87,6 +95,7 @@ export class ListUsuariosComponent implements OnInit {
     }
     this.authService.getlistaUsuarios(enviar).subscribe(usuarios => {
       this.usuarios = usuarios;
+      this.loading = false;
     });
   }
 
@@ -194,7 +203,12 @@ export class ListUsuariosComponent implements OnInit {
       this.rolesRemovidos = '';
       this.datos.roles_asignados = '';
       this.roles_seleccionados = [];
-      this.obtenerRoles();
+      const enviar: UserI = {
+        dni: this.authService.selectedUsuario.dni,
+      }
+      this.authService.limpiarRoles(enviar).subscribe((datos) => {
+        this.obtenerRoles();
+      });
     });
   }
 
@@ -357,6 +371,26 @@ export class ListUsuariosComponent implements OnInit {
     setTimeout(() => {
       this.isSuccess = false;
     }, 3000);
+  }
+
+  next() {
+    this.first = this.first + this.rows;
+  }
+
+  prev() {
+      this.first = this.first - this.rows;
+  }
+
+  reset() {
+      this.first = 0;
+  }
+
+  isLastPage(): boolean {
+      return this.usuarios ? this.first === (this.usuarios.length - this.rows): true;
+  }
+
+  isFirstPage(): boolean {
+      return this.usuarios ? this.first === 0 : true;
   }
 
 }
