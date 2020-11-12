@@ -82,6 +82,7 @@ export class MenuPrincipalComponent implements OnInit {
               items: [{ label: "Sports 6.1" }, { label: "Sports 6.2" }]
             }
           ]
+          ,[{ label: "Reporte de Cargas", items:[{label:"Reporte de Cargas por Punto de Digitacion",routerLink: "reporte_cargas" }]}]
         ],
         visible: this.reportesAmbito_Guard.canActivate() || this.reportesDiresa_Guard.canActivate()
       },
@@ -92,7 +93,7 @@ export class MenuPrincipalComponent implements OnInit {
           [
             {
               label: "HIS",
-              items: [{ label: "Periodo Actual", routerLink: "/user/cargasHis/" + this.nivel }, { label: "Actualizacion" }, { label: "Reporte de Cargas" }],
+              items: [{ label: "Periodo Actual", routerLink: "/user/cargasHis/" + this.nivel }, { label: "Actualizacion" }],
               visible: this.cargasHis_Guard.canActivate()
             },
           ],

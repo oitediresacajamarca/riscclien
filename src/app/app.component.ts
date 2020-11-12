@@ -34,7 +34,7 @@ export class AppComponent implements OnInit, AfterViewInit {
     this.spinnerService.show();
     setTimeout(() => {
       this.spinnerService.hide();
-    }, 2000);
+    }, 1000);
   }
 
   ngAfterViewInit() {

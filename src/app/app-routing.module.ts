@@ -27,7 +27,10 @@ const routes: Routes = [
   { path: "user/register", component: RegisterComponent, canActivate: [AuthGuard, CreacionUsuariosGuard] },
   { path: "user/login", component: LoginComponent },
   { path: "user/profile", component: ProfileComponent, canActivate: [AuthGuard] },
-  { path: "user/inicio", component: PlantillaInicioComponent, canActivate: [AuthGuard] },
+  { path: "user/inicio", component: PlantillaInicioComponent, canActivate: [AuthGuard] 
+,children:[
+  { path: "reporte_cargas", component: ReporteCargasComponent }
+]},
   { path: "user/register/list-usuarios", component: ListUsuariosComponent, canActivate: [AuthGuard, CreacionUsuariosGuard] },
   { path: "user/changePassword", component: ChangePasswordComponent, canActivate: [AuthGuard] },
   { path: "user/cargasHis/:punto", component: CargasHisComponent, canActivate: [AuthGuard, CargasHisGuard] },
@@ -41,7 +44,6 @@ const routes: Routes = [
   { path: "reporte-preliminar", component: ReportePreliminarComponent },
   { path: "reporte", component: PruebaComponent },
   { path: "reporte_cargas", component: ReporteCargasComponent },
-
   { path: "**", redirectTo: "home" },
 ];
 
