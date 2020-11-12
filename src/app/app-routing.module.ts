@@ -20,6 +20,7 @@ import { CargasSisGuard } from './guards/cargas-sis.guard';
 import { ReportesAmbitoGuard } from './guards/reportes-ambito.guard';
 import { ReportesDiresaGuard } from './guards/reportes-diresa.guard';
 import { SeguimientoCargasGuard } from './guards/seguimiento-cargas.guard';
+import { ReporteCargasComponent } from './componentes/reporte-cargas/reporte-cargas.component';
 
 const routes: Routes = [
   { path: "home", component: NavbarComponent },
@@ -39,6 +40,8 @@ const routes: Routes = [
   { path: "descargaCC", component: DescargasHisCCComponent },
   { path: "reporte-preliminar", component: ReportePreliminarComponent },
   { path: "reporte", component: PruebaComponent },
+  { path: "reporte_cargas", component: ReporteCargasComponent },
+
   { path: "**", redirectTo: "home" },
 ];
 

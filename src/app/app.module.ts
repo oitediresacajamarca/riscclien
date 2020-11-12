@@ -48,6 +48,8 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 // Directivas
 import { ClickColorDirective } from './directivas/click-color.directive';
+import { ReporteCargasComponent } from './componentes/reporte-cargas/reporte-cargas.component';
+
 
 @NgModule({
   declarations: [
@@ -70,6 +72,7 @@ import { ClickColorDirective } from './directivas/click-color.directive';
     FooterComponent,
     ChangePasswordComponent,
     ClickColorDirective,
+    ReporteCargasComponent,
   ],
   imports: [
     TableModule,
