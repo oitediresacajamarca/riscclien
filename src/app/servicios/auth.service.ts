@@ -83,6 +83,10 @@ export class AuthService {
     return this.httpClient.post<JwtResponseI>(`${this.AUTH_SERVER}/register`, user);
   }
 
+  updateEstado(user: UserI): Observable<JwtResponseI> {
+    return this.httpClient.put<JwtResponseI>(`${this.AUTH_SERVER}/actualizar_estado/${user.dni}`, user);
+  }
+
   updateUser(user: UserI): Observable<JwtResponseI> {
     return this.httpClient.put<JwtResponseI>(`${this.AUTH_SERVER}/usuarios/${user.dni}`, user);
   }

@@ -290,22 +290,22 @@ export class ListUsuariosComponent implements OnInit {
   cambiarEstado(usuario: UserI): void {
     if (usuario.estado == "ACTIVO") {
       if (confirm("¿ DESEA INACTIVAR AL USUARIO ?")) {
-        const estado = {
+        const enviar = {
           dni: usuario.dni,
-          estado: "INACTIVO"
+          estado: "INACTIVO",
         };
-        this.authService.updateUser(estado).subscribe(usuario => this.ngOnInit());
+        this.authService.updateEstado(enviar).subscribe(usuario => this.ngOnInit());
         setTimeout(() => {
           this.mensaje();
         }, 1000);
       }
     } else {
       if (confirm("¿ DESEA ACTIVAR AL USUARIO ?")) {
-        const estado = {
+        const enviar = {
           dni: usuario.dni,
-          estado: "ACTIVO"
+          estado: "ACTIVO",
         };
-        this.authService.updateUser(estado).subscribe(usuario => this.ngOnInit());
+        this.authService.updateEstado(enviar).subscribe(usuario => this.ngOnInit());
         setTimeout(() => {
           this.mensaje();
         }, 1000);

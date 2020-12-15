@@ -4,8 +4,8 @@ export class Configuracion {
  //  url:string="http://172.18.20.26:8088/";
 //url:string="http://172.18.21.63:8088/";
 //ip:string="localhost";
-ip:string="hospitalvirtual.diresacajamarca.gob.pe";
-//ip:string=environment.ip;
+//ip:string=env;
+ip:string=environment.ip;
 
 urlsimple:string="http://"+this.ip+":8089/"
 url:string="http://"+this.ip+":8089/cargashis/"
