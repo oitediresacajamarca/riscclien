@@ -21,6 +21,8 @@ import { ReportesAmbitoGuard } from './guards/reportes-ambito.guard';
 import { ReportesDiresaGuard } from './guards/reportes-diresa.guard';
 import { SeguimientoCargasGuard } from './guards/seguimiento-cargas.guard';
 import { ReporteCargasComponent } from './componentes/reporte-cargas/reporte-cargas.component';
+import { VariableManualComponent } from "./controles/variable-manual/variable-manual.component";
+import { RegistroVariablesManualesComponent } from "./registro/registro-variables-manuales/registro-variables-manuales.component";
 
 const routes: Routes = [
   { path: "home", component: NavbarComponent },
@@ -34,6 +36,7 @@ const routes: Routes = [
   { path: "user/register/list-usuarios", component: ListUsuariosComponent, canActivate: [AuthGuard, CreacionUsuariosGuard] },
   { path: "user/changePassword", component: ChangePasswordComponent, canActivate: [AuthGuard] },
   { path: "user/cargasHis/:punto", component: CargasHisComponent, canActivate: [AuthGuard, CargasHisGuard] },
+  { path: "user/cargasManuales", component: RegistroVariablesManualesComponent, canActivate: [AuthGuard, CargasHisGuard] },
   { path: "user/cargasSis/:punto", component: CargasSisComponent, canActivate: [AuthGuard, CargasSisGuard] },
   { path: "user/reportes_ambito", component: CargasSisComponent, canActivate: [AuthGuard, ReportesAmbitoGuard] },
   { path: "user/reportes_diresa", component: CargasSisComponent, canActivate: [AuthGuard, ReportesDiresaGuard] },
@@ -44,7 +47,18 @@ const routes: Routes = [
   { path: "reporte-preliminar", component: ReportePreliminarComponent },
   { path: "reporte", component: PruebaComponent },
   { path: "reporte_cargas", component: ReporteCargasComponent },
+  { path: "variable_manual", component:RegistroVariablesManualesComponent},
   { path: "**", redirectTo: "home" },
+
+
+
+
+
+
+
+
+
+
 ];
 
 @NgModule({

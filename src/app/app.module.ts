@@ -37,6 +37,8 @@ import { ListUsuariosComponent } from "./componentes/usuarios/list-usuarios/list
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { FooterComponent } from './componentes/footer/footer.component';
 import { ChangePasswordComponent } from './componentes/usuarios/change-password/change-password.component';
+import { ReactiveFormsModule } from '@angular/forms';
+
 
 // Servicios
 import { AuthService } from "./servicios/auth.service";
@@ -49,6 +51,8 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 // Directivas
 import { ClickColorDirective } from './directivas/click-color.directive';
 import { ReporteCargasComponent } from './componentes/reporte-cargas/reporte-cargas.component';
+import { RegistroVariablesManualesComponent } from './registro/registro-variables-manuales/registro-variables-manuales.component';
+import { VariableManualComponent } from './controles/variable-manual/variable-manual.component';
 
 
 @NgModule({
@@ -73,6 +77,8 @@ import { ReporteCargasComponent } from './componentes/reporte-cargas/reporte-car
     ChangePasswordComponent,
     ClickColorDirective,
     ReporteCargasComponent,
+    RegistroVariablesManualesComponent,
+    VariableManualComponent,
   ],
   imports: [
     TableModule,
@@ -99,6 +105,7 @@ import { ReporteCargasComponent } from './componentes/reporte-cargas/reporte-car
     InputTextModule,
     MegaMenuModule,
     NgbModule,
+    ReactiveFormsModule
   ],
   providers: [AuthService],
   bootstrap: [AppComponent],

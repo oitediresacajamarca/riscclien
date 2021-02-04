@@ -1,0 +1,119 @@
+
+  <p-panel header="VARIABLES MANUALES" [toggleable]="true" [style]="{ 'margin-bottom': '20px' }">
+    <div class="ui-md-4">
+        <h5>Seleccione Ipress</h5>
+        <p-dropdown [options]="establecimientos" [(ngModel)]="establecimiento" (onChange)="cambioIpress()"></p-dropdown>
+    </div>
+    <div class="ui-md-4">
+        <h5>Seleccione Periodo a Registrar</h5>
+        <p-calendar [(ngModel)]="periodoselec" view="month" dateFormat="mm/yy" [yearNavigator]="true" yearRange="2000:2030" [readonlyInput]="true" (onSelect)="mesCambia($event)"></p-calendar>
+    </div>
+    <div class="ui-md-4"></div>
+<form [formGroup]="FormularioVariables">
+<div class="row">
+    <div class="col-md-3"><app-variable-manual [idactividad]='6000' formControlName='var1'></app-variable-manual></div>
+    <div class="col-md-3"><app-variable-manual [idactividad]='5112' formControlName='var2'></app-variable-manual></div>
+    <div class="col-md-3"><app-variable-manual [idactividad]='3' formControlName='var3'></app-variable-manual></div>
+    <div class="col-md-3"><app-variable-manual [idactividad]='4' formControlName='var4'></app-variable-manual></div>
+</div>
+<div class="row">
+    <div class="col-md-3"><app-variable-manual [idactividad]='5' formControlName='var5'></app-variable-manual></div>
+    <div class="col-md-3"><app-variable-manual [idactividad]='6' formControlName='var6'></app-variable-manual></div>
+    <div class="col-md-3"><app-variable-manual [idactividad]='7' formControlName='var7'></app-variable-manual></div>
+    <div class="col-md-3"><app-variable-manual [idactividad]='8' formControlName='var8'></app-variable-manual></div>
+</div>
+
+<div class="row">
+    <div class="col-md-3"><app-variable-manual [idactividad]='9' formControlName='var9'></app-variable-manual></div>
+    <div class="col-md-3"><app-variable-manual [idactividad]='10' formControlName='var10'></app-variable-manual></div>
+    <div class="col-md-3"><app-variable-manual [idactividad]='11' formControlName='var11'></app-variable-manual></div>
+    <div class="col-md-3"><app-variable-manual [idactividad]='12' formControlName='var12'></app-variable-manual></div>
+</div>
+<div class="row">
+    <div class="col-md-3"></div>
+    <div class="col-md-3"></div>
+    <div class="col-md-3"><p-button label="GUARDAR" (click)="GuardarDatos()" ></p-button></div>
+    <div class="col-md-3"></div>
+</div>
+
+</form>
+</p-panel>
+
+<p-panel header="VARIABLES MANUALES" [toggleable]="true" [style]="{ 'margin-bottom': '20px' }">
+    <div class="ui-md-4">
+        <h5>Seleccione Ipress</h5>
+        <p-dropdown [options]="establecimientos" [(ngModel)]="establecimiento" (onChange)="cambioIpress()"></p-dropdown>
+    </div>
+    <div class="ui-md-4">
+        <h5>Seleccione Periodo a Registrar</h5>
+        <p-calendar [(ngModel)]="periodoselec" view="month" dateFormat="mm/yy" [yearNavigator]="true" yearRange="2000:2030" [readonlyInput]="true" (onSelect)="mesCambia($event)"></p-calendar>
+    </div>
+    <div class="ui-md-4"></div>
+<form [formGroup]="FormularioVariables">
+<div class="row">
+    <div class="col-md-3"><app-variable-manual [idactividad]='6000' formControlName='var1'></app-variable-manual></div>
+    <div class="col-md-3"><app-variable-manual [idactividad]='5112' formControlName='var2'></app-variable-manual></div>
+    <div class="col-md-3"><app-variable-manual [idactividad]='3' formControlName='var3'></app-variable-manual></div>
+    <div class="col-md-3"><app-variable-manual [idactividad]='4' formControlName='var4'></app-variable-manual></div>
+</div>
+<div class="row">
+    <div class="col-md-3"><app-variable-manual [idactividad]='5' formControlName='var5'></app-variable-manual></div>
+    <div class="col-md-3"><app-variable-manual [idactividad]='6' formControlName='var6'></app-variable-manual></div>
+    <div class="col-md-3"><app-variable-manual [idactividad]='7' formControlName='var7'></app-variable-manual></div>
+    <div class="col-md-3"><app-variable-manual [idactividad]='8' formControlName='var8'></app-variable-manual></div>
+</div>
+
+<div class="row">
+    <div class="col-md-3"><app-variable-manual [idactividad]='9' formControlName='var9'></app-variable-manual></div>
+    <div class="col-md-3"><app-variable-manual [idactividad]='10' formControlName='var10'></app-variable-manual></div>
+    <div class="col-md-3"><app-variable-manual [idactividad]='11' formControlName='var11'></app-variable-manual></div>
+    <div class="col-md-3"><app-variable-manual [idactividad]='12' formControlName='var12'></app-variable-manual></div>
+</div>
+<div class="row">
+    <div class="col-md-3"></div>
+    <div class="col-md-3"></div>
+    <div class="col-md-3"><p-button label="GUARDAR" (click)="GuardarDatos()" ></p-button></div>
+    <div class="col-md-3"></div>
+</div>
+
+</form>
+</p-panel>
+<p-panel header="VARIABLES MANUALES" [toggleable]="true" [style]="{ 'margin-bottom': '20px' }">
+  <div class="ui-md-4">
+      <h5>Seleccione Ipress</h5>
+      <p-dropdown [options]="establecimientos" [(ngModel)]="establecimiento" (onChange)="cambioIpress()"></p-dropdown>
+  </div>
+  <div class="ui-md-4">
+      <h5>Seleccione Periodo a Registrar</h5>
+      <p-calendar [(ngModel)]="periodoselec" view="month" dateFormat="mm/yy" [yearNavigator]="true" yearRange="2000:2030" [readonlyInput]="true" (onSelect)="mesCambia($event)"></p-calendar>
+  </div>
+  <div class="ui-md-4"></div>
+<form [formGroup]="FormularioVariables">
+<div class="row">
+  <div class="col-md-3"><app-variable-manual [idactividad]='6000' formControlName='var1'></app-variable-manual></div>
+  <div class="col-md-3"><app-variable-manual [idactividad]='5112' formControlName='var2'></app-variable-manual></div>
+  <div class="col-md-3"><app-variable-manual [idactividad]='3' formControlName='var3'></app-variable-manual></div>
+  <div class="col-md-3"><app-variable-manual [idactividad]='4' formControlName='var4'></app-variable-manual></div>
+</div>
+<div class="row">
+  <div class="col-md-3"><app-variable-manual [idactividad]='5' formControlName='var5'></app-variable-manual></div>
+  <div class="col-md-3"><app-variable-manual [idactividad]='6' formControlName='var6'></app-variable-manual></div>
+  <div class="col-md-3"><app-variable-manual [idactividad]='7' formControlName='var7'></app-variable-manual></div>
+  <div class="col-md-3"><app-variable-manual [idactividad]='8' formControlName='var8'></app-variable-manual></div>
+</div>
+
+<div class="row">
+  <div class="col-md-3"><app-variable-manual [idactividad]='9' formControlName='var9'></app-variable-manual></div>
+  <div class="col-md-3"><app-variable-manual [idactividad]='10' formControlName='var10'></app-variable-manual></div>
+  <div class="col-md-3"><app-variable-manual [idactividad]='11' formControlName='var11'></app-variable-manual></div>
+  <div class="col-md-3"><app-variable-manual [idactividad]='12' formControlName='var12'></app-variable-manual></div>
+</div>
+<div class="row">
+  <div class="col-md-3"></div>
+  <div class="col-md-3"></div>
+  <div class="col-md-3"><p-button label="GUARDAR" (click)="GuardarDatos()" ></p-button></div>
+  <div class="col-md-3"></div>
+</div>
+
+</form>
+</p-panel>

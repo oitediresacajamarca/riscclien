@@ -4,8 +4,9 @@
 
 export const environment = {
   production: false,
-  ip: "localhost",
+  ip: "sir.diresacajamarca.gob.pe",
   ip_backend: "http://sir.diresacajamarca.gob.pe:8084",
+  ip_backend_b:"http://localhost:8084"
 };
 
 /*
