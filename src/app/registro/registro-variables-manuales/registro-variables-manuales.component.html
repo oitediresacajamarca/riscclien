@@ -1,0 +1,1178 @@
+
+  <p-panel header="VARIABLES MANUALES" [toggleable]="true" [style]="{ 'margin-bottom': '20px' }">
+      <div class="row">    <div class="ui-md-4">
+        <h5>Seleccione Ipress</h5>
+        <p-dropdown [options]="establecimientos" placeholder="SELECCIONAR EESS"[(ngModel)]="establecimiento" (onChange)="cambioIpress()"></p-dropdown>
+    </div>
+    <div class="ui-md-4"> 
+        <h5>Seleccione Periodo a Registrar</h5>
+        <p-calendar [(ngModel)]="periodoselec" view="month" dateFormat="mm/yy" [yearNavigator]="true" yearRange="2021:2021" [readonlyInput]="true" (onSelect)="mesCambia($event)"></p-calendar>
+    </div></div>
+    <form [formGroup]="FormularioVariables">
+
+<div class="row">
+
+    <div class="col-4">
+        <div class="row">
+            <h6>I.ATENCION DEL RECIEN NACIDO</h6>
+
+            <h5>c condicion al nacimiento</h5>
+
+            <div class="col-4">CONDICION</div>
+            <div class="col-4">Establecimiento</div>
+            <div class="col-4">DOMICILIO</div>
+        </div>
+        <div class="row">
+            <div class="col-4">RN NORMAL</div>
+            <div class="col-4"><app-variable-manual [idactividad]='6000' formControlName='var6000'></app-variable-manual></div>
+            <div class="col-4"><app-variable-manual [idactividad]='6003' formControlName='var6003'></app-variable-manual></div>
+        </div>
+
+        <div class="row">
+            <div class="col-4">RN DEPRIMIDO</div>
+            <div class="col-4"><app-variable-manual [idactividad]='6001' formControlName='var6001'></app-variable-manual></div>
+            <div class="col-4"><app-variable-manual [idactividad]='6004' formControlName='var6004'></app-variable-manual></div>
+        </div>
+
+        <div class="row">
+            <div class="col-4">PREMATURO</div>
+            <div class="col-4"><app-variable-manual [idactividad]='6002' formControlName='var6002'></app-variable-manual></div>
+            <div class="col-4"><app-variable-manual [idactividad]='6005' formControlName='var6005'></app-variable-manual></div>
+        </div>
+    </div>
+
+
+ 
+</div>
+
+
+
+
+
+
+
+
+<div class="row">
+
+    <div class="col-5">
+        <div class="row">
+            <h5>E) MORTALIDAD NEONATAL </h5>
+            <div class="col-5">PESO AL NACER</div>
+            <div class="col-5">NRO</div>
+        </div>
+        <div class="row">
+            <div class="col-5">Menor 1,000 gr. </div>
+            <div class="col-5"><app-variable-manual [idactividad]='217' formControlName='var217'></app-variable-manual></div>
+        
+        </div>
+
+
+        <div class="row">
+            <div class="col-5">1,000  A 1499 gr. </div>
+            <div class="col-5"><app-variable-manual [idactividad]='218' formControlName='var218'></app-variable-manual></div>
+        
+        </div>
+        <div class="row">
+            <div class="col-5"> 1500 A 2499 gr. </div>
+            <div class="col-5"><app-variable-manual [idactividad]='219' formControlName='var219'></app-variable-manual></div>
+        
+        </div>
+
+        <div class="row">
+            <div class="col-5">2500 a mas gr. </div>
+            <div class="col-5"><app-variable-manual [idactividad]='220' formControlName='var220'></app-variable-manual></div>
+        </div>
+
+      
+        <div class="row">
+            <div class="col-5">NO ESPECIFICADO. </div>
+            <div class="col-5"><app-variable-manual [idactividad]='221' formControlName='var221'></app-variable-manual></div>
+        
+        </div>
+
+    </div>
+</div>
+
+
+
+
+<div class="row">
+
+    <div class="col-5">
+        <div class="row">
+        
+            <div class="col-5">TIEMPO DE VIDA</div>
+            <div class="col-5">NRO</div>
+        </div>
+        <div class="row">
+            <div class="col-5">Obito Fetal </div>
+            <div class="col-5"><app-variable-manual [idactividad]='5083' formControlName='var5083'></app-variable-manual></div>
+        
+        </div>
+
+
+        <div class="row">
+            <div class="col-5"> menor a 24 horas </div>
+            <div class="col-5"><app-variable-manual [idactividad]='5084' formControlName='var5084'></app-variable-manual></div>
+        
+        </div>
+        <div class="row">
+            <div class="col-5"> 01 a 07 dias </div>
+            <div class="col-5"><app-variable-manual [idactividad]='5085' formControlName='var5085'></app-variable-manual></div>
+        
+        </div>
+
+        <div class="row">
+            <div class="col-5">08 a 28 dias </div>
+            <div class="col-5"><app-variable-manual [idactividad]='5086' formControlName='var5086'></app-variable-manual></div>
+        </div>
+
+ 
+
+    </div>
+</div>
+
+
+
+<div class="row">
+
+    <div class="col-5">
+        <div class="row">
+        
+            <div class="col-5">CAUSA DEFUNCION</div>
+            <div class="col-5">NRO</div>
+        </div>
+        <div class="row">
+            <div class="col-5">Asfixia</div>
+            <div class="col-5"><app-variable-manual [idactividad]='6016' formControlName='var6016'></app-variable-manual></div>
+        
+        </div>
+
+
+        <div class="row">
+            <div class="col-5"> SDR</div>
+            <div class="col-5"><app-variable-manual [idactividad]='6017' formControlName='var6017'></app-variable-manual></div>
+        
+        </div>
+        <div class="row">
+            <div class="col-5"> Sepsis </div>
+            <div class="col-5"><app-variable-manual [idactividad]='6018' formControlName='var6018'></app-variable-manual></div>
+        
+        </div>
+
+        <div class="row">
+            <div class="col-5">Malf. congenitas</div>
+            <div class="col-5"><app-variable-manual [idactividad]='6019' formControlName='var6019'></app-variable-manual></div>
+        </div>
+
+        <div class="row">
+            <div class="col-5">Otras</div>
+            <div class="col-5"><app-variable-manual [idactividad]='6020' formControlName='var6020'></app-variable-manual></div>
+        </div>
+
+
+    </div>
+</div>
+
+
+
+
+
+
+
+<div class="row">
+
+    <div class="col-5">
+        <div class="row">
+        
+            <div class="col-5">FUENTES EXTERNAS</div>
+            <div class="col-5">NRO</div>
+        </div>
+     
+
+
+        <div class="row">
+            <div class="col-5"> Libr Aten rep Egresos</div>
+            <div class="col-5"><app-variable-manual [idactividad]='6021' formControlName='var6021'></app-variable-manual></div>
+        
+        </div>
+        <div class="row">
+            <div class="col-5"> Certificacion de defuncion </div>
+            <div class="col-5"><app-variable-manual [idactividad]='6022' formControlName='var6022'></app-variable-manual></div>
+        
+        </div>
+
+      
+
+
+    </div>
+</div>
+
+
+
+
+
+
+
+<div class="container-fluid">
+
+    <p>XV ATENCION DE LAS ENFERMEDADES PREVALENTES DE LA INFANCIA</p>
+        <div class="row">
+        
+            <div class="col-lg-2" style="background-color:rgb(178, 178, 189);">
+                INFECCION RESPIRATOIA AGUDA.
+              </div>
+
+              <div class="col-lg-10" style="background-color:rgb(178, 178, 231);">
+                GRUPO EDAD
+              </div>
+           
+            <div class="col-lg-2"style="background-color:lavender;">DIAGNOSTICO</div>
+            <div class="col-lg-2"style="background-color:lavender;">ME-29D</div>
+            <div class="col-lg-2"style="background-color:lavender;">29-59D</div>
+            <div class="col-lg-2"style="background-color:lavender;">2M-11M</div>
+            <div class="col-lg-2"style="background-color:lavender;">1-4A</div>
+            <div class="col-lg-2"style="background-color:lavender;">5-11A</div>
+        </div>
+        <div class="row">
+            <div class="col-lg-2"style="background-color:lavender;">2.TOTAL CASOS IRA COMP HOSP</div>
+            <div class="col-lg-2"style="background-color:lavender;"><app-variable-manual [idactividad]='6038' formControlName='var6038'></app-variable-manual></div>
+            <div class="col-lg-2"style="background-color:lavender;"><app-variable-manual [idactividad]='6039' formControlName='var6039'></app-variable-manual></div>
+            <div class="col-lg-2"style="background-color:lavender;"><app-variable-manual [idactividad]='6040' formControlName='var6040'></app-variable-manual></div>
+            <div class="col-lg-2"style="background-color:lavender;"><app-variable-manual [idactividad]='6041' formControlName='var6041'></app-variable-manual></div>
+            <div class="col-lg-2"style="background-color:lavender;"><app-variable-manual [idactividad]='6042' formControlName='var6042'></app-variable-manual></div>
+        </div>
+
+        <div class="row">
+            <div class="col-lg-2"style="background-color:lavender;">NUM CASOS IRA COMP REF</div>
+            <div class="col-lg-2"style="background-color:lavender;"><app-variable-manual [idactividad]='6028' formControlName='var6028'></app-variable-manual></div>
+            <div class="col-lg-2"style="background-color:lavender;"><app-variable-manual [idactividad]='6029' formControlName='var6029'></app-variable-manual></div>
+            <div class="col-lg-2"style="background-color:lavender;"><app-variable-manual [idactividad]='6030' formControlName='var6030'></app-variable-manual></div>
+            <div class="col-lg-2"style="background-color:lavender;"><app-variable-manual [idactividad]='6031' formControlName='var6031'></app-variable-manual></div>
+            <div class="col-lg-2"style="background-color:lavender;"><app-variable-manual [idactividad]='6032' formControlName='var6032'></app-variable-manual></div>
+        </div>
+
+        <div class="row">
+            <div class="col-lg-2"style="background-color:lavender;">Control seg neumonia 48h</div>
+            <div class="col-lg-2"style="background-color:lavender;"><app-variable-manual [idactividad]='6033' formControlName='var6033'></app-variable-manual></div>
+            <div class="col-lg-2"style="background-color:lavender;"><app-variable-manual [idactividad]='6034' formControlName='var6034'></app-variable-manual></div>
+            <div class="col-lg-2"style="background-color:lavender;"><app-variable-manual [idactividad]='6035' formControlName='var6035'></app-variable-manual></div>
+            <div class="col-lg-2"style="background-color:lavender;"><app-variable-manual [idactividad]='6036' formControlName='var6036'></app-variable-manual></div>
+            <div class="col-lg-2"style="background-color:lavender;"><app-variable-manual [idactividad]='6037' formControlName='var6037'></app-variable-manual></div>
+        </div>
+
+
+    
+
+      
+    </div>
+
+
+
+
+
+    <div class="container-fluid">
+
+        <p>XVI DEFUNCIONES</p>
+            <div class="row">
+            
+                <div class="col-lg-2" style="background-color:rgb(170, 170, 173);">
+                    ''
+                  </div>
+    
+                  <div class="col-lg-5" style="background-color:rgb(170, 170, 173);">
+                    INTRA HOSPITALARIO
+                  </div>
+
+                  <div class="col-lg-5" style="background-color:rgb(170, 170, 173);">
+                    EXTRAHOSPITALARIO
+                  </div>
+               
+               
+                <div class="col-sm-3"style="background-color:#cccccc;">DIAGNOSTICO</div>
+                <div class="col-sm-2"style="background-color:#cccccc;">IRA</div>
+                <div class="col-sm-2"style="background-color:#cccccc;">EDA</div>
+                <div class="col-sm-2"style="background-color:#cccccc;">TODAS LAS CAUSAS</div>
+                <div class="col-sm-1"style="background-color:#cccccc;">IRA</div>
+                <div class="col-sm-1"style="background-color:#cccccc;">EDA</div>
+                <div class="col-sm-1"style="background-color:#cccccc;">TODAS LAS CAUSAS</div>
+            </div>
+            <div class="row">
+                <div class="col-sm-3"style="background-color:#cccccc;">Menor 29 D</div>
+                <div class="col-sm-2"style="background-color:#cccccc;"><app-variable-manual [idactividad]='6038' formControlName='var6038'></app-variable-manual></div>
+                <div class="col-sm-2"style="background-color:#cccccc;"><app-variable-manual [idactividad]='6044' formControlName='var6044'></app-variable-manual></div>
+                <div class="col-sm-2"style="background-color:#cccccc;"><app-variable-manual [idactividad]='6050' formControlName='var6050'></app-variable-manual></div>
+                <div class="col-sm-1"style="background-color:#cccccc;"><app-variable-manual [idactividad]='6056' formControlName='var6056'></app-variable-manual></div>
+                <div class="col-sm-1"style="background-color:#cccccc;"><app-variable-manual [idactividad]='6062' formControlName='var6062'></app-variable-manual></div>
+                <div class="col-sm-1"style="background-color:#cccccc;"><app-variable-manual [idactividad]='6069' formControlName='var6069'></app-variable-manual></div>
+            </div>
+    
+            <div class="row">
+                <div class="col-sm-3"style="background-color:#cccccc;">29 A 59 D</div>
+                <div class="col-sm-2"style="background-color:#cccccc;"><app-variable-manual [idactividad]='6039' formControlName='var6039'></app-variable-manual></div>
+                <div class="col-sm-2"style="background-color:#cccccc;"><app-variable-manual [idactividad]='6045' formControlName='var6045'></app-variable-manual></div>
+                <div class="col-sm-2"style="background-color:#cccccc;"><app-variable-manual [idactividad]='6051' formControlName='var6051'></app-variable-manual></div>
+                <div class="col-sm-1"style="background-color:#cccccc;"><app-variable-manual [idactividad]='6057' formControlName='var6057'></app-variable-manual></div>
+                <div class="col-sm-1"style="background-color:#cccccc;"><app-variable-manual [idactividad]='6063' formControlName='var6063'></app-variable-manual></div>
+                <div class="col-sm-1"style="background-color:#cccccc;"><app-variable-manual [idactividad]='6070' formControlName='var6070'></app-variable-manual></div>
+            </div>
+
+            <div class="row">
+                <div class="col-sm-3"style="background-color:#cccccc;">02m a 11m</div>
+                <div class="col-sm-2"style="background-color:#cccccc;"><app-variable-manual [idactividad]='6040' formControlName='var6040'></app-variable-manual></div>
+                <div class="col-sm-2"style="background-color:#cccccc;"><app-variable-manual [idactividad]='6046' formControlName='var6046'></app-variable-manual></div>
+                <div class="col-sm-2"style="background-color:#cccccc;"><app-variable-manual [idactividad]='6052' formControlName='var6052'></app-variable-manual></div>
+                <div class="col-sm-1"style="background-color:#cccccc;"><app-variable-manual [idactividad]='6058' formControlName='var6058'></app-variable-manual></div>
+                <div class="col-sm-1"style="background-color:#cccccc;"><app-variable-manual [idactividad]='6064' formControlName='var6064'></app-variable-manual></div>
+                <div class="col-sm-1"style="background-color:#cccccc;"><app-variable-manual [idactividad]='6071' formControlName='var6071'></app-variable-manual></div>
+            </div>
+    
+
+            <div class="row">
+                <div class="col-sm-3"style="background-color:#cccccc;">1 año</div>
+                <div class="col-sm-2"style="background-color:#cccccc;"><app-variable-manual [idactividad]='6041' formControlName='var6041'></app-variable-manual></div>
+                <div class="col-sm-2"style="background-color:#cccccc;"><app-variable-manual [idactividad]='6047' formControlName='var6047'></app-variable-manual></div>
+                <div class="col-sm-2"style="background-color:#cccccc;"><app-variable-manual [idactividad]='6053' formControlName='var6053'></app-variable-manual></div>
+                <div class="col-sm-1"style="background-color:#cccccc;"><app-variable-manual [idactividad]='6059' formControlName='var6059'></app-variable-manual></div>
+                <div class="col-sm-1"style="background-color:#cccccc;"><app-variable-manual [idactividad]='6065' formControlName='var6065'></app-variable-manual></div>
+                <div class="col-sm-1"style="background-color:#cccccc;"><app-variable-manual [idactividad]='6072' formControlName='var6072'></app-variable-manual></div>
+            </div>
+    
+
+            <div class="row">
+                <div class="col-sm-3"style="background-color:#cccccc;">2 a 4 años</div>
+                <div class="col-sm-2"style="background-color:#cccccc;"><app-variable-manual [idactividad]='6042' formControlName='var6042'></app-variable-manual></div>
+                <div class="col-sm-2"style="background-color:#cccccc;"><app-variable-manual [idactividad]='6048' formControlName='var6048'></app-variable-manual></div>
+                <div class="col-sm-2"style="background-color:#cccccc;"><app-variable-manual [idactividad]='6054' formControlName='var6054'></app-variable-manual></div>
+                <div class="col-sm-1"style="background-color:#cccccc;"><app-variable-manual [idactividad]='6060' formControlName='var6060'></app-variable-manual></div>
+                <div class="col-sm-1"style="background-color:#cccccc;"><app-variable-manual [idactividad]='6066' formControlName='var6066'></app-variable-manual></div>
+                <div class="col-sm-1"style="background-color:#cccccc;"><app-variable-manual [idactividad]='6073' formControlName='var6073'></app-variable-manual></div>
+            </div>
+    
+            <div class="row">
+                <div class="col-sm-3"style="background-color:#cccccc;">5 a 11 años</div>
+                <div class="col-sm-2"style="background-color:#cccccc;"><app-variable-manual [idactividad]='6043' formControlName='var6043'></app-variable-manual></div>
+                <div class="col-sm-2"style="background-color:#cccccc;"><app-variable-manual [idactividad]='6049' formControlName='var6049'></app-variable-manual></div>
+                <div class="col-sm-2"style="background-color:#cccccc;"><app-variable-manual [idactividad]='6055' formControlName='var6055'></app-variable-manual></div>
+                <div class="col-sm-1"style="background-color:#cccccc;"><app-variable-manual [idactividad]='6061' formControlName='var6061'></app-variable-manual></div>
+                <div class="col-sm-1"style="background-color:#cccccc;"><app-variable-manual [idactividad]='6067' formControlName='var6067'></app-variable-manual></div>
+                <div class="col-sm-1"style="background-color:#cccccc;"><app-variable-manual [idactividad]='6074' formControlName='var6073'></app-variable-manual></div>
+            </div>
+    
+
+
+
+          
+        </div>
+ 
+    
+
+
+        <div class="container">
+
+            <p>FUENTES EXTERNAS</p>
+                <div class="row">
+                
+                  
+                   
+                    <div class="col-lg-4"style="background-color:lavender;">CETIFICADO DE DEFUNCION</div>
+                    <div class="col-lg-4"style="background-color:lavender;"><app-variable-manual [idactividad]='6074' formControlName='var6074'></app-variable-manual></div>
+
+                
+                </div>
+                <div class="row">
+                    <div class="col-lg-4"style="background-color:lavender;">REPORTE DE EGRESOS</div>
+                    <div class="col-lg-4"style="background-color:lavender;"><app-variable-manual [idactividad]='6075' formControlName='var6075'></app-variable-manual></div>
+                </div>      
+            </div>
+        
+        
+
+
+<div class="row">
+    <div class="col-md-3"></div>
+    <div class="col-md-3"></div>
+    <div class="col-md-3"><p-button label="GUARDAR" (click)="GuardarDatos2()" ></p-button></div>
+    <div class="col-md-3"></div>
+</div>
+
+</form>
+</p-panel>
+
+
+
+
+
+
+
+
+<p-panel header="VARIABLES MANUALES" [toggleable]="true" [style]="{ 'margin-bottom': '20px' }">
+    <div class="ui-md-4">
+        <h5>Seleccione Ipress</h5>
+        <p-dropdown [options]="establecimientos" [(ngModel)]="establecimiento" (onChange)="cambioIpress()"></p-dropdown>
+    </div>
+    <div class="ui-md-4">
+        <h5>Seleccione Periodo a Registrar</h5>
+        <p-calendar [(ngModel)]="periodoselec" view="month" dateFormat="mm/yy" [yearNavigator]="true" yearRange="2000:2030" [readonlyInput]="true" (onSelect)="mesCambia($event)"></p-calendar>
+    </div>
+    <div class="ui-md-4"></div>
+<form [formGroup]="FormularioVariables2">
+
+
+    <div class="container-fluid">
+
+        <p>ATENCION DEL PARTO INSTITUCIONAL</p>
+            <div class="row">
+                         
+                <div class="col-sm-2"style="background-color:#cccccc;">FON</div>
+                <div class="col-sm-1"style="background-color:#cccccc;">GIN OBSTETRA</div>
+                <div class="col-sm-1"style="background-color:#cccccc;">MEDICO GENERAL</div>
+                <div class="col-sm-1"style="background-color:#cccccc;">OBST</div>
+                <div class="col-sm-1"style="background-color:#cccccc;">OTROS PROF</div>
+                <div class="col-sm-1"style="background-color:#cccccc;">TEC ENF</div>
+                <div class="col-sm-1"style="background-color:#cccccc;">TOTAL RN VIVOS</div>
+                <div class="col-sm-1"style="background-color:#cccccc;">TOTAL RN MUERTOS</div>
+            </div>
+            <div class="row">
+                <div class="col-sm-2"style="background-color:#cccccc;">FON I</div>
+                <div class="col-sm-1"style="background-color:#cccccc;"><app-variable-manual [idactividad]='1' formControlName='var1'></app-variable-manual></div>
+                <div class="col-sm-1"style="background-color:#cccccc;"><app-variable-manual [idactividad]='504' formControlName='var504'></app-variable-manual></div>
+                <div class="col-sm-1"style="background-color:#cccccc;"><app-variable-manual [idactividad]='7' formControlName='var7'></app-variable-manual></div>
+                <div class="col-sm-1"style="background-color:#cccccc;"><app-variable-manual [idactividad]='5012' formControlName='var5012'></app-variable-manual></div>
+                <div class="col-sm-1"style="background-color:#cccccc;"><app-variable-manual [idactividad]='5016' formControlName='var5016'></app-variable-manual></div>
+                <div class="col-sm-1"style="background-color:#cccccc;"><app-variable-manual [idactividad]='5024' formControlName='var5024'></app-variable-manual></div>
+                <div class="col-sm-1"style="background-color:#cccccc;"><app-variable-manual [idactividad]='5028' formControlName='var5028'></app-variable-manual></div>
+            
+            </div>
+    
+            <div class="row">
+                <div class="col-sm-2"style="background-color:#cccccc;">FON E</div>
+                <div class="col-sm-1"style="background-color:#cccccc;"><app-variable-manual [idactividad]='5001' formControlName='var5001'></app-variable-manual></div>
+                <div class="col-sm-1"style="background-color:#cccccc;"><app-variable-manual [idactividad]='5005' formControlName='var5005'></app-variable-manual></div>
+                <div class="col-sm-1"style="background-color:#cccccc;"><app-variable-manual [idactividad]='5009' formControlName='var5009'></app-variable-manual></div>
+                <div class="col-sm-1"style="background-color:#cccccc;"><app-variable-manual [idactividad]='5013' formControlName='var5013'></app-variable-manual></div>
+                <div class="col-sm-1"style="background-color:#cccccc;"><app-variable-manual [idactividad]='5017' formControlName='var5017'></app-variable-manual></div>
+                <div class="col-sm-1"style="background-color:#cccccc;"><app-variable-manual [idactividad]='5025' formControlName='var5025'></app-variable-manual></div>
+                <div class="col-sm-1"style="background-color:#cccccc;"><app-variable-manual [idactividad]='5029' formControlName='var5029'></app-variable-manual></div>
+           
+            </div>
+
+
+            <div class="row">
+                <div class="col-sm-2"style="background-color:#cccccc;">FON B</div>
+                <div class="col-sm-1"style="background-color:#cccccc;"><app-variable-manual [idactividad]='5002' formControlName='var5002'></app-variable-manual></div>
+                <div class="col-sm-1"style="background-color:#cccccc;"><app-variable-manual [idactividad]='5006' formControlName='var5006'></app-variable-manual></div>
+                <div class="col-sm-1"style="background-color:#cccccc;"><app-variable-manual [idactividad]='5010' formControlName='var5010'></app-variable-manual></div>
+                <div class="col-sm-1"style="background-color:#cccccc;"><app-variable-manual [idactividad]='5014' formControlName='var5014'></app-variable-manual></div>
+                <div class="col-sm-1"style="background-color:#cccccc;"><app-variable-manual [idactividad]='5018' formControlName='var5018'></app-variable-manual></div>
+                <div class="col-sm-1"style="background-color:#cccccc;"><app-variable-manual [idactividad]='5026' formControlName='var5026'></app-variable-manual></div>
+                <div class="col-sm-1"style="background-color:#cccccc;"><app-variable-manual [idactividad]='5030' formControlName='var5030'></app-variable-manual></div>
+           
+            </div>
+
+
+            <div class="row">
+                <div class="col-sm-2"style="background-color:#cccccc;">FON P</div>
+                <div class="col-sm-1"style="background-color:#cccccc;"><app-variable-manual [idactividad]='5003' formControlName='var5003'></app-variable-manual></div>
+                <div class="col-sm-1"style="background-color:#cccccc;"><app-variable-manual [idactividad]='5007' formControlName='var5007'></app-variable-manual></div>
+                <div class="col-sm-1"style="background-color:#cccccc;"><app-variable-manual [idactividad]='5011' formControlName='var5011'></app-variable-manual></div>
+                <div class="col-sm-1"style="background-color:#cccccc;"><app-variable-manual [idactividad]='5015' formControlName='var5015'></app-variable-manual></div>
+                <div class="col-sm-1"style="background-color:#cccccc;"><app-variable-manual [idactividad]='5019' formControlName='var5019'></app-variable-manual></div>
+                <div class="col-sm-1"style="background-color:#cccccc;"><app-variable-manual [idactividad]='5027' formControlName='var5027'></app-variable-manual></div>
+                <div class="col-sm-1"style="background-color:#cccccc;"><app-variable-manual [idactividad]='5031' formControlName='var5031'></app-variable-manual></div>
+           
+            </div>
+    
+        </div>
+ 
+
+
+
+        
+    <div class="container-fluid">
+        <BR>
+
+        <p>ATENCION DEL PARTO DOMICILIARIO ATENCION DE PARTO TRAYECTO AL EESS</p>
+            <div class="row">
+                <div class="col-lg-2" style="background-color:rgb(26, 163, 187);">
+                    QUIEN ATIENDE?
+                  </div>
+    
+                  <div class="col-lg-1" style="background-color:rgb(26, 163, 187);">
+                    NUMERO DE PARTOS
+                  </div>
+
+                  <div class="col-lg-1" style="background-color:rgb(26, 163, 187);">
+                    TOTAL RN VIVOS
+                  </div>      
+
+             
+
+                  <div class="col-lg-1" style="background-color:rgb(26, 163, 187);">
+                    TOTAL RN MUERTOS
+                  </div>   
+
+                  <div class="col-lg-2" style="background-color:rgb(34, 145, 189);">
+                    QUIEN ATIENDE?
+                  </div>
+    
+                  <div class="col-lg-1" style="background-color:rgb(34, 145, 189);">
+                    NUMERO DE PARTOS
+                  </div>
+
+                  <div class="col-lg-1" style="background-color:rgb(34, 145, 189);">
+                    TOTAL RN VIVOS
+                  </div>      
+
+          
+
+                  <div class="col-lg-1" style="background-color:rgb(34, 145, 189);">
+                    TOTAL RN MUERTOS
+                    </div>
+        
+        </div>
+
+        <div class="row">
+            <div class="col-lg-5" style="background-color:rgb(24, 230, 151);">
+                ATENCION DE PARTO EN DOMICILIO -
+              </div>
+
+              <div class="col-lg-5" style="background-color:rgb(93, 148, 60);">
+                ATENCION DE PARTO EN EL TRAYECTO AL EE.SS 
+              </div>
+    
+    </div>
+
+        <div class="row">
+            <div class="col-lg-2"style="background-color:#cccccc;">PER DE SALUD</div>
+            <div class="col-lg-1"style="background-color:#cccccc;"><app-variable-manual [idactividad]='21' formControlName='var21'></app-variable-manual></div>
+            <div class="col-lg-1"style="background-color:#cccccc;"><app-variable-manual [idactividad]='25' formControlName='var25'></app-variable-manual></div>
+            <div class="col-lg-1"style="background-color:#cccccc;"><app-variable-manual [idactividad]='29' formControlName='var29'></app-variable-manual></div>
+            <div class="col-lg-2"style="background-color:#cccccc;">PER DE SALUD</div>
+            <div class="col-lg-1"style="background-color:#cccccc;"><app-variable-manual [idactividad]='33' formControlName='var33'></app-variable-manual></div>
+            <div class="col-lg-1"style="background-color:#cccccc;"><app-variable-manual [idactividad]='37' formControlName='var37'></app-variable-manual></div>
+            <div class="col-lg-1"style="background-color:#cccccc;"><app-variable-manual [idactividad]='41' formControlName='var41'></app-variable-manual></div>
+        
+        </div>
+   
+        <div class="row">
+            <div class="col-lg-2"style="background-color:#cccccc;">ACS</div>
+            <div class="col-lg-1"style="background-color:#cccccc;"><app-variable-manual [idactividad]='22' formControlName='var22'></app-variable-manual></div>
+            <div class="col-lg-1"style="background-color:#cccccc;"><app-variable-manual [idactividad]='26' formControlName='var26'></app-variable-manual></div>
+            <div class="col-lg-1"style="background-color:#cccccc;"><app-variable-manual [idactividad]='30' formControlName='var30'></app-variable-manual></div>
+            <div class="col-lg-2"style="background-color:#cccccc;">ACS</div>
+            <div class="col-lg-1"style="background-color:#cccccc;"><app-variable-manual [idactividad]='34' formControlName='var34'></app-variable-manual></div>
+            <div class="col-lg-1"style="background-color:#cccccc;"><app-variable-manual [idactividad]='38' formControlName='var38'></app-variable-manual></div>
+            <div class="col-lg-1"style="background-color:#cccccc;"><app-variable-manual [idactividad]='42' formControlName='var42'></app-variable-manual></div>
+        
+        </div>
+   
+        <div class="row">
+            <div class="col-lg-2"style="background-color:#cccccc;">FAMILIAR</div>
+            <div class="col-lg-1"style="background-color:#cccccc;"><app-variable-manual [idactividad]='23' formControlName='var23'></app-variable-manual></div>
+            <div class="col-lg-1"style="background-color:#cccccc;"><app-variable-manual [idactividad]='27' formControlName='var27'></app-variable-manual></div>
+            <div class="col-lg-1"style="background-color:#cccccc;"><app-variable-manual [idactividad]='31' formControlName='var31'></app-variable-manual></div>
+            <div class="col-lg-2"style="background-color:#cccccc;">FAMILIAR</div>
+            <div class="col-lg-1"style="background-color:#cccccc;"><app-variable-manual [idactividad]='35' formControlName='var35'></app-variable-manual></div>
+            <div class="col-lg-1"style="background-color:#cccccc;"><app-variable-manual [idactividad]='39' formControlName='var39'></app-variable-manual></div>
+            <div class="col-lg-1"style="background-color:#cccccc;"><app-variable-manual [idactividad]='43' formControlName='var43'></app-variable-manual></div>
+        
+        </div>
+   
+
+        <div class="row">
+            <div class="col-lg-2"style="background-color:#cccccc;">OTROS</div>
+            <div class="col-lg-1"style="background-color:#cccccc;"><app-variable-manual [idactividad]='24' formControlName='var24'></app-variable-manual></div>
+            <div class="col-lg-1"style="background-color:#cccccc;"><app-variable-manual [idactividad]='28' formControlName='var28'></app-variable-manual></div>
+            <div class="col-lg-1"style="background-color:#cccccc;"><app-variable-manual [idactividad]='32' formControlName='var32'></app-variable-manual></div>
+            <div class="col-lg-2"style="background-color:#cccccc;">OTROS</div>
+            <div class="col-lg-1"style="background-color:#cccccc;"><app-variable-manual [idactividad]='36' formControlName='var36'></app-variable-manual></div>
+            <div class="col-lg-1"style="background-color:#cccccc;"><app-variable-manual [idactividad]='40' formControlName='var40'></app-variable-manual></div>
+            <div class="col-lg-1"style="background-color:#cccccc;"><app-variable-manual [idactividad]='44' formControlName='var44'></app-variable-manual></div>
+        
+        </div>
+    
+    
+        </div>
+
+
+
+
+
+        
+
+        
+    <div class="container-fluid">
+        <BR>
+
+        <p>NFORMACION REFERENTE SOLO A LA ATENCION DE PARTOS INSTITUCIONALES</p>
+            <div class="row">
+                <div class="col-lg-12" style="background-color:rgb(26, 163, 187);">
+                    PARTOS INSTITUCIONALES
+                  </div>
+    
+                
+        
+        </div>
+
+        <div class="row">
+            <div class="col-lg-6" style="background-color:rgb(24, 230, 151);">
+              
+              </div>
+
+              <div class="col-lg-6" style="background-color:rgb(93, 148, 60);">
+               
+              </div>
+    
+    </div>
+
+        <div class="row">
+            <div class="col-lg-4"style="background-color:#cccccc;">ATENCION PARTO VAGINAL NO COMPLICADO</div>
+            <div class="col-lg-2"style="background-color:#cccccc;"><app-variable-manual [idactividad]='5056' formControlName='var5056'></app-variable-manual></div>
+            <div class="col-lg-4"style="background-color:#cccccc;">ATENCION PARTO EN ADOLECENTES</div>
+            <div class="col-lg-2"style="background-color:#cccccc;"><app-variable-manual [idactividad]='5065' formControlName='var5065'></app-variable-manual></div>
+       
+        </div>
+   
+
+        <div class="row">
+            <div class="col-lg-4"style="background-color:#cccccc;">ATENC PARTO COMPLICADO NO QUIRURGICO</div>
+            <div class="col-lg-2"style="background-color:#cccccc;"><app-variable-manual [idactividad]='5057' formControlName='var5057'></app-variable-manual></div>
+            <div class="col-lg-4"style="background-color:#cccccc;">ATENCION DE PARTO MENORES A 12 AñOS</div>
+            <div class="col-lg-2"style="background-color:#cccccc;"><app-variable-manual [idactividad]='5066' formControlName='var5066'></app-variable-manual></div>
+       
+        </div>
+   
+        <div class="row">
+            <div class="col-lg-4"style="background-color:#cccccc;">Cesarea (Atencion de Parto Complicado Qx</div>
+            <div class="col-lg-2"style="background-color:#cccccc;"><app-variable-manual [idactividad]='5058' formControlName='var5058'></app-variable-manual></div>
+            <div class="col-lg-4"style="background-color:#cccccc;">Manejo Activo en 3ra. Etapa de Parto</div>
+            <div class="col-lg-2"style="background-color:#cccccc;"><app-variable-manual [idactividad]='5067' formControlName='var5067'></app-variable-manual></div>
+       
+        </div>
+
+
+        <div class="row">
+            <div class="col-lg-4"style="background-color:#cccccc;">PARTO GEMELAR</div>
+            <div class="col-lg-2"style="background-color:#cccccc;"><app-variable-manual [idactividad]='5059' formControlName='var5059'></app-variable-manual></div>
+            <div class="col-lg-4"style="background-color:#cccccc;">1ra Prueba Rapida para VIH en Trabajo de Parto</div>
+            <div class="col-lg-2"style="background-color:#cccccc;"><app-variable-manual [idactividad]='5068' formControlName='var5068'></app-variable-manual></div>
+       
+        </div>
+    
+
+        <div class="row">
+            <div class="col-lg-4"style="background-color:#cccccc;">PARTO CON TRILLIZOS</div>
+            <div class="col-lg-2"style="background-color:#cccccc;"><app-variable-manual [idactividad]='5060' formControlName='var5060'></app-variable-manual></div>
+            <div class="col-lg-4"style="background-color:#cccccc;">1ra. Prueba Rapida VIH en Trabajo de Parto Reactivo</div>
+            <div class="col-lg-2"style="background-color:#cccccc;"><app-variable-manual [idactividad]='5069' formControlName='var5069'></app-variable-manual></div>
+       
+        </div>
+
+
+        <div class="row">
+            <div class="col-lg-4"style="background-color:#cccccc;">OTRO PARTO MULTIPLE</div>
+            <div class="col-lg-2"style="background-color:#cccccc;"><app-variable-manual [idactividad]='5061' formControlName='var5061'></app-variable-manual></div>
+            <div class="col-lg-4"style="background-color:#cccccc;">Partos prematuros (< 37ss ) con esquema completo de corticoides prenatales</div>
+            <div class="col-lg-2"style="background-color:#cccccc;"><app-variable-manual [idactividad]='5070' formControlName='var5070'></app-variable-manual></div>
+       
+        </div>
+
+        <div class="row">
+            <div class="col-lg-4"style="background-color:#cccccc;">PARTO VERTICAL</div>
+            <div class="col-lg-2"style="background-color:#cccccc;"><app-variable-manual [idactividad]='5062' formControlName='var5062'></app-variable-manual></div>
+            <div class="col-lg-4"style="background-color:#cccccc;">Atencion del RN Normal</div>
+            <div class="col-lg-2"style="background-color:#cccccc;"><app-variable-manual [idactividad]='5071' formControlName='var5071'></app-variable-manual></div>
+       
+        </div>
+
+        <div class="row">
+            <div class="col-lg-4"style="background-color:#cccccc;">PARTO PODALICO</div>
+            <div class="col-lg-2"style="background-color:#cccccc;"><app-variable-manual [idactividad]='5063' formControlName='var5063'></app-variable-manual></div>
+            <div class="col-lg-4"style="background-color:#cccccc;">Atención de RN con Complicaciones</div>
+            <div class="col-lg-2"style="background-color:#cccccc;"><app-variable-manual [idactividad]='5072' formControlName='var5072'></app-variable-manual></div>
+       
+        </div>
+
+        <div class="row">
+            <div class="col-lg-4"style="background-color:#cccccc;">Parto en Gestante Controlada</div>
+            <div class="col-lg-2"style="background-color:#cccccc;"><app-variable-manual [idactividad]='5064' formControlName='var5064'></app-variable-manual></div>
+            <div class="col-lg-4"style="background-color:#cccccc;">Clampaje Oportuno</div>
+            <div class="col-lg-2"style="background-color:#cccccc;"><app-variable-manual [idactividad]='5142' formControlName='var5142'></app-variable-manual></div>
+       
+        </div>
+        </div>
+ 
+ 
+
+
+        
+        
+    <div class="container-fluid">
+        <BR>
+
+       
+            <div class="row">
+                <div class="col-lg-12" style="background-color:rgb(26, 163, 187);">
+                    ATENCION DE ABORTO
+                  </div>
+    
+                
+        
+        </div>
+
+        <div class="row">
+            <div class="col-lg-3" style="background-color:rgb(93, 148, 60);">
+              FON
+              </div>
+
+              <div class="col-lg-3" style="background-color:rgb(93, 148, 60);">
+               AMEU
+              </div>
+
+              <div class="col-lg-3" style="background-color:rgb(93, 148, 60);">
+                LEGRADO UTERINO
+               </div>
+
+               <div class="col-lg-3" style="background-color:rgb(93, 148, 60);">
+                ABORTO SEPTICO
+               </div>
+     
+    
+    </div>
+
+        <div class="row">
+            <div class="col-lg-3"style="background-color:#cccccc;"><12</div>
+            <div class="col-lg-3"style="background-color:#cccccc;"><app-variable-manual [idactividad]='5088' formControlName='var5088'></app-variable-manual></div>
+            <div class="col-lg-3"style="background-color:#cccccc;"><app-variable-manual [idactividad]='5092' formControlName='var5092'></app-variable-manual></div>
+            <div class="col-lg-3"style="background-color:#cccccc;"><app-variable-manual [idactividad]='5096' formControlName='var5096'></app-variable-manual></div>
+            
+        </div>
+        <div class="row">
+            <div class="col-lg-3"style="background-color:#cccccc;">12-17</div>
+            <div class="col-lg-3"style="background-color:#cccccc;"><app-variable-manual [idactividad]='5089' formControlName='var5089'></app-variable-manual></div>
+            <div class="col-lg-3"style="background-color:#cccccc;"><app-variable-manual [idactividad]='5093' formControlName='var5093'></app-variable-manual></div>
+            <div class="col-lg-3"style="background-color:#cccccc;"><app-variable-manual [idactividad]='5097' formControlName='var5097'></app-variable-manual></div>
+            
+        </div>
+   
+        <div class="row">
+            <div class="col-lg-3"style="background-color:#cccccc;">18-29</div>
+            <div class="col-lg-3"style="background-color:#cccccc;"><app-variable-manual [idactividad]='5090' formControlName='var5090'></app-variable-manual></div>
+            <div class="col-lg-3"style="background-color:#cccccc;"><app-variable-manual [idactividad]='5094' formControlName='var5094'></app-variable-manual></div>
+            <div class="col-lg-3"style="background-color:#cccccc;"><app-variable-manual [idactividad]='5098' formControlName='var5098'></app-variable-manual></div>
+            
+        </div>
+   
+        <div class="row">
+            <div class="col-lg-3"style="background-color:#cccccc;">30-59</div>
+            <div class="col-lg-3"style="background-color:#cccccc;"><app-variable-manual [idactividad]='5091' formControlName='var5091'></app-variable-manual></div>
+            <div class="col-lg-3"style="background-color:#cccccc;"><app-variable-manual [idactividad]='5095' formControlName='var5095'></app-variable-manual></div>
+            <div class="col-lg-3"style="background-color:#cccccc;"><app-variable-manual [idactividad]='5099' formControlName='var5099'></app-variable-manual></div>
+            
+        </div>
+   
+        <BR>
+        <p>XI REFERENCIAS OBSTETRICAS Y NEONATALES</p>
+
+        <p-scrollPanel [style]="{width: '100%', height: '200px'}">
+
+
+            <div class="row">
+           
+            <div class="col-lg-3" style="background-color:rgb(142, 164, 206);">
+                
+               </div>
+    
+                  <div class="col-lg-4" style="background-color:rgb(184, 190, 87);">
+                   EMERGENCIA
+                  </div>
+    
+                  <div class="col-lg-4" style="background-color:rgb(184, 190, 87);">
+                    CONSULTA
+                   </div>
+
+        </div>
+
+        <div class="row">
+           
+            <div class="col-lg-3" style="background-color:rgb(142, 164, 206);">
+                FON
+               </div>
+    
+                  <div class="col-lg-2" style="background-color:rgb(93, 148, 60);">
+                   OBSTETRA
+                  </div>
+    
+                  <div class="col-lg-2" style="background-color:rgb(93, 148, 60);">
+                    RN
+                   </div>
+
+                   <div class="col-lg-2" style="background-color:rgb(93, 148, 60);">
+                    OBSTETRA
+                   </div>
+     
+                   <div class="col-lg-2" style="background-color:rgb(93, 148, 60);">
+                     RN
+                    </div>
+
+        </div>
+
+
+
+        <div class="row">
+            <div class="col-lg-3"style="background-color:#cccccc;">DE FON P</div>
+            <div class="col-lg-2"style="background-color:#cccccc;"><app-variable-manual [idactividad]='5100' formControlName='var5100'></app-variable-manual></div>
+            <div class="col-lg-2"style="background-color:#cccccc;"><app-variable-manual [idactividad]='5103' formControlName='var5103'></app-variable-manual></div>
+            <div class="col-lg-2"style="background-color:#cccccc;"><app-variable-manual [idactividad]='5106' formControlName='var5106'></app-variable-manual></div>
+            <div class="col-lg-2"style="background-color:#cccccc;"><app-variable-manual [idactividad]='5109' formControlName='var5109'></app-variable-manual></div>
+            
+        </div>
+
+        <div class="row">
+            <div class="col-lg-3"style="background-color:#cccccc;">DE FON B</div>
+            <div class="col-lg-2"style="background-color:#cccccc;"><app-variable-manual [idactividad]='5101' formControlName='var5101'></app-variable-manual></div>
+            <div class="col-lg-2"style="background-color:#cccccc;"><app-variable-manual [idactividad]='5104' formControlName='var5104'></app-variable-manual></div>
+            <div class="col-lg-2"style="background-color:#cccccc;"><app-variable-manual [idactividad]='5107' formControlName='var5107'></app-variable-manual></div>
+            <div class="col-lg-2"style="background-color:#cccccc;"><app-variable-manual [idactividad]='5110' formControlName='var5110'></app-variable-manual></div>
+            
+        </div>
+
+        <div class="row">
+            <div class="col-lg-3"style="background-color:#cccccc;">DE FON E</div>
+            <div class="col-lg-2"style="background-color:#cccccc;"><app-variable-manual [idactividad]='5102' formControlName='var5102'></app-variable-manual></div>
+            <div class="col-lg-2"style="background-color:#cccccc;"><app-variable-manual [idactividad]='5105' formControlName='var5105'></app-variable-manual></div>
+            <div class="col-lg-2"style="background-color:#cccccc;"><app-variable-manual [idactividad]='5108' formControlName='var5108'></app-variable-manual></div>
+            <div class="col-lg-2"style="background-color:#cccccc;"><app-variable-manual [idactividad]='5111' formControlName='var5111'></app-variable-manual></div>
+            
+        </div>
+   
+        </p-scrollPanel>
+    
+
+
+        <BR>
+            <p>CUMPLIMIENTO DE PAQUETE BASICO</p>
+    
+            <p-scrollPanel [style]="{width: '100%', height: '200px'}">
+    
+    
+           
+    
+            <div class="row">
+               
+                <div class="col-lg-2" style="background-color:rgb(142, 164, 206);">
+                    FON
+                   </div>
+        
+                      <div class="col-lg-1" style="background-color:rgb(93, 148, 60);">
+                       LABORATORIO
+                      </div>
+        
+                      <div class="col-lg-1" style="background-color:rgb(93, 148, 60);">
+                        ECOGRAFIA
+                       </div>
+    
+                       <div class="col-lg-1" style="background-color:rgb(93, 148, 60);">
+                        EBF
+                       </div>
+         
+                       <div class="col-lg-1" style="background-color:rgb(93, 148, 60);">
+                         ESTIM PRENA
+                        </div>
+
+                        <div class="col-lg-1" style="background-color:rgb(93, 148, 60);">
+                            PSICO PROFI
+                           </div>
+    
+                           
+                        <div class="col-lg-1" style="background-color:rgb(93, 148, 60);">
+                            Odonto
+                           </div>
+
+                              
+                        <div class="col-lg-1" style="background-color:rgb(93, 148, 60);">
+                            Nutricion
+                           </div>
+            </div>
+    
+    
+    
+            <div class="row">
+                <div class="col-lg-2"style="background-color:#cccccc;">DE FON P</div>
+                <div class="col-lg-1"style="background-color:#cccccc;"><app-variable-manual [idactividad]='5112' formControlName='var5112'></app-variable-manual></div>
+                <div class="col-lg-1"style="background-color:#cccccc;"><app-variable-manual [idactividad]='5115' formControlName='var5115'></app-variable-manual></div>
+                <div class="col-lg-1"style="background-color:#cccccc;"><app-variable-manual [idactividad]='5118' formControlName='var5118'></app-variable-manual></div>
+                <div class="col-lg-1"style="background-color:#cccccc;"><app-variable-manual [idactividad]='5121' formControlName='var5121'></app-variable-manual></div>
+                <div class="col-lg-1"style="background-color:#cccccc;"><app-variable-manual [idactividad]='5124' formControlName='var5124'></app-variable-manual></div>
+                <div class="col-lg-1"style="background-color:#cccccc;"><app-variable-manual [idactividad]='5127' formControlName='var5127'></app-variable-manual></div>
+                <div class="col-lg-1"style="background-color:#cccccc;"><app-variable-manual [idactividad]='5130' formControlName='var5130'></app-variable-manual></div>
+            
+                
+            </div>
+    
+            <div class="row">
+                <div class="col-lg-2"style="background-color:#cccccc;">DE FON B</div>
+                <div class="col-lg-1"style="background-color:#cccccc;"><app-variable-manual [idactividad]='5113' formControlName='var5113'></app-variable-manual></div>
+                <div class="col-lg-1"style="background-color:#cccccc;"><app-variable-manual [idactividad]='5116' formControlName='var5116'></app-variable-manual></div>
+                <div class="col-lg-1"style="background-color:#cccccc;"><app-variable-manual [idactividad]='5119' formControlName='var5119'></app-variable-manual></div>
+                <div class="col-lg-1"style="background-color:#cccccc;"><app-variable-manual [idactividad]='5122' formControlName='var5122'></app-variable-manual></div>
+                <div class="col-lg-1"style="background-color:#cccccc;"><app-variable-manual [idactividad]='5125' formControlName='var5125'></app-variable-manual></div>
+                <div class="col-lg-1"style="background-color:#cccccc;"><app-variable-manual [idactividad]='5128' formControlName='var5128'></app-variable-manual></div>
+                <div class="col-lg-1"style="background-color:#cccccc;"><app-variable-manual [idactividad]='5131' formControlName='var5131'></app-variable-manual></div>
+            
+                
+            </div>
+    
+            <div class="row">
+                <div class="col-lg-2"style="background-color:#cccccc;">DE FON E</div>
+                <div class="col-lg-1"style="background-color:#cccccc;"><app-variable-manual [idactividad]='5114' formControlName='var5114'></app-variable-manual></div>
+                <div class="col-lg-1"style="background-color:#cccccc;"><app-variable-manual [idactividad]='5117' formControlName='var5117'></app-variable-manual></div>
+                <div class="col-lg-1"style="background-color:#cccccc;"><app-variable-manual [idactividad]='5120' formControlName='var5120'></app-variable-manual></div>
+                <div class="col-lg-1"style="background-color:#cccccc;"><app-variable-manual [idactividad]='5123' formControlName='var5123'></app-variable-manual></div>
+                <div class="col-lg-1"style="background-color:#cccccc;"><app-variable-manual [idactividad]='5126' formControlName='var5126'></app-variable-manual></div>
+                <div class="col-lg-1"style="background-color:#cccccc;"><app-variable-manual [idactividad]='5129' formControlName='var5129'></app-variable-manual></div>
+                <div class="col-lg-1"style="background-color:#cccccc;"><app-variable-manual [idactividad]='5132' formControlName='var5132'></app-variable-manual></div>
+            
+                
+            </div>
+    
+       
+            </p-scrollPanel>
+        
+     
+    
+
+
+
+
+        <BR>
+            <p>AYUDA AL DIAGNOSTICO</p>
+    
+            <p-scrollPanel [style]="{width: '100%', height: '200px'}">
+    
+    
+           
+    
+            <div class="row">
+               
+                <div class="col-lg-3" style="background-color:rgb(142, 164, 206);">
+                    FON
+                   </div>
+        
+                      <div class="col-lg-3" style="background-color:rgb(93, 148, 60);">
+                       OBSTETRICAS
+                      </div>
+        
+                      <div class="col-lg-3" style="background-color:rgb(93, 148, 60);">
+                        RECIEN NACIDO
+                       </div>
+    
+                       <div class="col-lg-3" style="background-color:rgb(93, 148, 60);">
+                        PARTOS
+                       </div>
+         
+                      
+            </div>
+    
+    
+    
+            <div class="row">
+                <div class="col-lg-3"style="background-color:#cccccc;">DE FON P</div>
+                <div class="col-lg-3"style="background-color:#cccccc;"><app-variable-manual [idactividad]='5133' formControlName='var5133'></app-variable-manual></div>
+                <div class="col-lg-3"style="background-color:#cccccc;"><app-variable-manual [idactividad]='5136' formControlName='var5136'></app-variable-manual></div>
+                <div class="col-lg-3"style="background-color:#cccccc;"><app-variable-manual [idactividad]='5139' formControlName='var5139'></app-variable-manual></div>
+    
+            
+                
+            </div>
+    
+     
+    
+            <div class="row">
+                <div class="col-lg-3"style="background-color:#cccccc;">DE FON B</div>
+                <div class="col-lg-3"style="background-color:#cccccc;"><app-variable-manual [idactividad]='5134' formControlName='var5134'></app-variable-manual></div>
+                <div class="col-lg-3"style="background-color:#cccccc;"><app-variable-manual [idactividad]='5137' formControlName='var5137'></app-variable-manual></div>
+                <div class="col-lg-3"style="background-color:#cccccc;"><app-variable-manual [idactividad]='5140' formControlName='var5140'></app-variable-manual></div>
+    
+            
+                
+            </div>
+    
+     
+            <div class="row">
+                <div class="col-lg-3"style="background-color:#cccccc;">DE FON E</div>
+                <div class="col-lg-3"style="background-color:#cccccc;"><app-variable-manual [idactividad]='5135' formControlName='var5135'></app-variable-manual></div>
+                <div class="col-lg-3"style="background-color:#cccccc;"><app-variable-manual [idactividad]='5138' formControlName='var5138'></app-variable-manual></div>
+                <div class="col-lg-3"style="background-color:#cccccc;"><app-variable-manual [idactividad]='5141' formControlName='var5141'></app-variable-manual></div>
+    
+            
+                
+            </div>
+    
+       
+        </p-scrollPanel>
+    
+ 
+   
+        
+        <div class="container-fluid">
+            <BR>
+    
+          
+                <div class="row">
+                    <div class="col-lg-6" style="background-color:rgb(26, 163, 187);">
+                        III CASA MATERNA
+                      </div>
+        
+                      <div class="col-lg-6" style="background-color:rgb(26, 163, 187);">
+                        VII MUERTES PERINATALES NEONATALES
+                      </div>
+        
+            
+            </div>
+    
+     
+    
+            <div class="row">
+                <div class="col-lg-4"style="background-color:#cccccc;">OPERATIVAS</div>
+                <div class="col-lg-2"style="background-color:#cccccc;"><app-variable-manual [idactividad]='5073' formControlName='var5073'></app-variable-manual></div>
+                <div class="col-lg-4"style="background-color:#cccccc;">OBITOS FETALES</div>
+                <div class="col-lg-2"style="background-color:#cccccc;"><app-variable-manual [idactividad]='5083' formControlName='var5083'></app-variable-manual></div>
+           
+            </div>
+       
+    
+          
+        
+            <div class="row">
+                <div class="col-lg-4"style="background-color:#cccccc;">Utilizadas en el mes</div>
+                <div class="col-lg-2"style="background-color:#cccccc;"><app-variable-manual [idactividad]='5074' formControlName='var5074'></app-variable-manual></div>
+                <div class="col-lg-4"style="background-color:#cccccc;">Utilizadas en el mes</div>
+                <div class="col-lg-2"style="background-color:#cccccc;"><app-variable-manual [idactividad]='5084' formControlName='var5084'></app-variable-manual></div>
+           
+            </div>
+       
+    
+    
+            <div class="row">
+                <div class="col-lg-4"style="background-color:#cccccc;">GESTANTE ALOJADAS</div>
+                <div class="col-lg-2"style="background-color:#cccccc;"><app-variable-manual [idactividad]='5075' formControlName='var5075'></app-variable-manual></div>
+                <div class="col-lg-4"style="background-color:#cccccc;">Neonatos de 1d - 7d</div>
+                <div class="col-lg-2"style="background-color:#cccccc;"><app-variable-manual [idactividad]='5085' formControlName='var5085'></app-variable-manual></div>
+           
+            </div>
+       
+    
+            <div class="row">
+                <div class="col-lg-4"style="background-color:#cccccc;">PUERPERAS ALOJADAS</div>
+                <div class="col-lg-2"style="background-color:#cccccc;"><app-variable-manual [idactividad]='5076' formControlName='var5076'></app-variable-manual></div>
+                <div class="col-lg-4"style="background-color:#cccccc;">Neonatos de 8d - 28d</div>
+                <div class="col-lg-2"style="background-color:#cccccc;"><app-variable-manual [idactividad]='5086' formControlName='var5086'></app-variable-manual></div>
+           
+            </div>
+       
+    
+           
+            <div class="row">
+                <div class="col-lg-4"style="background-color:#cccccc;">RN ALOJADAS</div>
+                <div class="col-lg-2"style="background-color:#cccccc;"><app-variable-manual [idactividad]='5077' formControlName='var5077'></app-variable-manual></div>
+                <div class="col-lg-4"style="background-color:#cccccc;">TOTAL DE NEONATOS</div>
+                <div class="col-lg-2"style="background-color:#cccccc;"><app-variable-manual [idactividad]='5087' formControlName='var5087'></app-variable-manual></div>
+           
+            </div>
+       
+    
+    
+    
+         
+            </div>
+     
+
+        
+  
+     
+        <BR>
+
+
+            
+        <div class="container-fluid">
+            <BR>
+    
+          
+                <div class="row">
+                    <div class="col-lg-4" style="background-color:rgb(26, 163, 187);">
+                        MUERTES MATERNAS
+                      </div>
+        
+                      <div class="col-lg-2" style="background-color:rgb(26, 163, 187);">
+                        EVITADAS
+                      </div>
+        
+                      <div class="col-lg-2" style="background-color:rgb(26, 163, 187);">
+                        DIRECTAS
+                      </div>
+
+                      
+                      <div class="col-lg-2" style="background-color:rgb(26, 163, 187);">
+                        INDIRECTAS
+                      </div>
+
+                      <div class="col-lg-2" style="background-color:rgb(26, 163, 187);">
+                        NO RELACIONADAS
+                      </div>
+        
+        
+            </div>
+    
+     
+    
+            <div class="row">
+                <div class="col-lg-4"style="background-color:#cccccc;"></div>
+
+                <div class="col-lg-2"style="background-color:#cccccc;"><app-variable-manual [idactividad]='5079' formControlName='var5079'></app-variable-manual></div>
+             
+                <div class="col-lg-2"style="background-color:#cccccc;"><app-variable-manual [idactividad]='5080' formControlName='var5080'></app-variable-manual></div>
+                <div class="col-lg-2"style="background-color:#cccccc;"><app-variable-manual [idactividad]='5081' formControlName='var5081'></app-variable-manual></div>
+             
+                <div class="col-lg-2"style="background-color:#cccccc;"><app-variable-manual [idactividad]='5082' formControlName='var5080'></app-variable-manual></div>
+           
+            </div>
+       
+    
+          
+    
+    
+         
+            </div>
+     
+
+            <BR>
+    
+
+            <BR>
+                    
+  
+        </div>
+        <div class="row">
+            <div class="col-md-3"></div>
+            <div class="col-md-3"></div>
+            <div class="col-md-3"><p-button label="GUARDAR" (click)="GuardarDatos1()" ></p-button></div>
+            <div class="col-md-3"></div>
+        </div>
+
+    
+
+
+        
+
+<BR>
+    
+
+<BR>
+
+</form>
+</p-panel>
+<p-confirmDialog [style]="{width: '50vw'}" [position]="position" [baseZIndex]="10000" rejectButtonStyleClass="p-button-outlined"></p-confirmDialog>
+
+<p-toast></p-toast>

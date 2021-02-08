@@ -1,0 +1,32 @@
+.boton {
+    margin-left: 10px;
+}
+
+.msg-carga {
+    align-items: center;
+    align-content: center;
+}
+
+.cuerpo {
+    background-color: aliceblue;
+}
+
+.custombar2 {
+    margin-bottom: 20px;
+}
+
+.custombar2 .ui-scrollpanel-wrapper {
+    border-right: 9px solid #757575;
+    border-bottom: 9px solid #757575;
+}
+
+.custombar2 .ui-scrollpanel-bar {
+    background-color: blue;
+    border-radius: 0;
+    opacity: 1;
+    transition: background-color 0.3s;
+}
+
+.custombar2:hover .ui-scrollpanel-bar {
+    background-color: blue;
+}

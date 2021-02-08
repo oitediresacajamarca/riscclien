@@ -1,0 +1,20 @@
+
+<div class="ui-g">
+    <div class="ui-g-4 ui-md-4"></div>
+    <div class="ui-g-4 ui-md-4">
+        <h5>Seleccione Periodo</h5>
+        <p-calendar [(ngModel)]="periodoselec" view="month" dateFormat="mm/yy" [yearNavigator]="true"
+         yearRange="2000:2030" [readonlyInput]="true"
+         (onSelect)="mesCambia($event)"></p-calendar>
+    </div>
+    <div class="ui-g-4 ui-md-4"></div>
+
+    <div class="ui-g-3 ui-md-3"></div>
+    <div class="ui-g-6 ui-md-6">
+        <p-fileUpload name="archivoSis" [(url)]="urlSis" (onSelect)="seleccionarArchivo()" (onUpload)="cargoSis($event)" [(headers)]="headers" >
+        </p-fileUpload>
+    </div>
+    <div class="ui-g-3 ui-md-3"></div>
+
+
+</div>

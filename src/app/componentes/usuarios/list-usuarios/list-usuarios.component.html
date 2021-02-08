@@ -1,0 +1,259 @@
+<div class="mt-5 mb-5">
+    <p-table #dt [value]="usuarios" dataKey="id" [paginator]="true" [rows]="rows" [showCurrentPageReport]="true" [(first)]="first" currentPageReportTemplate="Mostrando {first} a {last} de {totalRecords} resultados" [rowsPerPageOptions]="[10,25,50]" [scrollable]="true"
+        [style]="{width:'1100px'}" scrollHeight="280px" [loading]="loading" [filterDelay]="0" [globalFilterFields]="['dni','apellido_paterno','apellido_materno','nombres','email','tipo_ambito','descripcion_ambito','estado']">
+        <ng-template pTemplate="caption">
+            <div class="form-row">
+                <div class="p-mb-3 col-lg-2 col-sm-2 col-2">
+                    <p-button type="button" icon="pi pi-chevron-left" (click)="prev()" [disabled]="isFirstPage()" styleClass="p-button-text"></p-button>
+                    <p-button type="button" icon="pi pi-refresh" (click)="reset()" styleClass="p-button-text"></p-button>
+                    <p-button type="button" icon="pi pi-chevron-right" (click)="next()" [disabled]="isLastPage()" styleClass="p-button-text"></p-button>
+                </div>
+                <div class="table-header col-lg-7 col-sm-7 col-7">
+                    LISTA DE USUARIOS
+                </div>
+                <div class="col-lg-3 col-sm-3 col-3">
+                    <span class="p-input-icon-left">
+                        <i class="pi pi-fw pi-search"></i>
+                        <input pInputText type="text" (input)="dt.filterGlobal($event.target.value, 'contains')" placeholder="Búsqueda General" />
+                    </span>
+                </div>
+            </div>
+        </ng-template>
+        <ng-template pTemplate="colgroup" let-columns>
+            <colgroup>
+                <col style="width:100px">
+                <col style="width:200px">
+                <col style="width:200px">
+                <col style="width:200px">
+                <col style="width:350px">
+                <col style="width:150px">
+                <col style="width:250px">
+                <col style="width:100px">
+                <col style="width:400px">
+            </colgroup>
+        </ng-template>
+        <ng-template pTemplate="header">
+            <tr>
+                <th style="text-align: center;" scope="col" pSortableColumn="dni"> DNI
+                    <p-sortIcon field="dni"></p-sortIcon>
+                </th>
+                <th style="text-align: center;" scope="col" pSortableColumn="apellido_paterno"> Apellido Paterno
+                    <p-sortIcon field="apellido_paterno"></p-sortIcon>
+                </th>
+                <th style="text-align: center;" scope="col" pSortableColumn="apellido_materno"> Apellido Materno
+                    <p-sortIcon field="apellido_materno"></p-sortIcon>
+                </th>
+                <th style="text-align: center;" scope="col" pSortableColumn="nombres"> Nombres
+                    <p-sortIcon field="nombres"></p-sortIcon>
+                </th>
+                <th style="text-align: center;" scope="col" pSortableColumn="email"> Email
+                    <p-sortIcon field="email"></p-sortIcon>
+                </th>
+                <th style="text-align: center;" scope="col" pSortableColumn="tipo_ambito"> Tipo de ambito
+                    <p-sortIcon field="tipo_ambito"></p-sortIcon>
+                </th>
+                <th style="text-align: center;" scope="col" pSortableColumn="descripcion_ambito"> Descripción de ambito
+                    <p-sortIcon field="descripcion_ambito"></p-sortIcon>
+                </th>
+                <th style="text-align: center;" scope="col" pSortableColumn="estado"> Estado
+                    <p-sortIcon field="estado"></p-sortIcon>
+                </th>
+                <th style="text-align: center;" scope="col"> Acciones</th>
+            </tr>
+        </ng-template>
+        <ng-template pTemplate="body" let-usuario>
+            <tr>
+                <td style="text-align: center;">{{ usuario.dni }}</td>
+                <td>{{ usuario.apellido_paterno }}</td>
+                <td>{{ usuario.apellido_materno }}</td>
+                <td>{{ usuario.nombres }}</td>
+                <td>{{ usuario.email }}</td>
+                <td>{{ usuario.tipo_ambito }}</td>
+                <td>{{ usuario.descripcion_ambito }}</td>
+                <td style="text-align: center;">{{ usuario.estado }}</td>
+                <td>
+                    <div class="btn-group" role="group" aria-label="acciones">
+                        <p-toast [style]="{marginTop: '40px'}"></p-toast>
+                        <button type="button" class="btn btn-primary" (click)="onPreUpdate(usuario)" data-toggle="modal" data-target="#ModalNew">Modificar</button>
+                        <button type="button" class="btn btn-warning" (click)="cambiarEstado(usuario)">{{usuario.estado == 'ACTIVO' ? 'Inactivar' : 'Activar'}}</button>
+                        <button type="button" class="btn btn-danger" (click)="restablecerPassword(usuario)">Restablecer</button>
+                        <button type="button" class="btn btn-secondary" [disabled]="usuario.isLogged=='0'" (click)="cerrarSesion(usuario)">Logout</button>
+                    </div>
+                </td>
+            </tr>
+        </ng-template>
+        <ng-template pTemplate="emptymessage">
+            <tr>
+                <td colspan="6">No se encontraron usuarios para la búsqueda realizada.</td>
+            </tr>
+        </ng-template>
+    </p-table>
+</div>
+<!-- Modal N° 01 -->
+<div class="modal fade" id="ModalNew" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true" data-backdrop="static" data-keyboard="false">
+    <div class="modal-dialog modal-md" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">MODIFICAR USUARIO</h5>
+                <button id="btnCerrar" type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form #formRegister="ngForm" (ngSubmit)="onUpdateUsuario(formRegister)">
+                    <div class="alert alert-success" role="alert" *ngIf="isSuccess">
+                        {{msgSuccess}}
+                    </div>
+                    <div class="alert alert-danger" role="alert" *ngIf="isError">
+                        {{msgError}}
+                    </div>
+                    <div class="form-row was-validated">
+                        <div class="form-group is-invalid col-lg-6 col-sm-6 col-6">
+                            <h6 style="text-align: left;">Tipo de Ambito:</h6>
+                            <select #tipo_ambito="ngModel" name="tipo_ambito" class="custom-select" (change)="devuelveDescripcionAmbito()" [(ngModel)]="this.authService.selectedUsuario.tipo_ambito" required>
+                                <option value="" disabled hidden selected>Seleccionar una opción</option>
+                                    <ng-container *ngFor="let tipo_ambito of tipos_ambito">
+                                        <option [value]="tipo_ambito.descripcion_tipo_ambito">{{tipo_ambito.descripcion_tipo_ambito}}</option>
+                                    </ng-container>
+                            </select>
+                            <div class="valid-feedback text-left" *ngIf="tipo_ambito.valid">
+                                CAMPO VÁLIDO
+                            </div>
+                            <div class="invalid-feedback text-left" *ngIf="!tipo_ambito.valid">
+                                SELECCIONAR UNA OPCIÓN
+                            </div>
+                        </div>
+                        <div class="form-group is-invalid col-lg-6 col-sm-6 col-6">
+                            <h6 style="text-align: left;">Descripción de Ambito:</h6>
+                            <select #descripcion_ambito="ngModel" name="descripcion_ambito" class="custom-select" [(ngModel)]="this.authService.selectedUsuario.descripcion_ambito" required>
+                                <option value="" disabled hidden selected>Seleccionar una opción</option>
+                                    <ng-container *ngFor="let descripcion of descripcionAmbito">
+                                        <option [value]="descripcion.DATO">{{descripcion.DATO}}</option>
+                                    </ng-container>
+                                </select>
+                            <div class="valid-feedback text-left" *ngIf="descripcion_ambito.valid">
+                                CAMPO VÁLIDO
+                            </div>
+                            <div class="invalid-feedback text-left" *ngIf="!descripcion_ambito.valid">
+                                SELECCIONAR UNA OPCIÓN
+                            </div>
+                        </div>
+                    </div>
+                    <nav>
+                        <div class="nav nav-tabs" id="nav-tab" role="tablist">
+                            <a class="nav-item nav-link active" id="nav-home-tab" data-toggle="tab" href="#nav-home" role="tab" aria-controls="nav-home" aria-selected="true">Datos Personales</a>
+                            <a class="nav-item nav-link" id="nav-profile-tab" data-toggle="tab" href="#nav-profile" role="tab" aria-controls="nav-profile" aria-selected="false">Roles</a>
+                            <!-- <a class="nav-item nav-link" id="nav-contact-tab" data-toggle="tab" href="#nav-contact" role="tab" aria-controls="nav-contact" aria-selected="false">Contact</a> -->
+                        </div>
+                    </nav>
+                    <div class="tab-content" id="nav-tabContent">
+                        <div class="tab-pane fade show active" id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab">
+                            <br/>
+                            <div class="form-row">
+                                <div class="form-group is-invalid col-lg-6 col-sm-6 col-6">
+                                    <h6 style="text-align: left;">DNI:</h6>
+                                    <input type="text" name="dni" class="form-control" placeholder="Ingresar DNI" [(ngModel)]="this.authService.selectedUsuario.dni" disabled required />
+                                </div>
+                                <div class="form-group col-lg-6 col-sm-6 col-6">
+                                    <h6 style="text-align: left;">Nombres</h6>
+                                    <input type="text" id="nombres" name="nombres" class="form-control" placeholder="Nombres" [(ngModel)]="this.authService.selectedUsuario.nombres" disabled required />
+                                </div>
+                            </div>
+                            <div class="form-row">
+                                <div class="form-group col-lg-6 col-sm-6 col-6">
+                                    <h6 style="text-align: left;">Apellido Paterno</h6>
+                                    <input type="text" id="apellido_paterno" name="apellido_paterno" class="form-control" placeholder="Apellido Paterno" [(ngModel)]="this.authService.selectedUsuario.apellido_paterno" disabled required />
+                                </div>
+                                <div class="form-group col-lg-6 col-sm-6 col-6">
+                                    <h6 style="text-align: left;">Apellido Materno</h6>
+                                    <input type="text" id="apellido_materno" name="apellido_materno" class="form-control" placeholder="Apellido Materno" [(ngModel)]="this.authService.selectedUsuario.apellido_materno" disabled required />
+                                </div>
+                            </div>
+                            <div class="form-row">
+                                <div class="form-group is-invalid col-lg-6 col-sm-6 col-6 was-validated">
+                                    <h6 style="text-align: left;">Email:</h6>
+                                    <input type="email" #email="ngModel" name="email" class="form-control is-invalid" placeholder="Ingresar email" [(ngModel)]="this.authService.selectedUsuario.email" pattern="^[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?$"
+                                        required />
+                                    <div class="valid-feedback text-left" *ngIf="email.valid">
+                                        EMAIL VÁLIDO
+                                    </div>
+                                    <div class="invalid-feedback text-left" *ngIf="!email.valid">
+                                        INGRESAR EMAIL
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="tab-pane fade" id="nav-profile" role="tabpanel" aria-labelledby="nav-profile-tab">
+                            <br/>
+                            <div class="form-row">
+                                <div class="col-7"></div>
+                                <div class="col-5">
+                                    <button type="button" class="btn btn-primary btn-sm" [disabled]="!tipo_ambito.valid || validarModal()" data-toggle="modal" data-target="#myModalInfo">Agregar</button> &nbsp;
+                                    <button type="button" class="btn btn-danger btn-sm" [disabled]="roles_seleccionados.length==0" (click)="removerRol(roles_seleccionados,fila_seleccionada)">Remover</button>
+                                </div>
+                            </div>
+                            <br>
+                            <table id="tableRoles" class="table table-hover" style="cursor: pointer;">
+                                <thead>
+                                    <tr>
+                                        <th style="text-align: center; display: none;" scope="col">Id</th>
+                                        <th style="text-align: center;" scope="col">Rol</th>
+                                        <th style="text-align: center;" scope="col">Descripcion</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr *ngFor="let rol of roles_seleccionados; let i = index" [appClickColor]="rol" (click)="seleccionarFila(rol)">
+                                        <td style="display: none;"> {{ rol.id_rol_risc }} </td>
+                                        <td> {{ rol.nombre_rol_risc }} </td>
+                                        <td> {{ rol.descripcion_rol_risc }} </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                        <!-- <div class="tab-pane fade" id="nav-contact" role="tabpanel" aria-labelledby="nav-contact-tab">...</div> -->
+                    </div>
+                    <br />
+                    <button type="submit" class="btn btn-lg btn-primary btn-block" [disabled]="!formRegister.valid || roles_seleccionados.length==0">REGISTRAR</button>
+                    <!-- <div class="form-group">
+                            <a routerLink="/user/login" class="form-control login-user">¿Desea iniciar sesión?</a>
+                         </div> -->
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Modal N° 02 -->
+<div class="modal fade" id="myModalInfo" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true" data-backdrop="static" data-keyboard="false">
+    <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">ROLES DEL USUARIO</h5>
+                <button id="btnModal" type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form class="form-usuario" (ngSubmit)="enviarRol()">
+                    <table class="table table-hover" style="cursor: pointer;">
+                        <thead>
+                            <tr>
+                                <th style="text-align: center; display: none;" scope="col">Id</th>
+                                <th style="text-align: center;" scope="col">Rol</th>
+                                <th style="text-align: center;" scope="col">Descripcion</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr *ngFor="let rol of roles; let i = index" [appClickColor]="rol" (click)="seleccionarFilaModal(rol)">
+                                <td style="display: none;"> {{ rol.id_rol_risc }} </td>
+                                <td> {{ rol.nombre_rol_risc }} </td>
+                                <td> {{ rol.descripcion_rol_risc }} </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <p-toast [style]="{marginTop: '40px'}"></p-toast>
+                    <button type="submit" name="btnSeleccionar" class="btn btn-primary float-right">SELECCIONAR</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
