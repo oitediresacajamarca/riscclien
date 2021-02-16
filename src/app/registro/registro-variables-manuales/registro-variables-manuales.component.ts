@@ -66,30 +66,30 @@ export class RegistroVariablesManualesComponent implements OnInit {
   
   
     variables = {
-    var6000: '',
-    var6003: '',
-    var6001: '',
-    var6004: '',
 
+    var6000: '',
+    var6001: '',
     var6002: '',
+    var6003: '',
+    var6004: '',
     var6005: '',
 
 
-    var217: '',
-    var218: '',
-    var219: '',
-    var220: '',
-    var211: '',
-    var221: '',
+    var6006: '',
+    var6007: '',
+    var6008: '',
+    var6009: '',
+    var6010: '',
+    var6011: '',
 
-
-    var5083: '',
-    var5084: '',
-    var5085: '',
-    var5086: '',
-  
+    var6012: '',
+    var6013: '',
+    var6014: '',
+    var6015: '',
 
     
+    
+
     var6016: '',
     var6017: '',
     var6018: '',
@@ -99,6 +99,10 @@ export class RegistroVariablesManualesComponent implements OnInit {
 
     var6021: '',
     var6022: '',
+
+
+    
+  
 
 
 
@@ -119,48 +123,65 @@ export class RegistroVariablesManualesComponent implements OnInit {
     var6035: '',
     var6036: '',
     var6037: '',
+
+
     var6038: '',
     var6039: '',
     var6040: '',
     var6041: '',
     var6042: '',
     var6043: '',
+
     var6044: '',
     var6045: '',
     var6046: '',
     var6047: '',
     var6048: '',
     var6049: '',
+
+
     var6050: '',
     var6051: '',
     var6052: '',
     var6053: '',
     var6054: '',
     var6055: '',
+
+
     var6056: '',
     var6057: '',
     var6058: '',
     var6059: '',
     var6060: '',
     var6061: '',
+
+
     var6062: '',
     var6063: '',
     var6064: '',
     var6065: '',
     var6066: '',
     var6067: '',
+
+
     var6068: '',
     var6069: '',
     var6070: '',
     var6071: '',
     var6072: '',
     var6073: '',
+
+
     var6074: '',
     var6075: ''}
+
+    
      VARIABLES2={
-    var1: '',
-    var504: '',
-    var7: '',
+
+
+    var5000: '',
+    var5004: '',
+    var5008: '',
     var5012: '',
     var5016: '',
     var5024: '',
@@ -190,37 +211,40 @@ export class RegistroVariablesManualesComponent implements OnInit {
     var5027: '',
     var5031: '',
 
+    var5032: '',
+    var5033: '',
+    var5034: '',
+    var5035: '',
 
-    var21: '',
-    var25: '',
-    var29: '',
-    var33: '',
-    var37: '',
-    var41: '',
+    var5036: '',
+    var5037: '',
+    var5038: '',
+    var5039: '',
 
 
-    var22: '',
-    var26: '',
-    var30: '',
-    var34: '',
-    var38: '',
-    var42: '',
+    var5040: '',
+    var5041: '',
+    var5042: '',
+    var5043: '',
 
-    
-    var23: '',
-    var27: '',
-    var31: '',
-    var35: '',
-    var39: '',
-    var43: '',
+    var5044: '',
+    var5045: '',
+    var5046: '',
+    var5047: '',
 
-    var24: '',
-    var28: '',
-    var32: '',
-    var36: '',
-    var40: '',
-    var44: '',
-    
+    var5048: '',
+    var5049: '',
+    var5050: '',
+    var5051: '',
+
+    var5052: '',
+    var5053: '',
+    var5054: '',
+    var5055: '',
+
+
+
+
     var5056: '',
     var5057: '',
     var5058: '',
@@ -229,7 +253,6 @@ export class RegistroVariablesManualesComponent implements OnInit {
     var5061: '',
     var5062: '',
     var5063: '',
-
     var5064: '',
 
     var5065: '',
@@ -240,8 +263,11 @@ export class RegistroVariablesManualesComponent implements OnInit {
     var5070: '',
     var5071: '',
     var5072: '',
-
     var5142: '',
+
+
+
+
 
 
 
@@ -258,17 +284,21 @@ export class RegistroVariablesManualesComponent implements OnInit {
 
     var5097: '',
 
+
     var5090: '',
 
     var5094: '',
 
     var5098: '',
 
+
+
     var5091: '',
 
     var5095: '',
 
     var5099: '',
+
 
 
 
@@ -301,48 +331,37 @@ export class RegistroVariablesManualesComponent implements OnInit {
 
 
 
+
+
     var5112: '',
-
-    var5115: '',
-
-    var5118: '',
-
-    var5121: '',
-
-    var5124: '',
-
-    var5127: '',
-
-    var5130: '',
-
-
     var5113: '',
-
-    var5116: '',
-
-    var5119: '',
-
-    var5122: '',
-
-    var5125: '',
-
-    var5128: '',
-
-    var5131: '',
-
     var5114: '',
-
+    var5115: '',
+    var5116: '',
     var5117: '',
-
+    var5118: '',
+    var5119: '',
     var5120: '',
-
+    var5121: '',
+    var5122: '',
     var5123: '',
-
+    var5124: '',
+    var5125: '',
     var5126: '',
-
+    var5127: '',
+    var5128: '',
     var5129: '',
-
+    var5130: '',
+    var5131: '',
     var5132: '',
+
+
+  
+
+    
+
+
+
 
 
     var5133: '',
@@ -365,6 +384,10 @@ export class RegistroVariablesManualesComponent implements OnInit {
     var5138: '',
 
     var5141: '',
+
+
+
+
 
 
     var5073: '',
@@ -391,6 +414,10 @@ export class RegistroVariablesManualesComponent implements OnInit {
 
     var5087: '',
 
+
+
+
+    
 
     var5079: '',
     var5080: '',

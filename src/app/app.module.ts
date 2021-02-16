@@ -50,7 +50,7 @@ import { AuthService } from "./servicios/auth.service";
 
 
 // Externals
-import { NgxSpinnerModule } from 'ngx-spinner';
+import { NgxSpinnerModule, NgxSpinnerService } from 'ngx-spinner';
 import { NgxPaginationModule } from 'ngx-pagination';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
@@ -113,8 +113,9 @@ import { VariableManualComponent } from './controles/variable-manual/variable-ma
     MegaMenuModule,
     NgbModule,
     ReactiveFormsModule
+   
   ],
-  providers: [AuthService],
+  providers: [AuthService, NgxSpinnerService],
   bootstrap: [AppComponent],
 })
 export class AppModule { }

@@ -94,7 +94,7 @@ export class MenuPrincipalComponent implements OnInit {
             {
               label: "HIS",
               items: [{ label: "Periodo Actual", routerLink: "/user/cargasHis/" + this.nivel }, { label: "Actualizacion" }
-              ,{label:'Variables Manueales',routerLink:'/user/cargasManuales/'}],
+              ,{label:'Variables Manuales',routerLink:'/user/cargasManuales/'}],
               visible: this.cargasHis_Guard.canActivate()
             },
           ],
