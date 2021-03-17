@@ -306,7 +306,7 @@ export class ListUsuariosComponent implements OnInit {
       if (confirm("¿ DESEA INACTIVAR AL USUARIO ?")) {
         const enviar = {
           dni: usuario.dni,
-          estado: "INACTIVO"
+          estado: "INACTIVO",
         };
         this.authService.updateEstado(enviar).subscribe(usuario => this.getListUsuarios());
         setTimeout(() => {
@@ -317,7 +317,7 @@ export class ListUsuariosComponent implements OnInit {
       if (confirm("¿ DESEA ACTIVAR AL USUARIO ?")) {
         const enviar = {
           dni: usuario.dni,
-          estado: "ACTIVO"
+          estado: "ACTIVO",
         };
         this.authService.updateEstado(enviar).subscribe(usuario => {
           this.getListUsuarios();

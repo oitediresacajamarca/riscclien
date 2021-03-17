@@ -1,0 +1,1261 @@
+
+  <p-panel header="VARIABLES MANUALES" [toggleable]="true" [style]="{ 'margin-bottom': '20px' }">
+      <div class="row">    <div class="ui-md-4">
+        <h5>Seleccione Ipress</h5>
+        <p-dropdown [options]="establecimientos" placeholder="SELECCIONAR EESS"[(ngModel)]="establecimiento" (onChange)="cambioIpress()"></p-dropdown>
+    </div>
+    <div class="ui-md-4"> 
+        <h5>Seleccione Periodo a Registrar</h5>
+        <p-calendar [(ngModel)]="periodoselec" view="month" dateFormat="mm/yy" [yearNavigator]="true" yearRange="2021:2021" [readonlyInput]="true" (onSelect)="mesCambia($event)"></p-calendar>
+    </div></div>
+    <form [formGroup]="FormularioVariables">
+
+
+
+
+
+
+ <div class="container-fluid">
+    <h3>ATENCION DEL RECIEN NACIDO </h3>
+    <p>Condicion al Nacimiento </p>  
+
+    <table class="table table-hover">
+        <thead>
+          <tr>
+            <th>Condicion</th>
+            <th>Establecimiento</th>
+            <th>Domicilio</th>
+          
+          
+        </thead>
+
+
+        <tbody>
+            <tr>
+  
+          
+            <td> <div class="p-3 mb-3 bg-info  text-white">RECIEN NACIDO NORMAL</div></td> 
+            <td><app-variable-manual [idactividad]='6000' formControlName='var6000'></app-variable-manual></td>
+            <td><app-variable-manual [idactividad]='6003' formControlName='var6003'></app-variable-manual></td>
+         
+             </tr>
+             <tr>
+  
+               
+                <td> <div class="p-3 mb-3 bg-info text-white">RECIEN NACIDO DEPRIMIDO</div></td> 
+                <td><app-variable-manual [idactividad]='6001' formControlName='var6001'></app-variable-manual></td>
+                <td><app-variable-manual [idactividad]='6004' formControlName='var6004'></app-variable-manual></td>
+             
+                 </tr>
+
+                 <tr>
+  
+                 
+                    <td> <div class="p-3 mb-3 bg-info text-white">PREMATURO</div></td> 
+                    <td><app-variable-manual [idactividad]='6002' formControlName='var6002'></app-variable-manual></td>
+                    <td><app-variable-manual [idactividad]='6005' formControlName='var6005'></app-variable-manual></td>
+                 
+                     </tr>
+        
+    
+
+    </table>
+</div>
+
+       
+
+   
+
+    
+
+
+
+<BR>
+
+
+<div class="container">
+    <h3>E) MORTALIDAD NEONATAL</h3>
+        
+    <table class="table table-hover">
+      <thead>
+        <tr>
+          <th>PESO AL NACER</th>
+          <th>NRO</th>
+        
+        
+      </thead>
+      
+      <tbody>
+        <tr>
+          <td>Menor 1,000 gr.</td>
+          <td><app-variable-manual [idactividad]='6006' formControlName='var6006'></app-variable-manual></td>
+        </tr>
+        <tr>
+            <td>1,000  A 1499 gr.</td>
+            <td><app-variable-manual [idactividad]='6007' formControlName='var6007'></app-variable-manual></td>
+          </tr>
+
+          <tr>
+            <td>1500 A 2499 gr.</td>
+            <td><app-variable-manual [idactividad]='6008' formControlName='var6008'></app-variable-manual></td>
+          </tr>
+
+          <tr>
+            <td>2500 a 4000 gr.</td>
+            <td><app-variable-manual [idactividad]='6009' formControlName='var6009'></app-variable-manual></td>
+          </tr>
+
+          <tr>
+            <td>>4000 y mas gr.</td>
+            <td><app-variable-manual [idactividad]='6010' formControlName='var6010'></app-variable-manual></td>
+          </tr>
+
+          <tr>
+            <td>NO ESPECIFICADO.</td>
+            <td><app-variable-manual [idactividad]='6011' formControlName='var6011'></app-variable-manual></td>
+          </tr>
+    </table>
+  </div>
+  
+
+
+  
+  <div class="container">
+    <h5>E) MORTALIDAD NEONATAL</h5>
+        
+    <table class="table table-hover">
+      <thead>
+        <tr>
+          <th>TIEMPO DE VIDA</th>
+          <th>NUMERO</th>
+
+          <th>CAUSA DEFUNCION</th>
+          <th>NUMERO</th>
+
+          <th>FUENTES EXTERNAS</th>
+          <th>NUMERO</th>
+        
+        
+      </thead>
+      
+      <tbody>
+        <tr>
+         
+          <td> <div class="p-3 mb-2 bg-info text-white">Obito Fetal</div></td> 
+          <td><app-variable-manual [idactividad]='6012' formControlName='var6012'></app-variable-manual></td>
+
+          <td>Asfixia</td>
+         
+          <td><app-variable-manual [idactividad]='6016' formControlName='var6016'></app-variable-manual></td>
+    
+
+          <td>Libr Aten rep Egresos</td>
+      
+          <td><app-variable-manual [idactividad]='6021' formControlName='var6021'></app-variable-manual></td>
+    
+        </tr>
+        
+        <tr>
+        
+            <td> <div class="p-3 mb-2 bg-info text-white">menor a 24 horas</div></td> 
+            <td><app-variable-manual [idactividad]='6013' formControlName='var6013'></app-variable-manual></td>
+         
+            <td>SDR</td>
+            <td><app-variable-manual [idactividad]='6017' formControlName='var6017'></app-variable-manual></td>
+
+            <td>Certificacion de defuncion</td>
+            <td><app-variable-manual [idactividad]='6022' formControlName='var6022'></app-variable-manual></td>
+      
+          </tr>
+
+          <tr>
+      
+            <td> <div class="p-3 mb-2 bg-info text-white">01 a 07 dias</div></td> 
+            <td><app-variable-manual [idactividad]='6014' formControlName='var6014'></app-variable-manual></td>
+            <td>Sepsis</td>
+            <td><app-variable-manual [idactividad]='6018' formControlName='var6018'></app-variable-manual></td>
+          </tr>
+
+          <tr>
+         
+            <td> <div class="p-3 mb-2 bg-info text-white">08 a 28 dias</div></td> 
+            <td><app-variable-manual [idactividad]='6015' formControlName='var6015'></app-variable-manual></td>
+            <td>Malf. congenitas</td>
+            <td><app-variable-manual [idactividad]='6019' formControlName='var6019'></app-variable-manual></td>
+          </tr>
+
+          <tr>
+            <td> </td>
+            <td> </td>
+            <td>Otras</td>
+            <td><app-variable-manual [idactividad]='6020' formControlName='var6020'></app-variable-manual></td>
+          </tr>
+
+
+        
+    </table>
+  </div>
+  
+
+
+
+
+
+  <div class="container">
+    <h5>XV ATENCION DE LAS ENFERMEDADES PREVALENTES DE LA INFANCIAL</h5>
+        
+    <table class="table table-hover">
+      <thead>
+        <tr>
+          <th>DIAGNOSTICO</th>
+          <th>ME-29D</th>
+
+          <th>29-59D</th>
+          <th>2M-11M</th>
+
+          <th>1-4A</th>
+          <th>5-11A</th>
+        
+        
+      </thead>
+      
+      <tbody>
+        <tr>
+          <td>2.TOTAL CASOS IRA COMP HOSP</td>
+          <td><app-variable-manual [idactividad]='6023' formControlName='var6023'></app-variable-manual></td>
+          <td><app-variable-manual [idactividad]='6024' formControlName='var6024'></app-variable-manual></td>
+          <td><app-variable-manual [idactividad]='6025' formControlName='var6025'></app-variable-manual></td>
+          <td><app-variable-manual [idactividad]='6026' formControlName='var6026'></app-variable-manual></td>
+          <td><app-variable-manual [idactividad]='6027' formControlName='var6027'></app-variable-manual></td>
+    
+    
+        </tr>
+        
+       
+        <tr>
+            <td>NUM CASOS IRA COMP REF</td>
+            <td><app-variable-manual [idactividad]='6028' formControlName='var6028'></app-variable-manual></td>
+            <td><app-variable-manual [idactividad]='6029' formControlName='var6029'></app-variable-manual></td>
+            <td><app-variable-manual [idactividad]='6030' formControlName='var6030'></app-variable-manual></td>
+            <td><app-variable-manual [idactividad]='6031' formControlName='var6031'></app-variable-manual></td>
+            <td><app-variable-manual [idactividad]='6032' formControlName='var6032'></app-variable-manual></td>
+      
+      
+          </tr>
+          
+          <tr>
+            <td>Control seg neumonia 48h</td>
+            <td><app-variable-manual [idactividad]='6033' formControlName='var6033'></app-variable-manual></td>
+            <td><app-variable-manual [idactividad]='6034' formControlName='var6034'></app-variable-manual></td>
+            <td><app-variable-manual [idactividad]='6035' formControlName='var6035'></app-variable-manual></td>
+            <td><app-variable-manual [idactividad]='6036' formControlName='var6036'></app-variable-manual></td>
+            <td><app-variable-manual [idactividad]='6037' formControlName='var6037'></app-variable-manual></td>
+      
+      
+          </tr>
+          
+       
+
+         
+
+        
+
+        
+    </table>
+  </div>
+  
+
+
+
+
+
+  <div class="container">
+    <h5>XVI DEFUNCIONES</h5>
+    <div class="row">
+                
+                  
+    
+    </div>
+    <table class="table  table-hover">
+
+        <thead class="thead">
+       
+            <tr>
+                <th></th>
+              <th>INTRAHOSPITALARIO</th>
+              <th></th>
+              <th></th>
+          
+              <th>EXTRAHOSPITALARIO</th>
+             
+            </tr>
+            
+          </thead>
+        <thead class="thead-dark">
+       
+        <tr>
+          <th>DIAGNOSTICO</th>
+          <th>IRA</th>
+          <th>EDA</th>
+          <th>TODAS LAS CAUSAS</th>
+
+          <th>IRA</th>
+          <th>EDA</th>
+          <th>TODAS LAS CAUSAS</th>
+        </tr>
+        
+      </thead>
+      
+      <tbody>
+        <tr>
+            <td> <div class="p-3 mb-2 bg-secondary text-white">Menor 29 D</div></td>  
+          <td><app-variable-manual [idactividad]='6038' formControlName='var6038'></app-variable-manual></td>
+          <td><app-variable-manual [idactividad]='6044' formControlName='var6044'></app-variable-manual></td>
+          <td><app-variable-manual [idactividad]='6050' formControlName='var6050'></app-variable-manual></td>
+          <td><app-variable-manual [idactividad]='6056' formControlName='var6056'></app-variable-manual></td>
+          <td><app-variable-manual [idactividad]='6062' formControlName='var6062'></app-variable-manual></td>
+          <td><app-variable-manual [idactividad]='6068' formControlName='var6068'></app-variable-manual></td>
+    
+        </tr>
+        
+        <tr>
+            <td> <div class="p-3 mb-2 bg-secondary text-white">29D A 59D</div></td>  
+            <td><app-variable-manual [idactividad]='6039' formControlName='var6039'></app-variable-manual></td>
+            <td><app-variable-manual [idactividad]='6045' formControlName='var6045'></app-variable-manual></td>
+            <td><app-variable-manual [idactividad]='6051' formControlName='var6051'></app-variable-manual></td>
+            <td><app-variable-manual [idactividad]='6057' formControlName='var6057'></app-variable-manual></td>
+            <td><app-variable-manual [idactividad]='6063' formControlName='var6063'></app-variable-manual></td>
+            <td><app-variable-manual [idactividad]='6069' formControlName='var6069'></app-variable-manual></td>
+      
+          </tr>
+     
+          <tr>
+            <td> <div class="p-3 mb-2 bg-secondary text-white">02m a 11m</div></td>  
+            <td><app-variable-manual [idactividad]='6040' formControlName='var6040'></app-variable-manual></td>
+            <td><app-variable-manual [idactividad]='6046' formControlName='var6046'></app-variable-manual></td>
+            <td><app-variable-manual [idactividad]='6052' formControlName='var6052'></app-variable-manual></td>
+            <td><app-variable-manual [idactividad]='6058' formControlName='var6058'></app-variable-manual></td>
+            <td><app-variable-manual [idactividad]='6064' formControlName='var6064'></app-variable-manual></td>
+            <td><app-variable-manual [idactividad]='6070' formControlName='var6070'></app-variable-manual></td>
+      
+          </tr>
+     
+          <tr>
+            <td> <div class="p-3 mb-2 bg-secondary text-white">1 AÑO</div></td>  
+            <td><app-variable-manual [idactividad]='6041' formControlName='var6041'></app-variable-manual></td>
+            <td><app-variable-manual [idactividad]='6047' formControlName='var6047'></app-variable-manual></td>
+            <td><app-variable-manual [idactividad]='6053' formControlName='var6053'></app-variable-manual></td>
+            <td><app-variable-manual [idactividad]='6059' formControlName='var6059'></app-variable-manual></td>
+            <td><app-variable-manual [idactividad]='6065' formControlName='var6065'></app-variable-manual></td>
+            <td><app-variable-manual [idactividad]='6071' formControlName='var6071'></app-variable-manual></td>
+      
+          </tr>
+
+        
+          <tr>
+            <td> <div class="p-3 mb-2 bg-secondary text-white">2 a 4 AÑOS</div></td>  
+            <td><app-variable-manual [idactividad]='6042' formControlName='var6042'></app-variable-manual></td>
+            <td><app-variable-manual [idactividad]='6048' formControlName='var6048'></app-variable-manual></td>
+            <td><app-variable-manual [idactividad]='6054' formControlName='var6054'></app-variable-manual></td>
+            <td><app-variable-manual [idactividad]='6060' formControlName='var6060'></app-variable-manual></td>
+            <td><app-variable-manual [idactividad]='6066' formControlName='var6066'></app-variable-manual></td>
+            <td><app-variable-manual [idactividad]='6072' formControlName='var6072'></app-variable-manual></td>
+      
+          </tr>
+        
+
+          <tr>
+           
+            <td> <div class="p-3 mb-2 bg-secondary text-white">5 a 11 AÑOS</div></td>  
+            <td><app-variable-manual [idactividad]='6043' formControlName='var6043'></app-variable-manual></td>
+            <td><app-variable-manual [idactividad]='6049' formControlName='var6049'></app-variable-manual></td>
+            <td><app-variable-manual [idactividad]='6055' formControlName='var6055'></app-variable-manual></td>
+            <td><app-variable-manual [idactividad]='6061' formControlName='var6061'></app-variable-manual></td>
+            <td><app-variable-manual [idactividad]='6067' formControlName='var6067'></app-variable-manual></td>
+            <td><app-variable-manual [idactividad]='6073' formControlName='var6073'></app-variable-manual></td>
+      
+          </tr>
+    </table>
+  </div>
+  
+
+
+<BR>
+
+
+
+  <div class="container">
+    <h5>FUENTES EXTERNAS</h5>
+        
+    <table class="table table-hover">
+        <thead class="thead-dark">
+        <tr>
+          <th>TIEMPO DE VIDA</th>
+          <th></th>
+
+        
+        
+      </thead>
+      
+      <tbody>
+        <tr>
+          <td>CERTIFICADO DE DEFUNCIONE</td>
+          <td><app-variable-manual [idactividad]='6074' formControlName='var6074'></app-variable-manual></td>
+
+     
+        </tr>
+        
+      
+        <tr>
+            <td>REPORTE DE EGRESOS</td>
+            <td><app-variable-manual [idactividad]='6075' formControlName='var6075'></app-variable-manual></td>
+  
+       
+          </tr>
+          
+        
+        
+
+        
+         
+
+        
+    </table>
+  </div>
+  
+
+
+
+
+
+ 
+    
+
+        
+<BR>
+
+<div class="row">
+    <div class="col-md-3"></div>
+    <div class="col-md-3"></div>
+    <div class="col-md-3"><p-button label="GUARDAR" (click)="GuardarDatos2()" ></p-button></div>
+    <div class="col-md-3"></div>
+</div>
+
+</form>
+</p-panel>
+
+
+
+
+
+
+
+
+<p-panel header="VARIABLES MANUALES" [toggleable]="true" [style]="{ 'margin-bottom': '20px' }">
+    <div class="ui-md-4">
+        <h5>Seleccione Ipress</h5>
+        <p-dropdown [options]="establecimientos" [(ngModel)]="establecimiento" (onChange)="cambioIpress()"></p-dropdown>
+    </div>
+    <div class="ui-md-4">
+        <h5>Seleccione Periodo a Registrar</h5>
+        <p-calendar [(ngModel)]="periodoselec" view="month" dateFormat="mm/yy" [yearNavigator]="true" yearRange="2000:2030" [readonlyInput]="true" (onSelect)="mesCambia($event)"></p-calendar>
+    </div>
+    <div class="ui-md-4"></div>
+<form [formGroup]="FormularioVariables2">
+
+
+
+
+
+
+
+
+
+    <div class="container">
+        <h5>ATENCION DEL PARTO INSTITUCIONA</h5>
+        <div class="row">
+                    
+                      
+        
+        </div>
+        <table class="table  table-hover">
+    
+            <thead class="thead">
+           
+                <tr>
+                    
+                  <th>FON</th>
+                  <th>GIN OBSTETRA </th>
+                  <th>MEDICO GENERAL</th>
+                  <th>OBST</th>
+                  <th>OTROS PROF</th>
+                  <th>TEC ENF</th>
+                  <th>TOTAL RN VIVOS</th>
+                  <th>TOTAL RN MUERTOS</th>
+
+                 
+         
+
+                </tr>
+                
+              </thead>
+         
+          
+          <tbody>
+            <tr>
+         
+              <td> <div class="p-3 mb-2 bg-secondary text-white">FON I</div></td>  
+              <td><app-variable-manual [idactividad]='5000' formControlName='var5000'></app-variable-manual></td>
+              <td><app-variable-manual [idactividad]='5004' formControlName='var5004'></app-variable-manual></td>
+              <td><app-variable-manual [idactividad]='5008' formControlName='var5008'></app-variable-manual></td>
+              <td><app-variable-manual [idactividad]='5012' formControlName='var5012'></app-variable-manual></td>
+              <td><app-variable-manual [idactividad]='5016' formControlName='var5016'></app-variable-manual></td>
+              <td><app-variable-manual [idactividad]='5024' formControlName='var5024'></app-variable-manual></td>
+              <td><app-variable-manual [idactividad]='5028' formControlName='var5028'></app-variable-manual></td>
+        
+            </tr>
+            
+         
+            <tr>
+                <td> <div class="p-3 mb-2 bg-secondary text-white">FON E</div></td>  
+                <td><app-variable-manual [idactividad]='5001' formControlName='var5001'></app-variable-manual></td>
+                <td><app-variable-manual [idactividad]='5005' formControlName='var5005'></app-variable-manual></td>
+                <td><app-variable-manual [idactividad]='5009' formControlName='var5009'></app-variable-manual></td>
+                <td><app-variable-manual [idactividad]='5013' formControlName='var5013'></app-variable-manual></td>
+                <td><app-variable-manual [idactividad]='5017' formControlName='var5017'></app-variable-manual></td>
+                <td><app-variable-manual [idactividad]='5025' formControlName='var5025'></app-variable-manual></td>
+                <td><app-variable-manual [idactividad]='5029' formControlName='var5029'></app-variable-manual></td>
+          
+              </tr>
+              
+            <tr>
+                <td> <div class="p-3 mb-2 bg-secondary text-white">FON B</div></td>  
+                <td><app-variable-manual [idactividad]='5002' formControlName='var5002'></app-variable-manual></td>
+                <td><app-variable-manual [idactividad]='5006' formControlName='var5006'></app-variable-manual></td>
+                <td><app-variable-manual [idactividad]='5010' formControlName='var5010'></app-variable-manual></td>
+                <td><app-variable-manual [idactividad]='5014' formControlName='var5014'></app-variable-manual></td>
+                <td><app-variable-manual [idactividad]='5018' formControlName='var5018'></app-variable-manual></td>
+                <td><app-variable-manual [idactividad]='5026' formControlName='var5026'></app-variable-manual></td>
+                <td><app-variable-manual [idactividad]='5030' formControlName='var5030'></app-variable-manual></td>
+          
+              </tr>
+              
+              <tr>
+                <td> <div class="p-3 mb-2 bg-secondary text-white">FON P</div></td>  
+                <td><app-variable-manual [idactividad]='5003' formControlName='var5003'></app-variable-manual></td>
+                <td><app-variable-manual [idactividad]='5007' formControlName='var5007'></app-variable-manual></td>
+                <td><app-variable-manual [idactividad]='5011' formControlName='var5011'></app-variable-manual></td>
+                <td><app-variable-manual [idactividad]='5015' formControlName='var5015'></app-variable-manual></td>
+                <td><app-variable-manual [idactividad]='5019' formControlName='var5019'></app-variable-manual></td>
+                <td><app-variable-manual [idactividad]='5027' formControlName='var5027'></app-variable-manual></td>
+                <td><app-variable-manual [idactividad]='5031' formControlName='var5031'></app-variable-manual></td>
+          
+              </tr>
+              
+           
+         
+    
+            
+             
+       
+        </table>
+      </div>
+      
+    
+
+
+<BR>
+
+
+
+
+      <div class="container">
+      
+        <div class="p-3 mb-2 bg-info text-white">.ATENCION DEL PARTO DOMICILIARIO ATENCION DE PARTO TRAYECTO AL EES</div>
+        <table class="table">
+            <thead>
+              <tr>
+                <th>ATENCION DE PARTO EN DOMICILIO</th>
+                <th></th>
+                <th>ATENCION DE PARTO EN EL TRAYECTO AL EE.SS</th>
+              
+              
+            </thead>
+        </table> 
+        <table class="table  table-hover">
+
+           
+          
+    
+            <thead class="thead">
+           
+                <tr>
+                    
+           
+                  <td> <div class="p-3 mb-2 bg-info text-white">QUIEN ATIENDE</div></td> 
+                  <th> NUMERO DE PARTOS </th>
+                  <th>TOTAL RN VIVOS GENERAL</th>
+                  <th>TOTAL RN MUERTOS</th>
+              
+                  <td> <div class="p-3 mb-2 bg-secondary text-white">QUIEN ATIENDE</div></td> 
+                  <th> NUMERO DE PARTOS </th>
+                  <th>TOTAL RN VIVOS GENERAL</th>
+                  <th>TOTAL RN MUERTOS</th>
+              
+                </tr>
+                
+              </thead>
+         
+          
+          <tbody>
+            <tr>
+            
+            <td> <div class="p-3 mb-2 bg-info text-white">PER DE SALUD</div></td> 
+              <td><app-variable-manual [idactividad]='5032' formControlName='var5032'></app-variable-manual></td>
+              <td><app-variable-manual [idactividad]='5036' formControlName='var5036'></app-variable-manual></td>
+              <td><app-variable-manual [idactividad]='5040' formControlName='var5040'></app-variable-manual></td>
+              <td> <div class="p-3 mb-2 bg-secondary text-white">PER DE SALUD</div></td> 
+              <td><app-variable-manual [idactividad]='5044' formControlName='var5044'></app-variable-manual></td>
+              <td><app-variable-manual [idactividad]='5048' formControlName='var5048'></app-variable-manual></td>
+              <td><app-variable-manual [idactividad]='5052' formControlName='var5052'></app-variable-manual></td>
+           
+        
+            </tr>
+
+            <tr>
+            
+            <td> <div class="p-3 mb-2 bg-info text-white">ACS</div></td> 
+            <td><app-variable-manual [idactividad]='5033' formControlName='var5033'></app-variable-manual></td>
+            <td><app-variable-manual [idactividad]='5037' formControlName='var5037'></app-variable-manual></td>
+            <td><app-variable-manual [idactividad]='5041' formControlName='var5041'></app-variable-manual></td>
+            <td> <div class="p-3 mb-2 bg-secondary text-white">ACS</div></td> 
+            <td><app-variable-manual [idactividad]='5045' formControlName='var5045'></app-variable-manual></td>
+            <td><app-variable-manual [idactividad]='5049' formControlName='var5049'></app-variable-manual></td>
+            <td><app-variable-manual [idactividad]='5053' formControlName='var5053'></app-variable-manual></td>
+         
+      
+          </tr>
+
+        <tr>
+            
+        <td> <div class="p-3 mb-2 bg-info text-white">FAMILIAR</div></td> 
+        <td><app-variable-manual [idactividad]='5034' formControlName='var5034'></app-variable-manual></td>
+        <td><app-variable-manual [idactividad]='5038' formControlName='var5038'></app-variable-manual></td>
+        <td><app-variable-manual [idactividad]='5042' formControlName='var5042'></app-variable-manual></td>
+        <td> <div class="p-3 mb-2 bg-secondary text-white">FAMILIAR</div></td> 
+        <td><app-variable-manual [idactividad]='5046' formControlName='var5046'></app-variable-manual></td>
+        <td><app-variable-manual [idactividad]='5050' formControlName='var5050'></app-variable-manual></td>
+        <td><app-variable-manual [idactividad]='5054' formControlName='var5054'></app-variable-manual></td>
+     
+  
+      </tr>
+
+    <tr>
+            
+    <td> <div class="p-3 mb-2 bg-info text-white">OTROS</div></td> 
+    <td><app-variable-manual [idactividad]='5035' formControlName='var5035'></app-variable-manual></td>
+    <td><app-variable-manual [idactividad]='5039' formControlName='var5039'></app-variable-manual></td>
+    <td><app-variable-manual [idactividad]='5043' formControlName='var5043'></app-variable-manual></td>
+    <td> <div class="p-3 mb-2 bg-secondary text-white">OTROS</div></td> 
+    <td><app-variable-manual [idactividad]='5047' formControlName='var5047'></app-variable-manual></td>
+    <td><app-variable-manual [idactividad]='5051' formControlName='var5051'></app-variable-manual></td>
+    <td><app-variable-manual [idactividad]='5055' formControlName='var5055'></app-variable-manual></td>
+ 
+
+  </tr>
+       
+        </table>
+      </div>
+      
+    
+ 
+
+<BR>
+<BR>
+
+    <h3>.INFORMACION REFERENTE SOLO A LA ATENCION DE PARTOS INSTITUCIONALES</h3>
+    <div class="container">
+      
+     
+        
+        <table class="table">
+            <thead>
+              <tr>
+                <th>PARTOS INSTITUCIONALES</th>
+               
+              
+              
+            </thead>
+        </table> 
+        <table class="table  table-hover">
+
+           
+          
+    
+            <thead class="thead">
+           
+                <tr>
+                    
+               
+                 
+              
+                </tr>
+                
+              </thead>
+         
+          
+          <tbody>
+            <tr>
+            
+            <td> <div class="p-3 mb-2 bg-info text-white">ATENCION PARTO VAGINAL NO COMPLICADO</div></td> 
+              <td><app-variable-manual [idactividad]='5056' formControlName='var5056'></app-variable-manual></td>
+       
+              <td> <div class="p-3 mb-2 bg-secondary text-white">ATENCION PARTO EN ADOLECENTES</div></td> 
+              <td><app-variable-manual [idactividad]='5065' formControlName='var5065'></app-variable-manual></td>
+    
+            </tr>
+
+
+            <tr>
+            
+                <td> <div class="p-3 mb-2 bg-info text-white">ATENC PARTO COMPLICADO NO QUIRURGICO</div></td> 
+                  <td><app-variable-manual [idactividad]='5057' formControlName='var5057'></app-variable-manual></td>
+           
+                  <td> <div class="p-3 mb-2 bg-secondary text-white">ATENCION DE PARTO MENORES A 12 AñOS</div></td> 
+                  <td><app-variable-manual [idactividad]='5066' formControlName='var5066'></app-variable-manual></td>
+        
+                </tr>
+
+                <tr>
+            
+                    <td> <div class="p-3 mb-2 bg-info text-white">Cesarea (Atencion de Parto Complicado Qx</div></td> 
+                      <td><app-variable-manual [idactividad]='5058' formControlName='var5058'></app-variable-manual></td>
+               
+                      <td> <div class="p-3 mb-2 bg-secondary text-white">Manejo Activo en 3ra. Etapa de Parto</div></td> 
+                      <td><app-variable-manual [idactividad]='5067' formControlName='var5067'></app-variable-manual></td>
+            
+                    </tr>
+    
+
+                    <tr>
+            
+                        <td> <div class="p-3 mb-2 bg-info text-white">PARTO GEMELAR</div></td> 
+                          <td><app-variable-manual [idactividad]='5059' formControlName='var5059'></app-variable-manual></td>
+                   
+                          <td> <div class="p-3 mb-2 bg-secondary text-white">1ra Prueba Rapida para VIH en Trabajo de Parto</div></td> 
+                          <td><app-variable-manual [idactividad]='5068' formControlName='var5068'></app-variable-manual></td>
+                
+                        </tr>
+        
+
+                        <tr>
+            
+                            <td> <div class="p-3 mb-2 bg-info text-white">PARTO CON TRILLIZOS</div></td> 
+                              <td><app-variable-manual [idactividad]='5060' formControlName='var5060'></app-variable-manual></td>
+                       
+                              <td> <div class="p-3 mb-2 bg-secondary text-white">1ra. Prueba Rapida VIH en Trabajo de Parto Reactivo</div></td> 
+                              <td><app-variable-manual [idactividad]='5069' formControlName='var5069'></app-variable-manual></td>
+                    
+                            </tr>
+
+                            <tr>
+            
+                                <td> <div class="p-3 mb-2 bg-info text-white">OTRO PARTO MULTIPLE</div></td> 
+                                  <td><app-variable-manual [idactividad]='5061' formControlName='var5061'></app-variable-manual></td>
+                           
+                                  <td> <div class="p-3 mb-2 bg-secondary text-white">Partos prematuros (< 37ss ) con esquema completo de corticoides prenatales</div></td> 
+                                  <td><app-variable-manual [idactividad]='5070' formControlName='var5070'></app-variable-manual></td>
+                        
+                                </tr>
+
+                                <tr>
+                                <td> <div class="p-3 mb-2 bg-info text-white">PARTO VERTICAL</div></td> 
+                                <td><app-variable-manual [idactividad]='5062' formControlName='var5062'></app-variable-manual></td>
+                         
+                                <td> <div class="p-3 mb-2 bg-secondary text-white">Atencion del RN Normal</div></td> 
+                                <td><app-variable-manual [idactividad]='5071' formControlName='var5071'></app-variable-manual></td>
+                      
+                              </tr>
+       
+
+                              
+                              <tr>
+                                <td> <div class="p-3 mb-2 bg-info text-white">PARTO PODALICOL</div></td> 
+                                <td><app-variable-manual [idactividad]='5063' formControlName='var5063'></app-variable-manual></td>
+                         
+                                <td> <div class="p-3 mb-2 bg-secondary text-white">Atención de RN con Complicaciones</div></td> 
+                                <td><app-variable-manual [idactividad]='5072' formControlName='var5072'></app-variable-manual></td>
+                      
+                              </tr>
+
+                              <tr>
+                                <td> <div class="p-3 mb-2 bg-info text-white">PARTO EN GESTANTE CONTROLADA</div></td> 
+                                <td><app-variable-manual [idactividad]='5064' formControlName='var5064'></app-variable-manual></td>
+                         
+                                <td> <div class="p-3 mb-2 bg-secondary text-white">Clampaje Oportuno</div></td> 
+                                <td><app-variable-manual [idactividad]='5142' formControlName='var5142'></app-variable-manual></td>
+                      
+                              </tr>
+       
+        </table>
+      </div>
+      
+
+        <BR>
+            <BR>
+
+
+
+
+
+      <div class="container-fluid">
+      
+    
+         
+          <div class="p-3 mb-2 bg-info text-white">X. ATENCION DE ABORTO</div>
+       
+        <table class="table table-striped">
+          
+
+            <thead class= "thead-dark">
+                <tr>
+                  <th>FON</th>
+                  <th>AMEU</th>
+                  <th>LEGRADO UTERINO</th>
+                  <th>ABORTO SEPTICO</th>
+                 
+       
+                
+              </thead>
+         
+          
+          <tbody>
+            <tr>
+            
+            <td> <div class="p-3 mb-2 bg-info text-white"> MENOR 12 A ></div></td> 
+              <td><app-variable-manual [idactividad]='5088' formControlName='var5088'></app-variable-manual></td>
+              <td><app-variable-manual [idactividad]='5092' formControlName='var5092'></app-variable-manual></td>
+              <td><app-variable-manual [idactividad]='5096' formControlName='var5096'></app-variable-manual></td>
+    
+            </tr>
+            <tr>
+       
+            <td> <div class="p-3 mb-2 bg-info text-white"> 12 A 17 A ></div></td> 
+            <td><app-variable-manual [idactividad]='5089' formControlName='var5089'></app-variable-manual></td>
+            <td><app-variable-manual [idactividad]='5093' formControlName='var5093'></app-variable-manual></td>
+            <td><app-variable-manual [idactividad]='5097' formControlName='var5097'></app-variable-manual></td>
+  
+          </tr>
+
+          <tr>
+       
+            <td> <div class="p-3 mb-2 bg-info text-white"> 18 A 29 A ></div></td> 
+            <td><app-variable-manual [idactividad]='5090' formControlName='var5090'></app-variable-manual></td>
+            <td><app-variable-manual [idactividad]='5094' formControlName='var5094'></app-variable-manual></td>
+            <td><app-variable-manual [idactividad]='5098' formControlName='var5098'></app-variable-manual></td>
+  
+          </tr>
+
+          <tr>
+       
+            <td> <div class="p-3 mb-2 bg-info text-white"> 30-59 ></div></td> 
+            <td><app-variable-manual [idactividad]='5091' formControlName='var5091'></app-variable-manual></td>
+            <td><app-variable-manual [idactividad]='5095' formControlName='var5095'></app-variable-manual></td>
+            <td><app-variable-manual [idactividad]='5099' formControlName='var5099'></app-variable-manual></td>
+  
+          </tr>
+
+
+        </table>
+      </div>
+      
+
+
+
+                
+      <div class="container-fluid">
+      
+    
+         
+          <div class="p-3 mb-2 bg-info text-white">XI REFERENCIAS OBSTETRICAS Y NEONATALES</div>
+       
+      
+            <table class="table  table-hover">
+          
+
+            <thead class= "thead">
+                <tr>
+                  <th></th>
+                  <th>EMERGENCIA</th>
+                  <th></th>
+               
+                  <th>CONSULTA</th>
+                 
+       
+                
+              </thead>
+         
+
+              <thead class= "thead">
+                <tr>
+                  <th>FON</th>
+                  <th>OBSTETRA</th>
+                  <th>RN</th>
+                  <th>OBSTETRA</th>
+                  <th>RN</th>
+                 
+       
+                
+              </thead>
+          
+          <tbody>
+            <tr>
+            
+            <td> <div class="p-3 mb-2 bg-info text-white"> FON </div></td> 
+              <td><app-variable-manual [idactividad]='5100' formControlName='var5100'></app-variable-manual></td>
+              <td><app-variable-manual [idactividad]='5103' formControlName='var5103'></app-variable-manual></td>
+              <td><app-variable-manual [idactividad]='5106' formControlName='var5106'></app-variable-manual></td>
+              <td><app-variable-manual [idactividad]='5109' formControlName='var5109'></app-variable-manual></td>
+    
+            </tr>
+        
+            <tr>
+            
+                <td> <div class="p-3 mb-2 bg-info text-white"> FON B </div></td> 
+                  <td><app-variable-manual [idactividad]='5101' formControlName='var5101'></app-variable-manual></td>
+                  <td><app-variable-manual [idactividad]='5104' formControlName='var5104'></app-variable-manual></td>
+                  <td><app-variable-manual [idactividad]='5107' formControlName='var5107'></app-variable-manual></td>
+                  <td><app-variable-manual [idactividad]='5110' formControlName='var5110'></app-variable-manual></td>
+        
+                </tr>
+            
+                <tr>
+            
+                    <td> <div class="p-3 mb-2 bg-info text-white"> FON E </div></td> 
+                      <td><app-variable-manual [idactividad]='5102' formControlName='var5102'></app-variable-manual></td>
+                      <td><app-variable-manual [idactividad]='5105' formControlName='var5105'></app-variable-manual></td>
+                      <td><app-variable-manual [idactividad]='5108' formControlName='var5108'></app-variable-manual></td>
+                      <td><app-variable-manual [idactividad]='5111' formControlName='var5111'></app-variable-manual></td>
+            
+                    </tr>
+                
+                       
+      
+                
+
+
+
+        </table>
+      </div>
+      
+
+
+
+                
+      <div class="container-fluid">
+      
+    
+         
+        <div class="p-3 mb-2 bg-info text-white">CUMPLIMIENTO DE PAQUETE BASICO</div>
+     
+    
+          <table class="table  table-hover">
+  
+
+            <thead class= "thead">
+              <tr>
+                <th>FON</th>
+                <th>LABORATORIO</th>
+                <th>ECOGRAFIA</th>
+                <th>EBF</th>
+                <th>ESTIM PREN</th>
+                <th>PSICO PROFI</th>
+                <th>ODONTO</th>
+                <th>NUTRICION</th>
+     
+              
+            </thead>
+        
+        <tbody>
+          <tr>
+          
+          <td> <div class="p-3 mb-2 bg-info text-white"> FON P</div></td> 
+            <td><app-variable-manual [idactividad]='5112' formControlName='var5112'></app-variable-manual></td>
+            <td><app-variable-manual [idactividad]='5115' formControlName='var5115'></app-variable-manual></td>
+            <td><app-variable-manual [idactividad]='5118' formControlName='var5118'></app-variable-manual></td>
+            <td><app-variable-manual [idactividad]='5121' formControlName='var5121'></app-variable-manual></td>
+            <td><app-variable-manual [idactividad]='5124' formControlName='var5124'></app-variable-manual></td>
+            <td><app-variable-manual [idactividad]='5127' formControlName='var5127'></app-variable-manual></td>
+            <td><app-variable-manual [idactividad]='5130' formControlName='var5130'></app-variable-manual></td>
+  
+  
+          </tr>
+      
+       
+          <tr>
+          
+            <td> <div class="p-3 mb-2 bg-info text-white"> FON B </div></td> 
+              <td><app-variable-manual [idactividad]='5113' formControlName='var5113'></app-variable-manual></td>
+              <td><app-variable-manual [idactividad]='5116' formControlName='var5116'></app-variable-manual></td>
+              <td><app-variable-manual [idactividad]='5119' formControlName='var5119'></app-variable-manual></td>
+              <td><app-variable-manual [idactividad]='5122' formControlName='var5122'></app-variable-manual></td>
+              <td><app-variable-manual [idactividad]='5125' formControlName='var5125'></app-variable-manual></td>
+              <td><app-variable-manual [idactividad]='5128' formControlName='var5128'></app-variable-manual></td>
+              <td><app-variable-manual [idactividad]='5131' formControlName='var5131'></app-variable-manual></td>
+    
+    
+            </tr>
+                
+        
+            <tr>
+          
+                <td> <div class="p-3 mb-2 bg-info text-white"> FON E </div></td> 
+                  <td><app-variable-manual [idactividad]='5114' formControlName='var5114'></app-variable-manual></td>
+                  <td><app-variable-manual [idactividad]='5117' formControlName='var5117'></app-variable-manual></td>
+                  <td><app-variable-manual [idactividad]='5120' formControlName='var5120'></app-variable-manual></td>
+                  <td><app-variable-manual [idactividad]='5123' formControlName='var5123'></app-variable-manual></td>
+                  <td><app-variable-manual [idactividad]='5126' formControlName='var5126'></app-variable-manual></td>
+                  <td><app-variable-manual [idactividad]='5129' formControlName='var5129'></app-variable-manual></td>
+                  <td><app-variable-manual [idactividad]='5132' formControlName='var5132'></app-variable-manual></td>
+        
+        
+                </tr>
+                    
+
+      </table>
+    </div>
+    
+
+<BR>
+         
+    
+
+    <div class="container-fluid">
+      
+    
+         
+        <div class="p-3 mb-2 bg-info text-white">AYUDA AL DIAGNOSTICO</div>
+     
+    
+          <table class="table  table-hover">
+  
+
+            <thead class= "thead">
+              <tr>
+                <th>FON</th>
+                <th>OBSTETRICAS</th>
+                <th>RECIEN NACIDO</th>
+                <th>PARTOS</th>
+              
+              
+            </thead>
+        
+        <tbody>
+          <tr>
+          
+          <td> <div class="p-3 mb-2 bg-info text-white"> FON P</div></td> 
+            <td><app-variable-manual [idactividad]='5133' formControlName='var5133'></app-variable-manual></td>
+            <td><app-variable-manual [idactividad]='5136' formControlName='var5136'></app-variable-manual></td>
+            <td><app-variable-manual [idactividad]='5139' formControlName='var5139'></app-variable-manual></td>
+          
+  
+          </tr>
+      
+       
+          <tr>
+          
+            <td> <div class="p-3 mb-2 bg-info text-white"> FON B </div></td> 
+              <td><app-variable-manual [idactividad]='5134' formControlName='var5134'></app-variable-manual></td>
+              <td><app-variable-manual [idactividad]='5137' formControlName='var5137'></app-variable-manual></td>
+              <td><app-variable-manual [idactividad]='5140' formControlName='var5140'></app-variable-manual></td>
+           
+    
+    
+            </tr>
+                
+        
+            <tr>
+          
+                <td> <div class="p-3 mb-2 bg-info text-white"> FON E </div></td> 
+                  <td><app-variable-manual [idactividad]='5135' formControlName='var5135'></app-variable-manual></td>
+                  <td><app-variable-manual [idactividad]='5138' formControlName='var5138'></app-variable-manual></td>
+                  <td><app-variable-manual [idactividad]='5141' formControlName='var5141'></app-variable-manual></td>
+            
+        
+        
+                </tr>
+                    
+                               
+    
+              
+
+
+
+      </table>
+    </div>
+    
+
+
+
+
+    
+    <div class="container-fluid">
+      
+    
+         
+     
+    
+          <table class="table  table-hover">
+  
+            <thead class= "thead-dark">
+                <tr>
+               
+                  <th>III CASA MATERNA</th>
+                  <th></th>
+                 
+               
+                  <th>VII MUERTES PERINATALES NEONATALES</th>
+                  <th></th>
+                
+              </thead>
+          
+        
+        <tbody>
+
+          <tr>
+          
+          <td> <div class="p-3 mb-2 bg-info text-white"> OPERATIVAS</div></td> 
+            <td><app-variable-manual [idactividad]='5073' formControlName='var5073'></app-variable-manual></td>
+            <td> <div class="p-3 mb-2 bg-info text-white"> OBITOS FETALES</div></td> 
+            <td><app-variable-manual [idactividad]='5083' formControlName='var5083'></app-variable-manual></td>
+          
+  
+          </tr>
+      
+       
+      
+                   <tr>
+          
+          <td> <div class="p-3 mb-2 bg-info text-white"> Utilizadas en el mes</div></td> 
+            <td><app-variable-manual [idactividad]='5074' formControlName='var5074'></app-variable-manual></td>
+            <td> <div class="p-3 mb-2 bg-info text-white"> Neonatos < 24 Hrs.</div></td> 
+            <td><app-variable-manual [idactividad]='5084' formControlName='var5084'></app-variable-manual></td>
+          
+  
+          </tr>  
+        
+        
+          <tr>
+          
+            <td> <div class="p-3 mb-2 bg-info text-white"> Gestantes Alojadas</div></td> 
+              <td><app-variable-manual [idactividad]='5075' formControlName='var5075'></app-variable-manual></td>
+              <td> <div class="p-3 mb-2 bg-info text-white"> Neonatos de 1d - 7d</div></td> 
+              <td><app-variable-manual [idactividad]='5085' formControlName='var5085'></app-variable-manual></td>
+            
+    
+            </tr>  
+                      
+                               
+            <tr>
+          
+                <td> <div class="p-3 mb-2 bg-info text-white"> Puerperas Alojadas</div></td> 
+                  <td><app-variable-manual [idactividad]='5076' formControlName='var5076'></app-variable-manual></td>
+                  <td> <div class="p-3 mb-2 bg-info text-white"> Neonatos de 8d - 28d</div></td> 
+                  <td><app-variable-manual [idactividad]='5086' formControlName='var5086'></app-variable-manual></td>
+                
+        
+                </tr>  
+                          
+              
+                <tr>
+          
+                    <td> <div class="p-3 mb-2 bg-info text-white"> RN Alojados</div></td> 
+                      <td><app-variable-manual [idactividad]='5077' formControlName='var5077'></app-variable-manual></td>
+                      <td> <div class="p-3 mb-2 bg-info text-white"> TOTAL DE NEONATOS</div></td> 
+                      <td><app-variable-manual [idactividad]='5087' formControlName='var5087'></app-variable-manual></td>
+                    
+            
+                    </tr>  
+                              
+
+
+      </table>
+    </div>
+    
+
+
+     
+        <BR>
+
+            <BR>
+    
+    
+                <div class="container-fluid">
+      
+    
+         
+                    <div class="p-3 mb-2 bg-info text-white">MUERTES MATERNAS</div>
+    
+                    <table class="table  table-hover">
+            
+                      <thead class= "thead-dark">
+                          <tr>
+                         
+                      
+                            <th>EVITADAS</th>
+                            <th>DIRECTAS</th>
+                            <th>INDIRECTAS</th>
+                            <th>NO RELACIONADAS</th>
+                       
+                       
+                        </thead>
+                    
+                  
+                  <tbody>
+          
+                    <tr>
+                    
+                 
+                      <td><app-variable-manual [idactividad]='5079' formControlName='var5079'></app-variable-manual></td>   
+                      <td><app-variable-manual [idactividad]='5080' formControlName='var5080'></app-variable-manual></td>
+                      <td><app-variable-manual [idactividad]='5081' formControlName='var5081'></app-variable-manual></td>
+                      <td><app-variable-manual [idactividad]='5082' formControlName='var5082'></app-variable-manual></td>
+                    
+            
+            
+                    </tr>
+                
+                 
+               <br>
+               <br>
+
+                                        
+          
+          
+                </table>
+              </div>
+              
+
+            <BR>
+                    
+  
+        
+        <div class="row">
+            <div class="col-md-3"></div>
+            <div class="col-md-3"></div>
+            <div class="col-md-3"><p-button label="GUARDAR" (click)="GuardarDatos1()" ></p-button></div>
+            <div class="col-md-3"></div>
+        </div>
+
+    
+
+<BR>
+    
+
+
+</form>
+</p-panel>
+<p-confirmDialog [style]="{width: '50vw'}"  [baseZIndex]="10000" rejectButtonStyleClass="p-button-outlined"></p-confirmDialog>
+
+<p-toast></p-toast>
+<br>
