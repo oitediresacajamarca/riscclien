@@ -23,6 +23,8 @@ import { SeguimientoCargasGuard } from './guards/seguimiento-cargas.guard';
 import { ReporteCargasComponent } from './componentes/reporte-cargas/reporte-cargas.component';
 import { VariableManualComponent } from "./controles/variable-manual/variable-manual.component";
 import { RegistroVariablesManualesComponent } from "./registro/registro-variables-manuales/registro-variables-manuales.component";
+import { MaestroEstablecimientoComponent } from "./componentes/admin/maestro-establecimiento/maestro-establecimiento.component";
+import { NuevoComponent } from "./componentes/admin/maestro-establecimiento/nuevo/nuevo.component";
 
 const routes: Routes = [
   { path: "home", component: NavbarComponent },
@@ -48,6 +50,12 @@ const routes: Routes = [
   { path: "reporte", component: PruebaComponent },
   { path: "reporte_cargas", component: ReporteCargasComponent },
   { path: "variable_manual", component:RegistroVariablesManualesComponent},
+  { path: "admin/maestro_establecimiento", component: MaestroEstablecimientoComponent
+,children:[{
+
+path:'nuevo',component:NuevoComponent
+
+}]},
   { path: "**", redirectTo: "home" },
 
 

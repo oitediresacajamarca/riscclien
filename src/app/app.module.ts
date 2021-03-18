@@ -59,6 +59,10 @@ import { ClickColorDirective } from './directivas/click-color.directive';
 import { ReporteCargasComponent } from './componentes/reporte-cargas/reporte-cargas.component';
 import { RegistroVariablesManualesComponent } from './registro/registro-variables-manuales/registro-variables-manuales.component';
 import { VariableManualComponent } from './controles/variable-manual/variable-manual.component';
+import { AdminComponent } from './componentes/admin/admin.component';
+import { MaestroEstablecimientoComponent } from './componentes/admin/maestro-establecimiento/maestro-establecimiento.component';
+import { NuevoComponent } from './componentes/admin/maestro-establecimiento/nuevo/nuevo.component';
+
 
 
 @NgModule({
@@ -84,7 +88,10 @@ import { VariableManualComponent } from './controles/variable-manual/variable-ma
     ClickColorDirective,
     ReporteCargasComponent,
     VariableManualComponent,
-    RegistroVariablesManualesComponent
+    RegistroVariablesManualesComponent,
+    AdminComponent,
+    MaestroEstablecimientoComponent,
+    NuevoComponent,
   ],
   imports: [
     TableModule,

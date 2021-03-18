@@ -1,0 +1,21 @@
+<p>LISTADO DE IPRESS</p>
+<router-outlet><app-nuevo></app-nuevo></router-outlet>
+
+
+<div class="row">
+    <div class="col-2"></div>
+    <div class="col-2"></div>
+    <div class="col-2"></div>
+    <div class="col-2"></div>
+    <div class="col-2"></div>
+    <div class="col-2"></div>
+</div>
+<div class="row" *ngFor="let estble of lista_establecimientos">
+    <div class="col-2">{{estble.Id_Establecimiento}}</div>
+    <div class="col-2">{{estble.Nombre_Establecimiento}}</div>
+    <div class="col-2">{{estble.Codigo_Unico}}</div>
+    <div class="col-2">{{estble.Provincia}}</div>
+    <div class="col-2">{{estble.Distrito}}</div>
+    <div class="col-2">{{estble.Red}}</div>
+    <div class="col-2">{{estble.Microred}}</div>
+</div>
