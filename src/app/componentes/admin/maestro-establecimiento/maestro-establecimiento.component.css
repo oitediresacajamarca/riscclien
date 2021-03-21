@@ -1,0 +1,6 @@
+:host() .formulario{
+    margin-top: 60px;
+}
+:host() .text-1{
+    font-size: 12px;
+}

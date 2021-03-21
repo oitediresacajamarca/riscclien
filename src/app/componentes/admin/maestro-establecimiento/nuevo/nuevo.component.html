@@ -1,27 +1,98 @@
 <div>NUEVO ESTABLECIMIENTO</div>
-<div class="p-fluid p-formgrid p-grid">
-    <div class="p-field p-col-12 p-md-6">
-        <label for="firstname">Firstname</label>
-        <input id="firstname" type="text" pInputText> 
-    </div>
-    <div class="p-field p-col-12 p-md-6">
-        <label for="lastname">Lastname</label>
-        <input id="lastname" type="text" pInputText> 
-    </div>
-    <div class="p-field p-col-12">
-        <label for="address">Address</label>
-        <textarea id="address" type="text" rows="4" pInputTextarea></textarea>
-    </div>
-    <div class="p-field p-col-12 p-md-6">
-        <label for="city">City</label>
-        <input id="city" type="text" pInputText> 
-    </div>
-    <div class="p-field p-col-12 p-md-3">
-        <label for="state">State</label>
-        <p-dropdown inputId="state" [options]="states" [(ngModel)]="selectedState" placeholder="Select" optionLabel="name"></p-dropdown>
-    </div>
-    <div class="p-field p-col-12 p-md-3">
-        <label for="zip">Zip</label>
-        <input id="zip" type="text" pInputText> 
+<form action="" [formGroup]="formularioNuevo">
+<div class="p-field p-grid form">
+    <label for="firstname3" class="p-col-fixed" style="width:200px">Id Establecimiento</label>
+    <div class="p-col">
+        <input id="firstname3" type="text" pInputText formControlName="Id_Establecimiento"> 
     </div>
 </div>
+<div class="p-field p-grid">
+    <label for="lastname3" class="p-col-fixed" style="width:200px">Nombre_Establecimiento</label>
+    <div class="p-col">
+        <input id="lastname3" type="text" pInputText formControlName="Nombre_Establecimiento"> 
+    </div>
+</div>
+<div class="p-field p-grid form">
+    <label for="firstname3" class="p-col-fixed" style="width:200px">Ubigueo_Establecimiento</label>
+    <div class="p-col">
+        <input id="firstname3" type="text" pInputText formControlName="Ubigueo_Establecimiento"> 
+    </div>
+</div>
+<div class="p-field p-grid">
+    <label for="lastname3" class="p-col-fixed" style="width:200px">Codigo_Disa</label>
+    <div class="p-col">
+        <input id="lastname3" type="text" pInputText formControlName="Codigo_Disa"> 
+    </div>
+</div>
+<div class="p-field p-grid form">
+    <label for="firstname3" class="p-col-fixed" style="width:200px">Disa</label>
+    <div class="p-col">
+        <input id="firstname3" type="text" pInputText formControlName="Disa"> 
+    </div>
+</div>
+<div class="p-field p-grid">
+    <label for="lastname3" class="p-col-fixed" style="width:200px">Codigo de Red</label>
+    <div class="p-col">
+        <input id="lastname3" type="text" pInputText formControlName="Codigo_Red"> 
+    </div>
+</div>
+<div class="p-field p-grid form">
+    <label for="firstname3" class="p-col-fixed" style="width:200px">Red</label>
+    <div class="p-col">
+        <input id="firstname3" type="text" pInputText formControlName="Red"> 
+    </div>
+</div>
+<div class="p-field p-grid">
+    <label for="lastname3" class="p-col-fixed" style="width:200px">MicroRed</label>
+    <div class="p-col">
+        <input id="lastname3" type="text" pInputText formControlName="MicroRed"> 
+    </div>
+</div>
+<div class="p-field p-grid">
+    <label for="lastname3" class="p-col-fixed" style="width:200px">Codigo_Unico</label>
+    <div class="p-col">
+        <input id="lastname3" type="text" pInputText formControlName="Codigo_Unico"> 
+    </div>
+</div>
+
+<div class="p-field p-grid">
+    <label for="lastname3" class="p-col-fixed" style="width:200px">Codigo_Sector</label>
+    <div class="p-col">
+        <input id="lastname3" type="text" pInputText formControlName="Codigo_Sector"> 
+    </div>
+</div>
+<div class="p-field p-grid">
+    <label for="lastname3" class="p-col-fixed" style="width:200px">Descripcion_Sector</label>
+    <div class="p-col">
+        <input id="lastname3" type="text" pInputText formControlName="Descripcion_Sector"> 
+    </div>
+</div>
+<div class="p-field p-grid">
+    <label for="lastname3" class="p-col-fixed" style="width:200px">Departamento</label>
+    <div class="p-col">
+        <input id="lastname3" type="text" pInputText formControlName="Departamento"> 
+    </div>
+</div>
+<div class="p-field p-grid">
+    <label for="lastname3" class="p-col-fixed" style="width:200px">Provincia</label>
+    <div class="p-col">
+        <input id="lastname3" type="text" pInputText formControlName="Provincia"> 
+    </div>
+</div>
+<div class="p-field p-grid">
+    <label for="lastname3" class="p-col-fixed" style="width:200px">Distrito</label>
+    <div class="p-col">
+        <input id="lastname3" type="text" pInputText formControlName="Distrito"> 
+    </div>
+</div>
+
+<div class=" p-grid">
+    <div class="p-col-6">
+   .
+    </div> 
+    <div class="p-col-6">
+        <button pButton type="button" label="GUARDAR" (click)="Guardar()"></button>
+    </div>
+</div>
+
+</form>

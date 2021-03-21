@@ -5,7 +5,7 @@
 export const environment = {
   production: false,
   ip: "localhost",
-  ip_backend: "http://localhost:8084",
+  ip_backend: "http://sir.diresacajamarca.gob.pe:8084",
   ip_backend_b:"http://localhost:8089"
 };
 

@@ -1,0 +1,18 @@
+:host() .p-grid {
+    display: flex;
+    flex-wrap: wrap;
+    margin-right: -.5rem;
+    margin-left: -.5rem;
+    margin-top: .25rem;
+}
+
+:host() .p-field.p-grid, .p-formgrid.p-grid {
+    margin-top: 0;
+}
+:host() .p-field {
+    margin-bottom: 1rem;
+}
+
+:host() .form{
+    margin-top: 200px;
+}

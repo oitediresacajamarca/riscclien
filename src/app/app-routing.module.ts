@@ -27,14 +27,17 @@ import { MaestroEstablecimientoComponent } from "./componentes/admin/maestro-est
 import { NuevoComponent } from "./componentes/admin/maestro-establecimiento/nuevo/nuevo.component";
 
 const routes: Routes = [
+  { path: "", component: NavbarComponent },
   { path: "home", component: NavbarComponent },
   { path: "user/register", component: RegisterComponent, canActivate: [AuthGuard, CreacionUsuariosGuard] },
   { path: "user/login", component: LoginComponent },
   { path: "user/profile", component: ProfileComponent, canActivate: [AuthGuard] },
-  { path: "user/inicio", component: PlantillaInicioComponent, canActivate: [AuthGuard] 
-,children:[
-  { path: "reporte_cargas", component: ReporteCargasComponent }
-]},
+  {
+    path: "user/inicio", component: PlantillaInicioComponent, canActivate: [AuthGuard]
+    , children: [
+      { path: "reporte_cargas", component: ReporteCargasComponent }
+    ]
+  },
   { path: "user/register/list-usuarios", component: ListUsuariosComponent, canActivate: [AuthGuard, CreacionUsuariosGuard] },
   { path: "user/changePassword", component: ChangePasswordComponent, canActivate: [AuthGuard] },
   { path: "user/cargasHis/:punto", component: CargasHisComponent, canActivate: [AuthGuard, CargasHisGuard] },
@@ -49,13 +52,15 @@ const routes: Routes = [
   { path: "reporte-preliminar", component: ReportePreliminarComponent },
   { path: "reporte", component: PruebaComponent },
   { path: "reporte_cargas", component: ReporteCargasComponent },
-  { path: "variable_manual", component:RegistroVariablesManualesComponent},
-  { path: "admin/maestro_establecimiento", component: MaestroEstablecimientoComponent
-,children:[{
+  { path: "variable_manual", component: RegistroVariablesManualesComponent },
+  {
+    path: "admin/maestro_establecimiento", component: MaestroEstablecimientoComponent
+    , children: [{
 
-path:'nuevo',component:NuevoComponent
+      path: 'nuevo', component: NuevoComponent
 
-}]},
+    }]
+  },
   { path: "**", redirectTo: "home" },
 
 

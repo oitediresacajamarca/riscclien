@@ -14,4 +14,8 @@ export class MaestroEstablecimientoService {
   listar_establecimientos() {
     return this.http.get(environment.ip_backend_b + '/risc_b/maestro-establecimiento/listar').toPromise()
   }
+
+  nuevo_establecimientos(nuevo_estab) {
+    return this.http.post(environment.ip_backend_b + '/risc_b/maestro-establecimiento/nuevo',nuevo_estab).toPromise()
+  }
 }
